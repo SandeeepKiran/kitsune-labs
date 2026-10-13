@@ -3,7 +3,7 @@
 import { el } from './dom.ts';
 import {
   PROVIDERS, PROVIDER_IDS, type Provider,
-  forgetAllKeys, getProvider, hasKey, isRemembered, keyProblem, saveKey, setProvider,
+  forgetAllKeys, getModel, getProvider, hasKey, isRemembered, keyProblem, saveKey, setModel, setProvider,
 } from './key-store.ts';
 
 let drawer: HTMLDialogElement | null = null;
@@ -35,6 +35,16 @@ function buildDrawer(): HTMLDialogElement {
   const saveButton = el('button', { type: 'submit', class: 'btn btn--ink' }, 'Seal key');
   const forgetButton = el('button', { type: 'button', class: 'btn btn--quiet', 'data-action': 'forget' }, 'Forget key');
   const sendsTo = el('li', { 'data-testid': 'sends-to' });
+  const modelList = el('datalist', { id: 'model-options' });
+  const modelInput = el('input', {
+    id: 'ai-model', class: 'field mono', type: 'text', list: 'model-options', autocomplete: 'off', spellcheck: 'false',
+    autocapitalize: 'off', 'aria-describedby': 'model-hint',
+  });
+  const modelHint = el('p', { id: 'model-hint', class: 'drawer__hint drawer__hint--flush' });
+  modelInput.addEventListener('change', () => {
+    setModel(selectedProvider(), modelInput.value);
+    refresh();
+  });
 
   const form = el('form', { class: 'drawer__panel', novalidate: true },
     el('div', { class: 'drawer__head' },
@@ -53,6 +63,10 @@ function buildDrawer(): HTMLDialogElement {
       'On: it stays in this browser (localStorage) until you press Forget key.'),
     el('div', { class: 'drawer__actions' }, saveButton, forgetButton),
     status,
+    el('label', { for: 'ai-model', class: 'field-label' }, 'Model'),
+    modelInput,
+    modelList,
+    modelHint,
     el('section', { class: 'drawer__privacy', 'aria-labelledby': 'privacy-title' },
       el('h3', { id: 'privacy-title' }, 'Where your key goes'),
       el('ul', {},
@@ -143,4 +157,8 @@ function refresh(): void {
     `It is sent only to ${info.company}, and only when you run an AI check.`;
   drawer.querySelector<HTMLButtonElement>('[data-action="forget"]')!.disabled =
     !PROVIDER_IDS.some((id) => hasKey(id));
+  drawer.querySelector<HTMLInputElement>('#ai-model')!.value = getModel(provider);
+  drawer.querySelector('#model-options')!.replaceChildren(...info.models.map((m) => el('option', { value: m })));
+  drawer.querySelector('#model-hint')!.textContent =
+    `Default: ${info.defaultModel}. Type another ${info.label} model name to use it. Clear the box to go back.`;
 }

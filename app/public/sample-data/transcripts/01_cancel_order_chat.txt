@@ -4,7 +4,7 @@
 [00:00:41] Customer: no, CANCEL. not a refund
 [00:00:42] Mousy Assist: Sorry, I didn't get that. Could you say it another way?
 [00:00:57] Customer: Hi, I want to cancel my order
-[00:01:00] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:01:00] Mousy Assist: Sure. What's your order number? It starts with MO.
 [00:01:20] Customer: it's MO-1465
 [00:01:21] Mousy Assist: Thanks. Looking up order MO-1465 now.
 [00:01:23] Mousy Assist: Order MO-1465 has the desk lamp and hasn't shipped yet. Do you want to cancel the whole order?

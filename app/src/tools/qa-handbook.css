@@ -1,0 +1,57 @@
+/* QA Handbook layout: hero + contents, then guide tiles. One column under 900 px. */
+.hb {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-areas:
+    'hero hero hero toc'
+    'mandate mandate life life'
+    'kit kit practices practices'
+    'bugs bugs bugs bugs'
+    'check check example example';
+  gap: var(--gap);
+}
+.hb__hero { grid-area: hero; min-height: 230px; }
+.hb__toc { grid-area: toc; }
+#hb-mandate { grid-area: mandate; }
+#hb-lifecycle { grid-area: life; }
+#hb-toolkit { grid-area: kit; }
+#hb-practices { grid-area: practices; }
+#hb-bugs { grid-area: bugs; }
+#hb-checklist { grid-area: check; }
+#hb-example { grid-area: example; }
+.hb__tile { scroll-margin-top: 90px; }
+
+.hb__title { margin: 0 0 12px; font-size: 18px; font-weight: 800; }
+.hb__toc ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.hb__toc a { color: var(--ink); font-weight: 600; }
+
+.hb__mandate, .hb__severity { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 14px; margin: 0; font-size: 14px; }
+.hb__mandate dt, .hb__severity dt { font-weight: 800; }
+.hb__mandate dd, .hb__severity dd { margin: 0; }
+.hb__severity { margin-top: 14px; }
+
+.hb__stages { display: grid; gap: 10px; margin: 0; padding-left: 22px; font-size: 14px; }
+.hb__stages p { margin: 2px 0 0; }
+.hb__tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.hb__tools .chip { color: var(--ink); text-decoration: none; background: #fff; }
+
+.hb__toolkit { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.hb__toolkit li { display: grid; gap: 2px; }
+.hb__toolkit a { color: var(--ink); font-weight: 700; }
+
+.hb__practices { display: grid; gap: 8px; margin: 0; padding-left: 22px; font-size: 14px; }
+.hb__practices li:target { background: var(--gold-glow); border-radius: 8px; }
+
+.hb__tails { display: flex; align-items: center; gap: 14px; margin: 10px 0 4px; }
+.hb__count { margin: 0; font-size: 13px; }
+.hb__checks { display: grid; gap: 2px; margin: 8px 0 14px; padding-left: 22px; }
+.hb__checks .check { align-items: flex-start; margin-top: 6px; font-weight: 500; }
+
+.hb__caught { margin: 12px 0; padding-left: 18px; font-size: 14px; }
+
+@media (max-width: 900px) {
+  .hb {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'hero' 'toc' 'mandate' 'life' 'kit' 'practices' 'bugs' 'check' 'example';
+  }
+}

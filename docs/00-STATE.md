@@ -2,7 +2,51 @@
 
 > Update this file at the end of every work session. Newest entry on top.
 
-## 2026-10-13 (latest) - M2 shell, home, sample data page done. Batch A complete (Cursor)
+## 2026-10-13 (latest) - M3 + M4 done: all 9 tools work. Batch B complete (Cursor)
+
+- Dependencies: `jszip` and `xlsx` (SheetJS, from cdn.sheetjs.com), both approved in D4. Both
+  load lazily, only when a spreadsheet or zip is used (separate chunks in the build).
+- Shared engine, all pure TypeScript in `app\src\shared\`:
+  - `analysis.ts`: rules for the 7 bug types, intent guess, first real utterance, metrics.
+    Against the answer key: 27 of 27 planted bugs found, 0 false positives, 40 of 40 first
+    utterances right.
+  - `files.ts` (.csv / .xlsx / .zip in, .xlsx / .zip out), `conversations.ts` (any input to
+    conversations + column mapping), `script.ts` (open test-script format
+    `kitsune-test-script/1` in .txt / .json / .yaml, and reading it back), `answer-key.ts`,
+    `findings-source.ts` (answer key, Bug Finder export, or rules), `results.ts` (tables,
+    finding cards, hanko, answer-key check), `options.ts`.
+  - `ai.ts`: one `askAi()` for Gemini, OpenAI and Anthropic (endpoints checked with Context7).
+    The key goes only in the provider's header. 90 s timeout. Errors never repeat key text.
+    The key drawer now has a Model field (stored in localStorage; it is not a secret).
+- `tool-page.ts` rewritten: loaded-file panel, column mapping, tool settings, "Use AI" switch,
+  nine tails show real progress, electro spark while AI runs, run log ends with
+  "N AI calls · M ms". Each tool is its own module in `app\src\tools\`.
+- M3 (no AI): Transcript Converter (single or bulk, zip out, `{{order_id}}` option), First
+  Utterance Finder, Metrics Extractor (adds `metric_*` and `cm_*` columns, escalation
+  cross-check), QA Handbook (new text, 9-step STE checklist saved in this browser, sample
+  findings mapped to practices).
+- M4 (AI optional, all work without a key, labelled "Rules · no AI"): Bug Finder (hanko stamp
+  on Fail, AI second opinion merges with rules: "AI agrees"), Test Case Generator (column
+  mapping, STE steps, AI rewrite with a cost limit), Utterance Generator (seeded rule styles,
+  AI adds slang and "should not match" near-misses), Report Builder (ranked by impact,
+  .md / .html / .json; AI summary gets totals only, never transcripts), Email Templates
+  (daily, critical, meeting; custom needs a key and says so with a Warn).
+- Fixed on the way: the converter overwrote files with the same name from different zip
+  folders (now `_2` suffix). A sample chat line was changed so it cannot look like a wrong
+  order ID; the pack was regenerated.
+- Tests: new `tests\test_tools.py` (each tool with the sample and no key, answer-key matches,
+  YAML round trip, zip + xlsx, column mapping, downloads, hanko + reduced motion, mocked AI
+  provider: key only in the header, only to that host, never in console or log; AI failure
+  falls back to rules). `test_site.py` updated for real tool output. Full suite: 100 passed.
+  Privacy check: PASS (113 files). `npm run build` and `tsc --noEmit`: clean.
+- Not tested with a real key: only the mocked provider. The owner should try one real call.
+
+### Next steps
+
+1. Owner: look at Batch B, and try one real AI call (see the steps in the chat summary).
+2. Cursor: Batch C (M5 polish + launch prep).
+
+## 2026-10-13 - M2 shell, home, sample data page done. Batch A complete (Cursor)
 
 - Routing: one real HTML page per route (`index.html`, `sample-data\index.html`,
   `tools\<slug>\index.html` x 9; listed in `vite.config.ts`). Works on GitHub Pages with no

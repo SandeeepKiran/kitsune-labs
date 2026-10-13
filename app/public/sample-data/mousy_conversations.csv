@@ -5,7 +5,7 @@ CNV-000001,chat,2025-03-14T12:21:31Z,2025-03-14T12:23:38Z,127,15,customer,false,
 [00:00:41] Customer: no, CANCEL. not a refund
 [00:00:42] Mousy Assist: Sorry, I didn't get that. Could you say it another way?
 [00:00:57] Customer: Hi, I want to cancel my order
-[00:01:00] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:01:00] Mousy Assist: Sure. What's your order number? It starts with MO.
 [00:01:20] Customer: it's MO-1465
 [00:01:21] Mousy Assist: Thanks. Looking up order MO-1465 now.
 [00:01:23] Mousy Assist: Order MO-1465 has the desk lamp and hasn't shipped yet. Do you want to cancel the whole order?
@@ -81,7 +81,7 @@ CNV-000006,voice,2025-03-07T11:04:05Z,2025-03-07T11:05:13Z,68,11,customer,false,
 [00:01:04] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
 CNV-000007,chat,2025-03-04T10:32:00Z,2025-03-04T10:34:03Z,123,15,customer,false,,,resolved,greet;identify_order;lookup_order;start_return;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.76,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":455}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
 [00:00:15] Customer: the box was crushed and the item is broken
-[00:00:17] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:17] Mousy Assist: Sure. What's your order number? It starts with MO.
 [00:00:30] Customer: MO-4615
 [00:00:31] Mousy Assist: Thanks. Looking up order MO-4615 now.
 [00:00:33] Mousy Assist: I'm sorry it arrived damaged. Order MO-4615 has the desk lamp and the egg timer. Which one is damaged?
@@ -220,7 +220,7 @@ CNV-000016,voice,2025-03-12T15:28:11Z,2025-03-12T15:28:34Z,23,3,agent,true,bot_t
 [00:00:17] Mousy Assist: Let me transfer you to a specialist who can help with that. Please hold."
 CNV-000017,chat,2025-03-01T14:30:25Z,2025-03-01T14:32:03Z,98,11,customer,false,,,resolved,greet;identify_order;track_parcel;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.68,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":756}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
 [00:00:20] Customer: my order still hasn't arrived
-[00:00:22] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:22] Mousy Assist: Sure. What's your order number? It starts with MO.
 [00:00:42] Customer: MO-1021
 [00:00:44] Mousy Assist: Thanks. Looking up order MO-1012 now.
 [00:00:46] Mousy Assist: Order MO-1012 shipped on February 28 with Pawcel Post. It's in Crumbridge and should arrive on Tuesday by 6 pm.
@@ -384,7 +384,7 @@ CNV-000026,voice,2025-03-01T17:00:22Z,2025-03-01T17:02:28Z,126,21,bot,false,,,re
 [00:02:02] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
 CNV-000027,chat,2025-03-05T18:36:29Z,2025-03-05T18:41:21Z,292,8,timeout,false,,,abandoned,greet;identify_order;lookup_order;close,"{""auth_result"":""skipped"",""intent_confidence"":0.64,""fallback_count"":0,""sentiment_end"":""negative"",""csat_offered"":false,""lookup_ms"":1091}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
 [00:00:20] Customer: One of my items arrived broken
-[00:00:22] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:22] Mousy Assist: Sure. What's your order number? It starts with MO.
 [00:00:42] Customer: it's MO-2118
 [00:00:44] Mousy Assist: Thanks. Looking up order MO-2118 now.
 [00:00:46] Mousy Assist: I'm sorry it arrived damaged. Order MO-2118 has the two-slice toaster and the egg timer. Which one is damaged?
@@ -506,7 +506,7 @@ CNV-000035,voice,2025-03-11T08:55:23Z,2025-03-11T08:56:20Z,57,9,customer,false,,
 [00:00:53] Mousy Assist: Is there anything else I can help with today?"
 CNV-000036,chat,2025-03-11T19:19:09Z,2025-03-11T19:21:35Z,146,14,customer,false,,,resolved,greet;identify_order;lookup_refund;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.77,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":345}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
 [00:00:22] Customer: checking on a refund
-[00:00:24] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:24] Mousy Assist: Sure. What's your order number? It starts with MO.
 [00:00:44] Customer: MO-9589
 [00:00:45] Mousy Assist: Thanks. Looking up order MO-9589 now.
 [00:00:48] Mousy Assist: I see a refund of $22.00 for order MO-9589, issued on March 9. It can take up to 5 business days to show on your statement.

@@ -5,14 +5,14 @@
       "path": "mousy_sample_pack.zip",
       "title": "Everything (.zip)",
       "purpose": "Every file below in one download.",
-      "bytes": 52815,
+      "bytes": 52800,
       "tools": []
     },
     {
       "path": "mousy_conversations.csv",
       "title": "Mousy conversations (CSV)",
       "purpose": "40 conversations, one per row, transcript in one cell.",
-      "bytes": 53330,
+      "bytes": 53310,
       "tools": [
         "Test Case Generator",
         "Metrics Extractor",
@@ -23,7 +23,7 @@
       "path": "mousy_conversations.xlsx",
       "title": "Mousy conversations (Excel)",
       "purpose": "The same 40 conversations as a workbook.",
-      "bytes": 15187,
+      "bytes": 15185,
       "tools": [
         "Test Case Generator",
         "Metrics Extractor",
@@ -34,7 +34,7 @@
       "path": "mousy_batch_20.xlsx",
       "title": "Batch of 20 (Excel)",
       "purpose": "A 20-row subset for bulk runs.",
-      "bytes": 10686,
+      "bytes": 10681,
       "tools": [
         "Test Case Generator",
         "Report Builder"
@@ -70,7 +70,7 @@
       "path": "transcripts/01_cancel_order_chat.txt",
       "title": "Transcript: cancel order",
       "purpose": "Chat conversation: cancel order (misroute, ignored correction).",
-      "bytes": 1006,
+      "bytes": 1002,
       "tools": [
         "Bug Finder",
         "Transcript Converter"
@@ -130,7 +130,7 @@
       "path": "transcripts/07_return_damaged_chat.txt",
       "title": "Transcript: return damaged item",
       "purpose": "Chat conversation: return damaged item (ignored correction).",
-      "bytes": 1058,
+      "bytes": 1054,
       "tools": [
         "Bug Finder",
         "Transcript Converter"
@@ -150,7 +150,7 @@
       "path": "golden/01_cancel_order_chat.json",
       "title": "Golden conversation: cancel order",
       "purpose": "What the cancel order conversation should have been.",
-      "bytes": 1501,
+      "bytes": 1497,
       "tools": [
         "Bug Finder"
       ]
@@ -204,7 +204,7 @@
       "path": "golden/07_return_damaged_chat.json",
       "title": "Golden conversation: return damaged item",
       "purpose": "What the return damaged item conversation should have been.",
-      "bytes": 1795,
+      "bytes": 1791,
       "tools": [
         "Bug Finder"
       ]

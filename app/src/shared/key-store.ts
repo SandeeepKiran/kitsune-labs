@@ -9,12 +9,24 @@ export interface ProviderInfo {
   label: string;
   company: string;
   keyPage: string;
+  defaultModel: string;
+  models: string[];        // suggestions only; the visitor may type any model name
 }
 
+// Default models checked against each provider's docs on 2026-10-13 (Context7).
 export const PROVIDERS: Record<Provider, ProviderInfo> = {
-  gemini: { label: 'Gemini', company: 'Google', keyPage: 'https://aistudio.google.com/apikey' },
-  openai: { label: 'ChatGPT', company: 'OpenAI', keyPage: 'https://platform.openai.com/api-keys' },
-  anthropic: { label: 'Claude', company: 'Anthropic', keyPage: 'https://console.anthropic.com/settings/keys' },
+  gemini: {
+    label: 'Gemini', company: 'Google', keyPage: 'https://aistudio.google.com/apikey',
+    defaultModel: 'gemini-3.6-flash', models: ['gemini-3.6-flash', 'gemini-3.8-flash', 'gemini-3.5-flash-lite'],
+  },
+  openai: {
+    label: 'ChatGPT', company: 'OpenAI', keyPage: 'https://platform.openai.com/api-keys',
+    defaultModel: 'gpt-6-luna', models: ['gpt-6-luna', 'gpt-6.1-sol', 'gpt-6-astra'],
+  },
+  anthropic: {
+    label: 'Claude', company: 'Anthropic', keyPage: 'https://console.anthropic.com/settings/keys',
+    defaultModel: 'claude-sonnet-5', models: ['claude-sonnet-5', 'claude-haiku-4-5', 'claude-opus-5'],
+  },
 };
 
 export const PROVIDER_IDS = Object.keys(PROVIDERS) as Provider[];
@@ -90,7 +102,21 @@ export function forgetAllKeys(): void {
   announce();
 }
 
-/** Light shape check only. The real test is the provider accepting it (M4). */
+// The model name is not a secret, so it may stay in localStorage without "remember".
+const modelItem = (provider: Provider) => `kitsune.ai.model.${provider}`;
+
+export function getModel(provider: Provider = getProvider()): string {
+  return storage('local')?.getItem(modelItem(provider))?.trim() || PROVIDERS[provider].defaultModel;
+}
+
+export function setModel(provider: Provider, model: string): void {
+  const value = model.trim();
+  if (!value || value === PROVIDERS[provider].defaultModel) storage('local')?.removeItem(modelItem(provider));
+  else storage('local')?.setItem(modelItem(provider), value);
+  announce();
+}
+
+/** Light shape check only. The real test is the provider accepting it. */
 export function keyProblem(key: string): string | null {
   const trimmed = key.trim();
   if (!trimmed) return 'Paste a key first.';

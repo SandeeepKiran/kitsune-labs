@@ -36,7 +36,31 @@
 @keyframes drop-in { from { opacity: 0; transform: translateY(-8px) scale(0.98); } }
 @keyframes fade-in { from { opacity: 0; } }
 
+/* Hanko stamp slams onto a Fail finding, once. */
+@keyframes slam {
+  0% { opacity: 0; transform: rotate(-30deg) scale(1.8); }
+  55% { opacity: 1; transform: rotate(-12deg) scale(0.92); }
+  100% { opacity: 1; transform: rotate(-14deg) scale(1); }
+}
+
+/* Electro spark: while an AI call runs, a thin violet line runs around the tile border.
+   A big conic gradient spins behind the tile; an inset layer covers all but a 2 px rim. */
+.is-ai-running::before {
+  content: ''; position: absolute; inset: -60%; z-index: 0; pointer-events: none;
+  background: conic-gradient(from 0deg, transparent 0 78%, var(--ai-glow) 90%, var(--ai) 94%, transparent 100%);
+  animation: spark 1.4s linear infinite;
+}
+.is-ai-running::after {
+  content: ''; position: absolute; inset: 2px; z-index: 0; pointer-events: none;
+  border-radius: calc(var(--radius-tile) - 2px); background: inherit;
+}
+.is-ai-running > * { position: relative; z-index: 1; }
+@keyframes spark { to { transform: rotate(360deg); } }
+
 @media (prefers-reduced-motion: reduce) {
+  /* No spinning line: a still violet rim says "AI is working" instead. */
+  .is-ai-running { box-shadow: inset 0 0 0 2px var(--ai-glow); }
+  .is-ai-running::before { display: none; }
   *, *::before, *::after {
     animation: none !important;
     transition: none !important;

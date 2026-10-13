@@ -8,7 +8,7 @@ convert transcripts into open test-script formats, and build QA reports. Every t
 browser on files and pasted text. Each tool has a **Load Mousy sample** button, so you can see it
 work in seconds, with no upload, no sign-up and no API key.
 
-**Status:** Work in progress: milestone M2 of M5.
+**Status:** Work in progress: milestone M4 of M5.
 
 **All data is invented. Mousy is not a real company.** The sample pack (conversations, Excel
 batches, intent lists) was written from scratch for an imaginary online shop and its support bot,

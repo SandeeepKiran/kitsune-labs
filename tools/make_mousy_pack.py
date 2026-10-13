@@ -333,7 +333,7 @@ class Conversation:
                      *(("wrong_order_id",) if wrong else ()))
             self.cust(self.pick(YES))
         else:
-            self.bot("Sure. What's your order number? It looks like MO-1234.")
+            self.bot("Sure. What's your order number? It starts with MO.")
             self.cust(self.pick([self.f.order_id, f"it's {self.f.order_id}", self.f.order_id.lower()]))
             self.bot(f"Thanks. Looking up order {self.used_order_id} now.",
                      *(("wrong_order_id",) if wrong else ()))

@@ -1,4 +1,7 @@
-"""Behaviour of the shell, home, sample data page, key drawer and tool-page template (M2)."""
+"""Behaviour of the shell, home, sample data page, key drawer and tool-page template (M2).
+
+The tool-specific behaviour (M3, M4) is in test_tools.py.
+"""
 
 import json
 import re
@@ -32,7 +35,7 @@ def test_home_shows_nine_tools_and_tried_counter(ui: Page, site_url: str) -> Non
 def test_running_a_tool_counts_as_tried(ui: Page, site_url: str) -> None:
     ui.goto(f"{site_url}tools/bug-finder/")
     ui.get_by_test_id("load-sample").click()
-    expect(ui.get_by_test_id("answer")).to_have_text("15")
+    expect(ui.get_by_test_id("answer")).to_have_text("2")
     ui.goto(site_url)
     expect(ui.get_by_test_id("tools-tried")).to_contain_text("1 / 9")
     expect(ui.locator(".tool-tile", has_text="Bug Finder")).to_contain_text("Tried")
@@ -44,9 +47,9 @@ def test_load_mousy_sample_parses_and_logs_real_numbers(ui: Page, site_url: str)
     ui.goto(f"{site_url}tools/bug-finder/")
     ui.get_by_test_id("load-sample").click()
 
-    expect(ui.get_by_test_id("answer")).to_have_text("15")
+    expect(ui.get_by_test_id("answer")).to_have_text("2")
     expect(ui.get_by_test_id("source")).to_have_text("transcripts/01_cancel_order_chat.txt")
-    expect(ui.get_by_test_id("run-log")).to_contain_text(re.compile(r"Parsed 15 turns · 2 speakers · 0 AI calls · \d+ ms"))
+    expect(ui.get_by_test_id("run-log")).to_contain_text(re.compile(r"Parsed 15 turns · 2 findings · 0 AI calls · \d+ ms"))
     expect(ui.locator(".turn")).to_have_count(15)
 
 
@@ -56,15 +59,17 @@ def test_pasted_text_runs_with_ctrl_enter(ui: Page, site_url: str) -> None:
     box.fill("Mousy Assist: Hi there\nCustomer: <b>cancel</b> MO-4417")
     box.press("Control+Enter")
 
-    expect(ui.get_by_test_id("answer")).to_have_text("2")
+    expect(ui.get_by_test_id("answer")).to_have_text("1")
     # Visitor text is shown as text, never as markup.
-    expect(ui.locator(".turn__text").nth(1)).to_have_text("<b>cancel</b> MO-4417")
-    assert ui.locator(".turn__text b").count() == 0
+    preview = ui.get_by_test_id("script-preview")
+    expect(preview).to_contain_text("<b>cancel</b>")
+    assert preview.locator("b").count() == 0
 
 
-def test_csv_sample_link_opens_first_conversation(ui: Page, site_url: str) -> None:
+def test_csv_sample_link_opens_the_whole_sheet(ui: Page, site_url: str) -> None:
     ui.goto(f"{site_url}tools/metrics-extractor/?sample=mousy_conversations.csv")
-    expect(ui.get_by_test_id("run-log")).to_contain_text("CSV with 40 rows. Showing CNV-000001")
+    expect(ui.get_by_test_id("loaded-file")).to_contain_text("40 rows")
+    expect(ui.get_by_test_id("run-log")).to_contain_text("Measured 40 conversations")
     expect(ui.get_by_test_id("answer")).not_to_have_text("–")
 
 
@@ -79,9 +84,10 @@ def test_export_downloads_json(ui: Page, site_url: str) -> None:
     with ui.expect_download() as download_info:
         ui.get_by_role("button", name="Download .json").click()
     download = download_info.value
-    assert download.suggested_filename == "01_cancel_order_chat.json"
+    assert download.suggested_filename == "01_cancel_order_chat_findings.json"
     data = json.loads(Path(download.path()).read_text(encoding="utf-8"))
-    assert len(data["turns"]) == 15
+    assert data["generated_by"] == "Kitsune Labs Bug Finder"
+    assert len(data["conversations"][0]["bugs"]) == 2
 
 
 # -- sample data page --------------------------------------------------------------
@@ -107,7 +113,7 @@ def test_open_in_tool_link_loads_that_file(ui: Page, site_url: str) -> None:
     card = ui.locator(".sd-file", has_text="transcripts/05_track_parcel_voice.txt")
     card.get_by_role("link", name="Open in Bug Finder").click()
     expect(ui.get_by_test_id("source")).to_have_text("transcripts/05_track_parcel_voice.txt")
-    expect(ui.get_by_test_id("answer")).to_have_text("9")
+    expect(ui.get_by_test_id("answer")).to_have_text("1")
 
 
 # -- command palette ---------------------------------------------------------------
@@ -207,7 +213,7 @@ def test_bad_key_is_rejected_with_a_message(ui: Page, site_url: str) -> None:
     assert not storage(ui)["session"].get("kitsune.ai.key.gemini")
 
 
-def test_key_never_leaves_the_browser_or_hits_the_console(ui: Page, site_url: str) -> None:
+def test_key_stays_home_when_use_ai_is_off(ui: Page, site_url: str) -> None:
     site_host = urlparse(site_url).netloc
     seen: list[str] = []
     ui.on("request", lambda req: seen.append(f"{req.url} {req.post_data or ''}"))
@@ -217,8 +223,10 @@ def test_key_never_leaves_the_browser_or_hits_the_console(ui: Page, site_url: st
     drawer.get_by_label("API key").fill(FAKE_KEY)
     drawer.get_by_role("button", name="Seal key").click()
     ui.keyboard.press("Escape")
+    ui.get_by_test_id("use-ai").uncheck()
     ui.get_by_test_id("load-sample").click()
-    expect(ui.get_by_test_id("answer")).to_have_text("15")
+    expect(ui.get_by_test_id("answer")).to_have_text("2")
+    expect(ui.get_by_test_id("run-log")).to_contain_text("0 AI calls")
 
     assert not any(FAKE_KEY in line for line in seen)
     assert all(urlparse(line.split(" ")[0]).netloc == site_host for line in seen if line.startswith("http"))
