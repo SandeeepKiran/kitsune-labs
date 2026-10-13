@@ -1,0 +1,77 @@
+{
+  "about": "What this conversation should have been. Invented data.",
+  "conversation_id": "CNV-000005",
+  "channel": "voice",
+  "expected_intent": "track_parcel",
+  "expected_outcome": "resolved",
+  "flow_steps": [
+    "greet",
+    "identify_order",
+    "track_parcel",
+    "offer_more_help",
+    "rate_call",
+    "close"
+  ],
+  "turns": [
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "where's my package"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sure. What's the order number? It starts with M O."
+    },
+    {
+      "speaker": "Customer",
+      "text": "M O seven three zero seven"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks. I heard M O seven three zero seven. Is that right?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "yes please"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Order MO-7307 shipped on March 12 with Pawcel Post. It's in Burrowford and should arrive on Sunday by 6 pm."
+    },
+    {
+      "speaker": "Customer",
+      "text": "can you send me the tracking link"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sure. I've sent the tracking link to the email on your account."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Is there anything else I can help with today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "nope, that's it. thanks"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Before you go, could you rate this call from one to five?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "five, thanks"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thank you for the feedback."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for calling Mousy. Have a lovely day. Goodbye."
+    }
+  ]
+}

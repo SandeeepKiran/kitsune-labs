@@ -1,0 +1,22 @@
+[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: change my delivery address
+[00:00:16] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:23] Customer: hold on, let me find it
+[00:00:28] Mousy Assist: No problem. Take your time.
+[00:00:31] Customer: M O three six zero nine
+[00:00:35] Mousy Assist: Sorry, I didn't catch that. Please say the order number again.
+[00:00:43] Customer: M O three six zero nine
+[00:00:48] Mousy Assist: Thanks. I heard M O three six nine zero. Is that right?
+[00:00:55] Customer: correct
+[00:00:58] Mousy Assist: For security, please say the phone number on the account.
+[00:01:06] Customer: five five five, zero one two two
+[00:01:11] Mousy Assist: Thanks. I have 555-0122. One moment while I find your details.
+[00:01:17] Mousy Assist: Thanks, Clover. I found your account.
+[00:01:21] Mousy Assist: Order MO-3690 is due on Thursday. What's the new delivery address?
+[00:01:30] Customer: 4 Crumb Street, Burrowford
+[00:01:33] Mousy Assist: Got it: 4 Crumb Street, Burrowford. Should I update the order?
+[00:01:42] Customer: yeah
+[00:01:44] Mousy Assist: Done. Order MO-3690 will go to 4 Crumb Street, Burrowford on Thursday.
+[00:01:50] Mousy Assist: Is there anything else I can help with today?
+[00:01:58] Customer: no, that's all
+[00:02:02] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye.

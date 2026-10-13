@@ -1,0 +1,9 @@
+[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: where's my package
+[00:00:16] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:25] Customer: track my order
+[00:00:28] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:34] Customer: my parcel hasn't come
+[00:00:38] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:45] Customer: where's my package
+[00:00:48] Mousy Assist: I'm having trouble understanding. Let me connect you with someone who can help.

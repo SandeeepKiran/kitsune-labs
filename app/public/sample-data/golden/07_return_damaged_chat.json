@@ -1,0 +1,69 @@
+{
+  "about": "What this conversation should have been. Invented data.",
+  "conversation_id": "CNV-000007",
+  "channel": "chat",
+  "expected_intent": "return_damaged_item",
+  "expected_outcome": "resolved",
+  "flow_steps": [
+    "greet",
+    "identify_order",
+    "lookup_order",
+    "start_return",
+    "offer_more_help",
+    "close"
+  ],
+  "turns": [
+    {
+      "speaker": "Mousy Assist",
+      "text": "Hi, I'm Mousy Assist. How can I help with your order today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "the box was crushed and the item is broken"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sure. What's your order number? It looks like MO-1234."
+    },
+    {
+      "speaker": "Customer",
+      "text": "MO-4615"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks. Looking up order MO-4615 now."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "I'm sorry it arrived damaged. Order MO-4615 has the desk lamp and the egg timer. Which one is damaged?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "the desk lamp"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "I've started a return for the desk lamp. A prepaid label is on its way to your email. Would you like a replacement or a refund?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "replacement"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Okay. A new one ships as soon as the courier scans the return parcel."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Is there anything else I can help with today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "nope, that's it. thanks"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for chatting with Mousy. Have a lovely day!"
+    }
+  ]
+}

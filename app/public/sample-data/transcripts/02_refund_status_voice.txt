@@ -1,0 +1,20 @@
+[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: refund status
+[00:00:15] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:22] Customer: M O one seven two seven
+[00:00:26] Mousy Assist: Sorry, I didn't catch that. Please say the order number again.
+[00:00:35] Customer: M O one seven two seven
+[00:00:40] Mousy Assist: Thanks. I heard M O one seven two seven. Is that right?
+[00:00:50] Customer: correct
+[00:00:51] Mousy Assist: For security, please say the phone number on the account.
+[00:00:57] Customer: five five five, zero one four eight
+[00:01:02] Mousy Assist: Thanks. I have 555-0148. One moment while I find your details.
+[00:01:08] Mousy Assist: And to confirm, what's the first name on the account?
+[00:01:16] Customer: wren
+[00:01:18] Mousy Assist: Thanks, Wren. I found your account.
+[00:01:23] Mousy Assist: I see a refund of $7.50 for order MO-1727, issued on March 10. It can take up to 5 business days to show on your statement.
+[00:01:36] Customer: okay
+[00:01:38] Mousy Assist: Yes, it's on its way. You'll get an email when your bank confirms it.
+[00:01:46] Mousy Assist: Is there anything else I can help with today?
+[00:01:53] Customer: no, that's all
+[00:01:56] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye.

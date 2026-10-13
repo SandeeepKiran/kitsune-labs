@@ -1,0 +1,45 @@
+/* Motion (design system D10). Only transform and opacity are animated.
+   Everything here switches off under prefers-reduced-motion at the bottom. */
+
+/* Sleeping fox: breathes, tail sways, right ear twitches, gold charm swings. */
+.fox .fox__tail { transform-origin: 110px 124px; animation: sway 5s ease-in-out infinite; }
+.fox .fox__body { transform-origin: 128px 150px; animation: breathe 3.6s ease-in-out infinite; }
+.fox .fox__ear-r { transform-origin: 206px 66px; animation: twitch 7s ease-in-out infinite; }
+.fox .fox__charm { transform-origin: 221px 70px; animation: swing 2.6s ease-in-out infinite; }
+.fox * { transform-box: view-box; }
+
+@keyframes sway { 50% { transform: rotate(-5deg); } }
+@keyframes breathe { 50% { transform: scaleY(1.035); } }
+@keyframes twitch { 0%, 88%, 100% { transform: rotate(0); } 91% { transform: rotate(-12deg); } 94% { transform: rotate(4deg); } }
+@keyframes swing { 50% { transform: rotate(8deg); } }
+
+/* Tiles rise in once on page load. --i is set per tile for a ~60 ms stagger. */
+.rise { animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 60ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
+
+/* Sakura petals drift down, slowly. */
+.petal {
+  position: absolute; top: -20px; width: 12px; height: 9px; border-radius: 12px 0 12px 0;
+  background: #fff; opacity: 0.85; animation: fall linear infinite; pointer-events: none;
+}
+@keyframes fall { to { transform: translate(-120px, 320px) rotate(540deg); opacity: 0; } }
+
+/* "z" floats up from the sleeping fox. */
+.zz { position: absolute; font-family: var(--font-display); color: #9a5f8f; animation: float 4s ease-in infinite; }
+@keyframes float { from { opacity: 0; transform: translateY(0); } 30% { opacity: 0.8; } to { opacity: 0; transform: translate(20px, -60px); } }
+
+/* Nine-tail progress: a tail lights up when it gets .is-lit. */
+@keyframes lit { from { opacity: 0.4; transform: rotate(-12deg) scale(0.8); } to { opacity: 1; transform: rotate(-12deg) scale(1); } }
+
+/* Drawer slides in from the right; palette drops in. */
+@keyframes slide-in { from { transform: translateX(100%); } }
+@keyframes drop-in { from { opacity: 0; transform: translateY(-8px) scale(0.98); } }
+@keyframes fade-in { from { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

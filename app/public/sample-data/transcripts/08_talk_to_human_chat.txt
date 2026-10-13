@@ -1,0 +1,4 @@
+[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:20] Customer: can I talk to a real person
+[00:00:22] Mousy Assist: I can help with most order questions. What's it about?
+[00:02:24] Mousy Assist: Are you still there?

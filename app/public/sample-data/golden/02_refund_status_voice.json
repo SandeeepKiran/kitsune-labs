@@ -1,0 +1,97 @@
+{
+  "about": "What this conversation should have been. Invented data.",
+  "conversation_id": "CNV-000002",
+  "channel": "voice",
+  "expected_intent": "refund_status",
+  "expected_outcome": "resolved",
+  "flow_steps": [
+    "greet",
+    "identify_order",
+    "verify_caller",
+    "lookup_refund",
+    "offer_more_help",
+    "close"
+  ],
+  "turns": [
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "refund status"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sure. What's the order number? It starts with M O."
+    },
+    {
+      "speaker": "Customer",
+      "text": "M O one seven two seven"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sorry, I didn't catch that. Please say the order number again."
+    },
+    {
+      "speaker": "Customer",
+      "text": "M O one seven two seven"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks. I heard M O one seven two seven. Is that right?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "correct"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "For security, please say the phone number on the account."
+    },
+    {
+      "speaker": "Customer",
+      "text": "five five five, zero one four eight"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks. I have 555-0148. One moment while I find your details."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "And to confirm, what's the first name on the account?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "wren"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks, Wren. I found your account."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "I see a refund of $7.50 for order MO-1727, issued on March 10. It can take up to 5 business days to show on your statement."
+    },
+    {
+      "speaker": "Customer",
+      "text": "okay"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Yes, it's on its way. You'll get an email when your bank confirms it."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Is there anything else I can help with today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "no, that's all"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for calling Mousy. Have a lovely day. Goodbye."
+    }
+  ]
+}

@@ -2,7 +2,58 @@
 
 > Update this file at the end of every work session. Newest entry on top.
 
-## 2026-10-13 (latest) - M0 scaffold done (Cursor)
+## 2026-10-13 (latest) - M2 shell, home, sample data page done. Batch A complete (Cursor)
+
+- Routing: one real HTML page per route (`index.html`, `sample-data\index.html`,
+  `tools\<slug>\index.html` x 9; listed in `vite.config.ts`). Works on GitHub Pages with no
+  404 redirect trick. Tool list lives in one place: `app\src\shared\tools.ts`.
+- Shell (`shared\shell.ts`): fox mark, tool tabs, Sample data link, key seal chip, Ctrl+K
+  palette (`palette.ts`, ARIA combobox), skip link, footer.
+- Home (`pages\home.ts`): sleeping fox (breathe / sway / twitch / swing), moon, petals, "z",
+  9 tool tiles, nine-tail "Tools tried n / 9" (localStorage `kitsune.tried`, this browser only).
+- AI key drawer (`key-drawer.ts`, `key-store.ts`): native `<dialog>`, provider pick, key
+  field + Show, "Remember on this device" (off = sessionStorage, on = localStorage), Forget key
+  (removes every key from both), privacy text naming the provider. No key is ever logged.
+- `/sample-data/`: banner, Download everything (.zip), one card per file from `manifest.json`,
+  "Open in <tool>" links (`?sample=<path>`, only safe sample paths are accepted).
+- Tool-page template (`tool-page.ts`): bento tiles (hero + Load Mousy sample, answer, run with
+  nine-tail progress, input with file drop, results, run log, export). Until M3/M4 every tool
+  uses the default preview run (parse transcript, list turns, export .txt / .json). Visitor
+  text is always rendered as text, never HTML.
+- Helpers: `transcript.ts`, `csv.ts`, `run-log.ts`, `export.ts` (text/JSON/CSV), `file-drop.ts`,
+  `status.ts` (icon + word), `nine-tails.ts`, `motion.css` (all off under reduced motion).
+- Not yet: reading .xlsx / .zip and exporting them (needs SheetJS + JSZip, approved; install in
+  M3). Hanko stamp and electro spark (M4).
+- Tests: `tests\test_smoke.py` (all 11 pages, motion + reduced motion), `tests\test_site.py`
+  (palette, key storage rules, key never in requests or console, sample links, downloads,
+  export, phone width, reduced motion). Full suite: 73 passed. Privacy check: PASS (93 files).
+
+### Next steps
+
+1. Owner: look at Batch A (see the steps in the chat summary).
+2. Cursor: Batch B (M3 no-AI tools, then M4 AI tools). First install SheetJS + JSZip.
+
+## 2026-10-13 - M1 Mousy sample pack done (Cursor, Batch A)
+
+- Private: `docs\private\scripts\profile_real_export.py` -> `docs\private\profile.json`. A guard
+  refuses to write anything but numbers. Bot vs customer is decided by "who speaks first".
+- `sample-data\SCENARIOS.md`: 10 intents, 7 planted bug types, 8 core scenarios, 32 variations.
+- `tools\make_mousy_pack.py` (needs `openpyxl`, already installed) -> `app\public\sample-data\`:
+  40-row CSV + XLSX, 20-row batch, `intents_v3.xlsx`, 8 transcripts, 8 golden JSON,
+  `answer_key.json`, `README.txt`, `mousy_sample_pack.zip`, plus `manifest.json` for the
+  Sample data page. Fixed seed + fixed archive timestamps: byte-identical on every run.
+- `tools\privacy_check.py`: denylist (prints line numbers, never the term), emails (except
+  `@mousy.example`), phones (except `555-01xx`), UUIDs, timezone tags; scans inside .xlsx/.zip;
+  fails if `docs/private/` is not gitignored. Exit 0 / 1 / 2.
+- Tests: `tests\test_privacy_check.py`, `tests\test_mousy_pack.py` (reproducible, up to date,
+  answer key points at real bot turns, Excel matches CSV). 29 passed.
+
+## 2026-10-13 - M0.5 repo basics done (Cursor, Batch A)
+
+- `LICENSE` copied byte-for-byte from Leyline Autofill (hash checked). `README.md` first version.
+  `"license": "GPL-3.0-only"` in `app\package.json`.
+
+## 2026-10-13 - M0 scaffold done (Cursor)
 
 - `app\`: Vite 8 + TypeScript 7, vanilla, no framework. `npm run dev` and `npm run build` work.
 - `vite.config.ts`: `base: '/kitsune-labs/'` (repo name confirmed by the owner). Dev URL:
@@ -19,7 +70,7 @@
 
 ### Next steps
 
-1. Owner: look at M0, then say "go" for M1 (Mousy sample pack).
+1. Cursor: **Batch A** (M0.5 + M1 + M2) in one go, see `06-build-plan.md`. Stop at the end of the batch.
 
 ## 2026-10-13 - Ready for Cursor (Claude Code)
 

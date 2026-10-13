@@ -1,0 +1,106 @@
+{
+  "about": "What this conversation should have been. Invented data.",
+  "conversation_id": "CNV-000003",
+  "channel": "voice",
+  "expected_intent": "change_delivery_address",
+  "expected_outcome": "resolved",
+  "flow_steps": [
+    "greet",
+    "identify_order",
+    "verify_caller",
+    "lookup_order",
+    "update_address",
+    "offer_more_help",
+    "close"
+  ],
+  "turns": [
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "change my delivery address"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sure. What's the order number? It starts with M O."
+    },
+    {
+      "speaker": "Customer",
+      "text": "hold on, let me find it"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "No problem. Take your time."
+    },
+    {
+      "speaker": "Customer",
+      "text": "M O three six zero nine"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sorry, I didn't catch that. Please say the order number again."
+    },
+    {
+      "speaker": "Customer",
+      "text": "M O three six zero nine"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks. I heard M O three six zero nine. Is that right?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "correct"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "For security, please say the phone number on the account."
+    },
+    {
+      "speaker": "Customer",
+      "text": "five five five, zero one two two"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks. I have 555-0122. One moment while I find your details."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks, Clover. I found your account."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Order MO-3609 is due on Thursday. What's the new delivery address?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "4 Crumb Street, Burrowford"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Got it: 4 Crumb Street, Burrowford. Should I update the order?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "yeah"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Done. Order MO-3609 will go to 4 Crumb Street, Burrowford on Thursday."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Is there anything else I can help with today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "no, that's all"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for calling Mousy. Have a lovely day. Goodbye."
+    }
+  ]
+}

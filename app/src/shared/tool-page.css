@@ -1,0 +1,85 @@
+/* Bento tool page. Desktop: 4 columns. Under 900 px: one column, answer right after hero. */
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-areas:
+    'hero hero answer run'
+    'input input results results'
+    'log log log export';
+  gap: var(--gap);
+}
+.bento__hero { grid-area: hero; min-height: 230px; }
+.bento__answer { grid-area: answer; }
+.bento__run { grid-area: run; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
+.bento__input { grid-area: input; display: flex; flex-direction: column; }
+.bento__results { grid-area: results; }
+.bento__log { grid-area: log; }
+.bento__export { grid-area: export; }
+
+.bento__hero-text { position: relative; z-index: 1; max-width: 620px; }
+.bento__eyebrow { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.bento__hero h1 { margin: 0; font-size: clamp(32px, 3.4vw, 44px); font-weight: 800; letter-spacing: -0.01em; }
+.bento__desc { margin: 4px 0 0; }
+.bento__fox { position: absolute; right: -10px; bottom: -26px; width: 340px; opacity: 0.7; pointer-events: none; }
+
+.hero-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  width: min(100%, 560px); margin-top: 22px; padding: 12px 12px 12px 18px;
+  border-radius: 14px; background: var(--ink); color: var(--on-ink); font-size: 14px;
+}
+.hero-bar .btn { margin-left: auto; background: rgba(255, 255, 255, 0.16); color: var(--on-ink); box-shadow: inset 0 0 0 1.5px var(--gold); }
+
+.bento__sub { margin: 8px 0 0; color: var(--ink); opacity: 0.8; font-size: 14px; }
+.bento__run-status { margin: 10px 0 0; font-size: 12px; }
+
+.drop-zone { position: relative; flex: 1; display: flex; }
+.bento__textarea { flex: 1; min-height: 280px; resize: vertical; font-size: 13px; line-height: 1.6; }
+.drop-zone__overlay {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  border: 2px dashed var(--gold); border-radius: var(--radius-chip);
+  background: rgba(255, 246, 201, 0.92); font-weight: 700;
+  opacity: 0; pointer-events: none; transition: opacity var(--dur-base) ease;
+}
+.drop-zone.is-dragging .drop-zone__overlay { opacity: 1; }
+.bento__input-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
+.bento__source { margin-left: auto; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bento__hint { margin: 10px 0 0; color: var(--ink-muted); font-size: 13px; }
+
+.bento__results-body { max-height: 520px; overflow-y: auto; }
+.turns { display: grid; gap: 4px; margin: 10px 0 0; padding: 0; list-style: none; }
+.turn {
+  display: grid; grid-template-columns: 70px 104px minmax(0, 1fr); gap: 10px; align-items: baseline;
+  padding: 8px 12px; border-radius: 12px; font-size: 13px; background: rgba(255, 255, 255, 0.55);
+}
+.turn--customer { background: #fff; }
+.turn__time { color: var(--ink-muted); font-size: 12px; }
+.turn__who { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.turn__text { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.run-log {
+  max-height: 180px; overflow-y: auto; margin: 0; padding: 0; list-style: none;
+  font-family: var(--font-mono); font-size: 12.5px;
+}
+.run-log__line { display: grid; grid-template-columns: 52px 16px minmax(0, 1fr); gap: 6px; padding: 3px 0; }
+.run-log__time { color: var(--ink-muted); white-space: pre; }
+.run-log__line--pass { color: var(--pass); }
+.run-log__line--warn { color: var(--warn); }
+.run-log__line--fail { color: var(--fail); }
+.run-log__empty { color: var(--ink-muted); }
+
+.bento__exports { display: flex; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 900px) {
+  .bento {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'hero' 'answer' 'input' 'run' 'results' 'log' 'export';
+  }
+  .bento__fox { width: 220px; opacity: 0.45; }
+  .turn { grid-template-columns: 64px minmax(0, 1fr); }
+  .turn__text { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .bento__fox { display: none; }
+  .hero-bar .btn { margin-left: 0; }
+}

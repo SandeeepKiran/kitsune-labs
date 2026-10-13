@@ -28,6 +28,13 @@
   --warn-bg: #f6e6c2;  --warn: #8a5a00;
   --fail-bg: #f8d6df;  --fail: #b8336a;
 
+  /* tile tints, taken from the bento reference (docs/design-reference) */
+  --tile-lilac: #e6dcfa;
+  --tile-mist: #ece6fb;
+  --tile-butter: #f3d98f;
+  --tile-rose: #f6d0de;
+  --tile-blush: #fbe9f1;
+
   --radius-tile: 26px;
   --radius-chip: 12px;
   --gap: 16px;

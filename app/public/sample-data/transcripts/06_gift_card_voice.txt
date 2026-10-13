@@ -1,0 +1,11 @@
+[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: check a gift card
+[00:00:17] Mousy Assist: Sure. Please say the last four digits of the gift card.
+[00:00:25] Customer: one eight four two
+[00:00:30] Mousy Assist: Your gift card ending in 1842 has $126.25 left. It doesn't expire.
+[00:00:39] Customer: right
+[00:00:42] Mousy Assist: Your gift card ending in 1842 has $126.25 left. It doesn't expire.
+[00:00:51] Customer: yes, you said that
+[00:00:54] Mousy Assist: Is there anything else I can help with today?
+[00:01:02] Customer: no thanks
+[00:01:04] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye.

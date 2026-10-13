@@ -1,0 +1,222 @@
+{
+  "about": "Files in the Mousy sample pack. All data is invented.",
+  "files": [
+    {
+      "path": "mousy_sample_pack.zip",
+      "title": "Everything (.zip)",
+      "purpose": "Every file below in one download.",
+      "bytes": 52815,
+      "tools": []
+    },
+    {
+      "path": "mousy_conversations.csv",
+      "title": "Mousy conversations (CSV)",
+      "purpose": "40 conversations, one per row, transcript in one cell.",
+      "bytes": 53330,
+      "tools": [
+        "Test Case Generator",
+        "Metrics Extractor",
+        "First Utterance Finder"
+      ]
+    },
+    {
+      "path": "mousy_conversations.xlsx",
+      "title": "Mousy conversations (Excel)",
+      "purpose": "The same 40 conversations as a workbook.",
+      "bytes": 15187,
+      "tools": [
+        "Test Case Generator",
+        "Metrics Extractor",
+        "First Utterance Finder"
+      ]
+    },
+    {
+      "path": "mousy_batch_20.xlsx",
+      "title": "Batch of 20 (Excel)",
+      "purpose": "A 20-row subset for bulk runs.",
+      "bytes": 10686,
+      "tools": [
+        "Test Case Generator",
+        "Report Builder"
+      ]
+    },
+    {
+      "path": "intents_v3.xlsx",
+      "title": "Intent list (Excel)",
+      "purpose": "10 intents, each with a description and 5 example utterances.",
+      "bytes": 6279,
+      "tools": [
+        "Utterance Generator"
+      ]
+    },
+    {
+      "path": "answer_key.json",
+      "title": "Answer key",
+      "purpose": "Every planted bug, with its turn number and severity.",
+      "bytes": 19087,
+      "tools": [
+        "Bug Finder",
+        "Report Builder"
+      ]
+    },
+    {
+      "path": "README.txt",
+      "title": "Read me",
+      "purpose": "What each file is. All data is invented.",
+      "bytes": 1633,
+      "tools": []
+    },
+    {
+      "path": "transcripts/01_cancel_order_chat.txt",
+      "title": "Transcript: cancel order",
+      "purpose": "Chat conversation: cancel order (misroute, ignored correction).",
+      "bytes": 1006,
+      "tools": [
+        "Bug Finder",
+        "Transcript Converter"
+      ]
+    },
+    {
+      "path": "transcripts/02_refund_status_voice.txt",
+      "title": "Transcript: refund status",
+      "purpose": "Voice conversation: refund status (no planted bugs).",
+      "bytes": 1394,
+      "tools": [
+        "Bug Finder",
+        "Transcript Converter"
+      ]
+    },
+    {
+      "path": "transcripts/03_change_address_voice.txt",
+      "title": "Transcript: change delivery address",
+      "purpose": "Voice conversation: change delivery address (wrong order id).",
+      "bytes": 1479,
+      "tools": [
+        "Bug Finder",
+        "Transcript Converter"
+      ]
+    },
+    {
+      "path": "transcripts/04_billing_dispute_voice.txt",
+      "title": "Transcript: billing dispute",
+      "purpose": "Voice conversation: billing dispute (premature escalation).",
+      "bytes": 280,
+      "tools": [
+        "Bug Finder",
+        "Transcript Converter"
+      ]
+    },
+    {
+      "path": "transcripts/05_track_parcel_voice.txt",
+      "title": "Transcript: track parcel",
+      "purpose": "Voice conversation: track parcel (fallback loop).",
+      "bytes": 658,
+      "tools": [
+        "Bug Finder",
+        "Transcript Converter"
+      ]
+    },
+    {
+      "path": "transcripts/06_gift_card_voice.txt",
+      "title": "Transcript: gift card balance",
+      "purpose": "Voice conversation: gift card balance (bot repeats).",
+      "bytes": 737,
+      "tools": [
+        "Bug Finder",
+        "Transcript Converter"
+      ]
+    },
+    {
+      "path": "transcripts/07_return_damaged_chat.txt",
+      "title": "Transcript: return damaged item",
+      "purpose": "Chat conversation: return damaged item (ignored correction).",
+      "bytes": 1058,
+      "tools": [
+        "Bug Finder",
+        "Transcript Converter"
+      ]
+    },
+    {
+      "path": "transcripts/08_talk_to_human_chat.txt",
+      "title": "Transcript: talk to human",
+      "purpose": "Chat conversation: talk to human (timeout no goodbye).",
+      "bytes": 260,
+      "tools": [
+        "Bug Finder",
+        "Transcript Converter"
+      ]
+    },
+    {
+      "path": "golden/01_cancel_order_chat.json",
+      "title": "Golden conversation: cancel order",
+      "purpose": "What the cancel order conversation should have been.",
+      "bytes": 1501,
+      "tools": [
+        "Bug Finder"
+      ]
+    },
+    {
+      "path": "golden/02_refund_status_voice.json",
+      "title": "Golden conversation: refund status",
+      "purpose": "What the refund status conversation should have been.",
+      "bytes": 2488,
+      "tools": [
+        "Bug Finder"
+      ]
+    },
+    {
+      "path": "golden/03_change_address_voice.json",
+      "title": "Golden conversation: change delivery address",
+      "purpose": "What the change delivery address conversation should have been.",
+      "bytes": 2678,
+      "tools": [
+        "Bug Finder"
+      ]
+    },
+    {
+      "path": "golden/04_billing_dispute_voice.json",
+      "title": "Golden conversation: billing dispute",
+      "purpose": "What the billing dispute conversation should have been.",
+      "bytes": 2332,
+      "tools": [
+        "Bug Finder"
+      ]
+    },
+    {
+      "path": "golden/05_track_parcel_voice.json",
+      "title": "Golden conversation: track parcel",
+      "purpose": "What the track parcel conversation should have been.",
+      "bytes": 1970,
+      "tools": [
+        "Bug Finder"
+      ]
+    },
+    {
+      "path": "golden/06_gift_card_voice.json",
+      "title": "Golden conversation: gift card balance",
+      "purpose": "What the gift card balance conversation should have been.",
+      "bytes": 1495,
+      "tools": [
+        "Bug Finder"
+      ]
+    },
+    {
+      "path": "golden/07_return_damaged_chat.json",
+      "title": "Golden conversation: return damaged item",
+      "purpose": "What the return damaged item conversation should have been.",
+      "bytes": 1795,
+      "tools": [
+        "Bug Finder"
+      ]
+    },
+    {
+      "path": "golden/08_talk_to_human_chat.json",
+      "title": "Golden conversation: talk to human",
+      "purpose": "What the talk to human conversation should have been.",
+      "bytes": 840,
+      "tools": [
+        "Bug Finder"
+      ]
+    }
+  ]
+}

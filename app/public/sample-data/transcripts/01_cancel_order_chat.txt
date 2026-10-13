@@ -1,0 +1,15 @@
+[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:22] Customer: can I cancel my order please
+[00:00:25] Mousy Assist: I can help with refunds! Which order should I refund?
+[00:00:41] Customer: no, CANCEL. not a refund
+[00:00:42] Mousy Assist: Sorry, I didn't get that. Could you say it another way?
+[00:00:57] Customer: Hi, I want to cancel my order
+[00:01:00] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:01:20] Customer: it's MO-1465
+[00:01:21] Mousy Assist: Thanks. Looking up order MO-1465 now.
+[00:01:23] Mousy Assist: Order MO-1465 has the desk lamp and hasn't shipped yet. Do you want to cancel the whole order?
+[00:01:45] Customer: yep
+[00:01:47] Mousy Assist: Done. Order MO-1465 is cancelled. $41.00 goes back to your card in 3 to 5 business days.
+[00:01:49] Mousy Assist: Is there anything else I can help with today?
+[00:02:03] Customer: no thanks
+[00:02:04] Mousy Assist: Thanks for chatting with Mousy. Have a lovely day!

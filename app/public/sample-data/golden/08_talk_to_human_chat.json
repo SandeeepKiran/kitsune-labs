@@ -1,0 +1,34 @@
+{
+  "about": "What this conversation should have been. Invented data.",
+  "conversation_id": "CNV-000008",
+  "channel": "chat",
+  "expected_intent": "talk_to_human",
+  "expected_outcome": "escalated",
+  "flow_steps": [
+    "greet",
+    "offer_self_service",
+    "escalate"
+  ],
+  "turns": [
+    {
+      "speaker": "Mousy Assist",
+      "text": "Hi, I'm Mousy Assist. How can I help with your order today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "can I talk to a real person"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "I can help with most order questions. What's it about?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "person please"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sure. I'm connecting you to a Mousy support specialist. The wait is about 5 minutes."
+    }
+  ]
+}

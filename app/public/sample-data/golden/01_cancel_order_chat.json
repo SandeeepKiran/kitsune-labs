@@ -1,0 +1,61 @@
+{
+  "about": "What this conversation should have been. Invented data.",
+  "conversation_id": "CNV-000001",
+  "channel": "chat",
+  "expected_intent": "cancel_order",
+  "expected_outcome": "resolved",
+  "flow_steps": [
+    "greet",
+    "identify_order",
+    "lookup_order",
+    "cancel_order",
+    "offer_more_help",
+    "close"
+  ],
+  "turns": [
+    {
+      "speaker": "Mousy Assist",
+      "text": "Hi, I'm Mousy Assist. How can I help with your order today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "can I cancel my order please"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sure. What's your order number? It looks like MO-1234."
+    },
+    {
+      "speaker": "Customer",
+      "text": "mo-1465"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks. Looking up order MO-1465 now."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Order MO-1465 has the desk lamp and hasn't shipped yet. Do you want to cancel the whole order?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "yes"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Done. Order MO-1465 is cancelled. $41.00 goes back to your card in 3 to 5 business days."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Is there anything else I can help with today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "no thanks"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for chatting with Mousy. Have a lovely day!"
+    }
+  ]
+}

@@ -1,0 +1,583 @@
+conversation_id,channel,started_at,ended_at,duration_sec,turns,closed_by,escalated,escalation_reason,queue,outcome,flow_steps,custom_metrics,transcript
+CNV-000001,chat,2025-03-14T12:21:31Z,2025-03-14T12:23:38Z,127,15,customer,false,,,resolved,greet;refund_status;identify_order;lookup_order;cancel_order;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.94,""fallback_count"":1,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":374}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:22] Customer: can I cancel my order please
+[00:00:25] Mousy Assist: I can help with refunds! Which order should I refund?
+[00:00:41] Customer: no, CANCEL. not a refund
+[00:00:42] Mousy Assist: Sorry, I didn't get that. Could you say it another way?
+[00:00:57] Customer: Hi, I want to cancel my order
+[00:01:00] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:01:20] Customer: it's MO-1465
+[00:01:21] Mousy Assist: Thanks. Looking up order MO-1465 now.
+[00:01:23] Mousy Assist: Order MO-1465 has the desk lamp and hasn't shipped yet. Do you want to cancel the whole order?
+[00:01:45] Customer: yep
+[00:01:47] Mousy Assist: Done. Order MO-1465 is cancelled. $41.00 goes back to your card in 3 to 5 business days.
+[00:01:49] Mousy Assist: Is there anything else I can help with today?
+[00:02:03] Customer: no thanks
+[00:02:04] Mousy Assist: Thanks for chatting with Mousy. Have a lovely day!"
+CNV-000002,voice,2025-03-14T20:03:24Z,2025-03-14T20:05:24Z,120,20,customer,false,,,resolved,greet;identify_order;verify_caller;lookup_refund;offer_more_help;close,"{""auth_result"":""passed"",""intent_confidence"":0.93,""fallback_count"":1,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":215,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: refund status
+[00:00:15] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:22] Customer: M O one seven two seven
+[00:00:26] Mousy Assist: Sorry, I didn't catch that. Please say the order number again.
+[00:00:35] Customer: M O one seven two seven
+[00:00:40] Mousy Assist: Thanks. I heard M O one seven two seven. Is that right?
+[00:00:50] Customer: correct
+[00:00:51] Mousy Assist: For security, please say the phone number on the account.
+[00:00:57] Customer: five five five, zero one four eight
+[00:01:02] Mousy Assist: Thanks. I have 555-0148. One moment while I find your details.
+[00:01:08] Mousy Assist: And to confirm, what's the first name on the account?
+[00:01:16] Customer: wren
+[00:01:18] Mousy Assist: Thanks, Wren. I found your account.
+[00:01:23] Mousy Assist: I see a refund of $7.50 for order MO-1727, issued on March 10. It can take up to 5 business days to show on your statement.
+[00:01:36] Customer: okay
+[00:01:38] Mousy Assist: Yes, it's on its way. You'll get an email when your bank confirms it.
+[00:01:46] Mousy Assist: Is there anything else I can help with today?
+[00:01:53] Customer: no, that's all
+[00:01:56] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000003,voice,2025-03-04T12:52:04Z,2025-03-04T12:54:10Z,126,22,customer,false,,,resolved,greet;identify_order;verify_caller;lookup_order;update_address;offer_more_help;close,"{""auth_result"":""passed"",""intent_confidence"":0.73,""fallback_count"":1,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":533,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: change my delivery address
+[00:00:16] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:23] Customer: hold on, let me find it
+[00:00:28] Mousy Assist: No problem. Take your time.
+[00:00:31] Customer: M O three six zero nine
+[00:00:35] Mousy Assist: Sorry, I didn't catch that. Please say the order number again.
+[00:00:43] Customer: M O three six zero nine
+[00:00:48] Mousy Assist: Thanks. I heard M O three six nine zero. Is that right?
+[00:00:55] Customer: correct
+[00:00:58] Mousy Assist: For security, please say the phone number on the account.
+[00:01:06] Customer: five five five, zero one two two
+[00:01:11] Mousy Assist: Thanks. I have 555-0122. One moment while I find your details.
+[00:01:17] Mousy Assist: Thanks, Clover. I found your account.
+[00:01:21] Mousy Assist: Order MO-3690 is due on Thursday. What's the new delivery address?
+[00:01:30] Customer: 4 Crumb Street, Burrowford
+[00:01:33] Mousy Assist: Got it: 4 Crumb Street, Burrowford. Should I update the order?
+[00:01:42] Customer: yeah
+[00:01:44] Mousy Assist: Done. Order MO-3690 will go to 4 Crumb Street, Burrowford on Thursday.
+[00:01:50] Mousy Assist: Is there anything else I can help with today?
+[00:01:58] Customer: no, that's all
+[00:02:02] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000004,voice,2025-03-05T15:28:33Z,2025-03-05T15:28:54Z,21,3,agent,true,bot_transfer,billing_team,escalated,greet;escalate,{},"[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: billing problem
+[00:00:15] Mousy Assist: Let me transfer you to a specialist who can help with that. Please hold."
+CNV-000005,voice,2025-03-14T10:40:55Z,2025-03-14T10:41:49Z,54,9,agent,true,repeated_fallback,general_support,escalated,greet;fallback;escalate,"{""auth_result"":""skipped"",""intent_confidence"":0.9,""fallback_count"":3,""sentiment_end"":""neutral"",""csat_offered"":false,""lookup_ms"":1046,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: where's my package
+[00:00:16] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:25] Customer: track my order
+[00:00:28] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:34] Customer: my parcel hasn't come
+[00:00:38] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:45] Customer: where's my package
+[00:00:48] Mousy Assist: I'm having trouble understanding. Let me connect you with someone who can help."
+CNV-000006,voice,2025-03-07T11:04:05Z,2025-03-07T11:05:13Z,68,11,customer,false,,,resolved,greet;check_gift_card;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.84,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":634,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: check a gift card
+[00:00:17] Mousy Assist: Sure. Please say the last four digits of the gift card.
+[00:00:25] Customer: one eight four two
+[00:00:30] Mousy Assist: Your gift card ending in 1842 has $126.25 left. It doesn't expire.
+[00:00:39] Customer: right
+[00:00:42] Mousy Assist: Your gift card ending in 1842 has $126.25 left. It doesn't expire.
+[00:00:51] Customer: yes, you said that
+[00:00:54] Mousy Assist: Is there anything else I can help with today?
+[00:01:02] Customer: no thanks
+[00:01:04] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000007,chat,2025-03-04T10:32:00Z,2025-03-04T10:34:03Z,123,15,customer,false,,,resolved,greet;identify_order;lookup_order;start_return;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.76,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":455}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:15] Customer: the box was crushed and the item is broken
+[00:00:17] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:30] Customer: MO-4615
+[00:00:31] Mousy Assist: Thanks. Looking up order MO-4615 now.
+[00:00:33] Mousy Assist: I'm sorry it arrived damaged. Order MO-4615 has the desk lamp and the egg timer. Which one is damaged?
+[00:00:56] Customer: the egg timer
+[00:00:58] Mousy Assist: The egg timer, got it.
+[00:01:09] Customer: sorry, no. I mean the desk lamp
+[00:01:11] Mousy Assist: I've started a return for the egg timer. A prepaid label is on its way to your email. Would you like a replacement or a refund?
+[00:01:42] Customer: replacement
+[00:01:44] Mousy Assist: Okay. A new one ships as soon as the courier scans the return parcel.
+[00:01:46] Mousy Assist: Is there anything else I can help with today?
+[00:01:58] Customer: nope, that's it. thanks
+[00:02:00] Mousy Assist: Thanks for chatting with Mousy. Have a lovely day!"
+CNV-000008,chat,2025-03-02T18:16:38Z,2025-03-02T18:29:05Z,747,4,timeout,false,,,abandoned,greet;offer_self_service,"{""auth_result"":""skipped"",""intent_confidence"":0.98,""fallback_count"":0,""sentiment_end"":""negative"",""csat_offered"":false,""lookup_ms"":1351}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:20] Customer: can I talk to a real person
+[00:00:22] Mousy Assist: I can help with most order questions. What's it about?
+[00:02:24] Mousy Assist: Are you still there?"
+CNV-000009,voice,2025-03-06T12:12:53Z,2025-03-06T12:15:15Z,142,25,customer,false,,,resolved,greet;refund_status;identify_order;verify_caller;lookup_order;cancel_order;offer_more_help;close,"{""auth_result"":""passed"",""intent_confidence"":0.7,""fallback_count"":1,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":523,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:14] Customer: cancel order
+[00:00:16] Mousy Assist: I can help with refunds! Which order should I refund?
+[00:00:23] Customer: no, cancel. not a refund
+[00:00:27] Mousy Assist: Sorry about that. Let's sort that out instead.
+[00:00:32] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:40] Customer: M O six one two three
+[00:00:45] Mousy Assist: Sorry, I didn't catch that. Please say the order number again.
+[00:00:53] Customer: M O six one two three
+[00:00:57] Mousy Assist: Thanks. I heard M O six one two three. Is that right?
+[00:01:03] Customer: yes
+[00:01:07] Mousy Assist: For security, please say the phone number on the account.
+[00:01:14] Customer: five five five, zero one one three
+[00:01:18] Mousy Assist: Thanks. I have 555-0113. One moment while I find your details.
+[00:01:24] Mousy Assist: And to confirm, what's the first name on the account?
+[00:01:32] Customer: tansy
+[00:01:34] Mousy Assist: Thanks, Tansy. I found your account.
+[00:01:39] Mousy Assist: Order MO-6123 has the blue kettle and hasn't shipped yet. Do you want to cancel the whole order?
+[00:01:50] Customer: yeah
+[00:01:52] Mousy Assist: Done. Order MO-6123 is cancelled. $34.00 goes back to your card in 3 to 5 business days.
+[00:02:01] Mousy Assist: Would you like me to text you a summary?
+[00:02:07] Customer: no, that's fine
+[00:02:10] Mousy Assist: Is there anything else I can help with today?
+[00:02:15] Customer: no, that's all
+[00:02:18] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000010,chat,2025-03-02T18:22:23Z,2025-03-02T18:24:05Z,102,11,customer,false,,,resolved,greet;check_gift_card;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.69,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":1170}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:14] Customer: can I check my gift card
+[00:00:16] Mousy Assist: Sure. Please type the last four digits of the gift card.
+[00:00:38] Customer: 7713
+[00:00:39] Mousy Assist: Your gift card ending in 7713 has $83.50 left. It doesn't expire.
+[00:00:58] Customer: okay
+[00:01:00] Mousy Assist: Your gift card ending in 7713 has $83.50 left. It doesn't expire.
+[00:01:17] Customer: yes, you said that
+[00:01:18] Mousy Assist: Is there anything else I can help with today?
+[00:01:38] Customer: no thanks
+[00:01:39] Mousy Assist: Thanks for chatting with Mousy. Have a lovely day!"
+CNV-000011,voice,2025-03-13T08:24:45Z,2025-03-13T08:25:18Z,33,5,agent,true,bot_transfer,general_support,escalated,greet;escalate,"{""auth_result"":""skipped"",""intent_confidence"":0.76,""fallback_count"":0,""sentiment_end"":""neutral"",""csat_offered"":false,""lookup_ms"":1018,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: um, hi
+[00:00:16] Mousy Assist: Hi there. What can I help you with today?
+[00:00:23] Customer: change my delivery address
+[00:00:27] Mousy Assist: Let me transfer you to a specialist who can help with that. Please hold."
+CNV-000012,voice,2025-03-01T17:34:46Z,2025-03-01T17:36:52Z,126,22,customer,false,,,resolved,greet;identify_order;verify_caller;lookup_order;cancel_order;offer_more_help;rate_call;close,"{""auth_result"":""passed"",""intent_confidence"":0.69,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":1139,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: cancel order
+[00:00:17] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:24] Customer: M O six zero three seven
+[00:00:30] Mousy Assist: Thanks. I heard M O six zero three seven. Is that right?
+[00:00:39] Customer: yeah
+[00:00:40] Mousy Assist: For security, please say the phone number on the account.
+[00:00:49] Customer: five five five, zero one nine zero
+[00:00:54] Mousy Assist: Thanks. I have 555-0190. One moment while I find your details.
+[00:01:00] Mousy Assist: Thanks, Pip. I found your account.
+[00:01:03] Mousy Assist: Order MO-6037 has the blue kettle and hasn't shipped yet. Do you want to cancel the whole order?
+[00:01:13] Customer: yep
+[00:01:16] Mousy Assist: Done. Order MO-6037 is cancelled. $34.00 goes back to your card in 3 to 5 business days.
+[00:01:24] Mousy Assist: Would you like me to text you a summary?
+[00:01:31] Customer: yep
+[00:01:34] Mousy Assist: Done. I've sent it to 555-0190.
+[00:01:37] Mousy Assist: Is there anything else I can help with today?
+[00:01:45] Customer: nope, that's it. thanks
+[00:01:48] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:01:56] Customer: four
+[00:01:58] Mousy Assist: Thank you for the feedback.
+[00:02:02] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000013,voice,2025-03-08T17:43:39Z,2025-03-08T17:45:39Z,120,23,bot,false,,,resolved,greet;identify_order;verify_caller;lookup_order;update_address;offer_more_help;rate_call;close,"{""auth_result"":""passed"",""intent_confidence"":0.85,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":219,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: change my delivery address
+[00:00:16] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:22] Customer: M O eight five nine seven
+[00:00:26] Mousy Assist: Thanks. I heard M O eight five seven nine. Is that right?
+[00:00:34] Customer: correct
+[00:00:36] Mousy Assist: For security, please say the phone number on the account.
+[00:00:42] Customer: five five five, zero one nine five
+[00:00:48] Mousy Assist: Thanks. I have 555-0195. One moment while I find your details.
+[00:00:54] Mousy Assist: And to confirm, what's the first name on the account?
+[00:01:01] Customer: juniper
+[00:01:04] Mousy Assist: Thanks, Juniper. I found your account.
+[00:01:08] Mousy Assist: Order MO-8579 is due on Sunday. What's the new delivery address?
+[00:01:16] Customer: 90 Burrow Close, Hollowmere
+[00:01:19] Mousy Assist: Got it: 90 Burrow Close, Hollowmere. Should I update the order?
+[00:01:28] Customer: correct
+[00:01:30] Mousy Assist: Done. Order MO-8579 will go to 90 Burrow Close, Hollowmere on Sunday.
+[00:01:37] Mousy Assist: Is there anything else I can help with today?
+[00:01:42] Customer: no, that's all
+[00:01:45] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:01:51] Customer: five
+[00:01:52] Mousy Assist: Thank you for the feedback.
+[00:01:56] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000014,voice,2025-03-08T12:02:47Z,2025-03-08T12:04:53Z,126,20,customer,false,,,resolved,greet;identify_order;verify_caller;lookup_order;start_return;offer_more_help;close,"{""auth_result"":""passed"",""intent_confidence"":0.84,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":196,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:14] Customer: something arrived damaged
+[00:00:18] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:27] Customer: M O seven eight one two
+[00:00:32] Mousy Assist: Thanks. I heard M O seven eight one two. Is that right?
+[00:00:40] Customer: yes
+[00:00:41] Mousy Assist: For security, please say the phone number on the account.
+[00:00:49] Customer: five five five, zero one eight nine
+[00:00:55] Mousy Assist: Thanks. I have 555-0189. One moment while I find your details.
+[00:01:01] Mousy Assist: Thanks, Wren. I found your account.
+[00:01:06] Mousy Assist: I'm sorry it arrived damaged. Order MO-7812 has the phone stand and the blue kettle. Which one is damaged?
+[00:01:16] Customer: the blue kettle
+[00:01:19] Mousy Assist: The blue kettle, got it.
+[00:01:25] Customer: sorry, no. I mean the phone stand
+[00:01:30] Mousy Assist: I've started a return for the blue kettle. A prepaid label is on its way to your email. Would you like a replacement or a refund?
+[00:01:43] Customer: replacement
+[00:01:44] Mousy Assist: Okay. A new one ships as soon as the courier scans the return parcel.
+[00:01:52] Mousy Assist: Is there anything else I can help with today?
+[00:01:59] Customer: no thanks
+[00:02:02] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000015,voice,2025-03-13T18:19:20Z,2025-03-13T18:20:26Z,66,11,customer,false,,,resolved,greet;check_gift_card;offer_more_help;rate_call;close,"{""auth_result"":""skipped"",""intent_confidence"":0.74,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":435,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:14] Customer: check a gift card
+[00:00:18] Mousy Assist: Sure. Please say the last four digits of the gift card.
+[00:00:27] Customer: four zero one one
+[00:00:30] Mousy Assist: Your gift card ending in 4011 has $115.50 left. It doesn't expire.
+[00:00:37] Mousy Assist: Is there anything else I can help with today?
+[00:00:42] Customer: no thanks
+[00:00:46] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:00:55] Customer: four
+[00:00:57] Mousy Assist: Thank you for the feedback.
+[00:01:02] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000016,voice,2025-03-12T15:28:11Z,2025-03-12T15:28:34Z,23,3,agent,true,bot_transfer,general_support,escalated,greet;escalate,{},"[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: I'm calling about a refund
+[00:00:17] Mousy Assist: Let me transfer you to a specialist who can help with that. Please hold."
+CNV-000017,chat,2025-03-01T14:30:25Z,2025-03-01T14:32:03Z,98,11,customer,false,,,resolved,greet;identify_order;track_parcel;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.68,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":756}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:20] Customer: my order still hasn't arrived
+[00:00:22] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:42] Customer: MO-1021
+[00:00:44] Mousy Assist: Thanks. Looking up order MO-1012 now.
+[00:00:46] Mousy Assist: Order MO-1012 shipped on February 28 with Pawcel Post. It's in Crumbridge and should arrive on Tuesday by 6 pm.
+[00:01:15] Customer: can you send me the tracking link
+[00:01:16] Mousy Assist: Sure. I've sent the tracking link to the email on your account.
+[00:01:19] Mousy Assist: Is there anything else I can help with today?
+[00:01:32] Customer: nope, that's it. thanks
+[00:01:35] Mousy Assist: Thanks for chatting with Mousy. Have a lovely day!"
+CNV-000018,voice,2025-03-06T15:05:11Z,2025-03-06T15:07:09Z,118,20,customer,false,,,resolved,greet;change_delivery_address;identify_order;track_parcel;offer_more_help;rate_call;close,"{""auth_result"":""skipped"",""intent_confidence"":0.96,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":291,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: track my order
+[00:00:15] Mousy Assist: Sure. What's the new delivery address?
+[00:00:22] Customer: no, I just want to know where it is
+[00:00:28] Mousy Assist: Sorry about that. Let's sort that out instead.
+[00:00:32] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:41] Customer: M O eight eight zero one
+[00:00:46] Mousy Assist: Thanks. I heard M O eight eight zero one. Is that right?
+[00:00:54] Customer: yep
+[00:00:58] Mousy Assist: Order MO-8801 shipped on March 3 with Pawcel Post. It's in Burrowford and should arrive on Sunday by 6 pm.
+[00:01:07] Mousy Assist: Would you like me to text you a summary?
+[00:01:13] Customer: no, that's fine
+[00:01:16] Customer: can you send me the tracking link
+[00:01:21] Mousy Assist: Sure. I've sent the tracking link to the email on your account.
+[00:01:29] Mousy Assist: Is there anything else I can help with today?
+[00:01:36] Customer: no, that's all
+[00:01:40] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:01:47] Customer: five, thanks
+[00:01:49] Mousy Assist: Thank you for the feedback.
+[00:01:54] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000019,voice,2025-03-11T18:24:10Z,2025-03-11T18:25:01Z,51,4,timeout,false,,,abandoned,greet;offer_self_service,"{""auth_result"":""skipped"",""intent_confidence"":0.84,""fallback_count"":0,""sentiment_end"":""negative"",""csat_offered"":false,""lookup_ms"":1191,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:14] Customer: talk to a person
+[00:00:18] Mousy Assist: I can help with most order questions. What's it about?
+[00:00:32] Mousy Assist: Are you still there?"
+CNV-000020,voice,2025-03-11T17:11:11Z,2025-03-11T17:12:47Z,96,12,timeout,false,,,abandoned,greet;identify_order;verify_caller;lookup_order,"{""auth_result"":""passed"",""intent_confidence"":0.66,""fallback_count"":0,""sentiment_end"":""negative"",""csat_offered"":false,""lookup_ms"":884,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: wrong address on my order
+[00:00:17] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:24] Customer: M O eight four three eight
+[00:00:29] Mousy Assist: Thanks. I heard M O eight four three eight. Is that right?
+[00:00:36] Customer: correct
+[00:00:39] Mousy Assist: For security, please say the phone number on the account.
+[00:00:47] Customer: five five five, zero one zero zero
+[00:00:52] Mousy Assist: Thanks. I have 555-0100. One moment while I find your details.
+[00:00:59] Mousy Assist: Thanks, Basil. I found your account.
+[00:01:04] Mousy Assist: Order MO-8438 is due on Friday. What's the new delivery address?
+[00:01:17] Mousy Assist: Are you still there?"
+CNV-000021,voice,2025-03-14T14:30:21Z,2025-03-14T14:32:40Z,139,24,customer,false,,,resolved,greet;identify_order;verify_caller;lookup_order;start_return;offer_more_help;close,"{""auth_result"":""passed"",""intent_confidence"":0.63,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":779,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: return a damaged item
+[00:00:16] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:24] Customer: hold on, let me find it
+[00:00:28] Mousy Assist: No problem. Take your time.
+[00:00:32] Customer: M O five two eight five
+[00:00:36] Mousy Assist: Thanks. I heard M O five two eight five. Is that right?
+[00:00:42] Customer: yes please
+[00:00:44] Mousy Assist: For security, please say the phone number on the account.
+[00:00:53] Customer: five five five, zero one six eight
+[00:00:57] Mousy Assist: Thanks. I have 555-0168. One moment while I find your details.
+[00:01:03] Mousy Assist: And to confirm, what's the first name on the account?
+[00:01:11] Customer: hazel
+[00:01:13] Mousy Assist: Thanks, Hazel. I found your account.
+[00:01:17] Mousy Assist: I'm sorry it arrived damaged. Order MO-5285 has the desk lamp and the cheese grater. Which one is damaged?
+[00:01:25] Customer: the cheese grater
+[00:01:29] Mousy Assist: The cheese grater, got it.
+[00:01:35] Customer: sorry, no. I mean the desk lamp
+[00:01:41] Mousy Assist: I've started a return for the cheese grater. A prepaid label is on its way to your email. Would you like a replacement or a refund?
+[00:01:55] Customer: a replacement please
+[00:01:58] Mousy Assist: Okay. A new one ships as soon as the courier scans the return parcel.
+[00:02:05] Mousy Assist: Is there anything else I can help with today?
+[00:02:11] Customer: no, that's all
+[00:02:15] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000022,voice,2025-03-14T17:08:12Z,2025-03-14T17:10:45Z,153,26,customer,false,,,resolved,greet;cancel_order;identify_order;verify_caller;lookup_refund;offer_more_help;rate_call;close,"{""auth_result"":""passed"",""intent_confidence"":0.79,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":293,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: refund status
+[00:00:15] Mousy Assist: I can help you cancel an order. Which order would you like to cancel?
+[00:00:23] Customer: no, I don't want to cancel, I want my refund
+[00:00:31] Mousy Assist: Sorry about that. Let's sort that out instead.
+[00:00:35] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:41] Customer: hold on, let me find it
+[00:00:46] Mousy Assist: No problem. Take your time.
+[00:00:50] Customer: M O five nine five nine
+[00:00:54] Mousy Assist: Thanks. I heard M O five nine five nine. Is that right?
+[00:01:03] Customer: yes
+[00:01:06] Mousy Assist: For security, please say the phone number on the account.
+[00:01:14] Customer: five five five, zero one four five
+[00:01:18] Mousy Assist: Thanks. I have 555-0145. One moment while I find your details.
+[00:01:24] Mousy Assist: And to confirm, what's the first name on the account?
+[00:01:33] Customer: sorrel
+[00:01:35] Mousy Assist: Thanks, Sorrel. I found your account.
+[00:01:39] Mousy Assist: I see a refund of $15.00 for order MO-5959, issued on March 8. It can take up to 5 business days to show on your statement.
+[00:01:53] Customer: so when will I see it
+[00:01:58] Mousy Assist: Yes, it's on its way. You'll get an email when your bank confirms it.
+[00:02:06] Mousy Assist: Is there anything else I can help with today?
+[00:02:12] Customer: no, that's all
+[00:02:15] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:02:24] Customer: five
+[00:02:27] Mousy Assist: Thank you for the feedback.
+[00:02:29] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000023,voice,2025-03-07T17:32:59Z,2025-03-07T17:35:21Z,142,25,customer,false,,,resolved,greet;identify_order;verify_caller;lookup_order;update_address;offer_more_help;rate_call;close,"{""auth_result"":""passed"",""intent_confidence"":0.66,""fallback_count"":1,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":977,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:11] Customer: wrong address on my order
+[00:00:16] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:24] Customer: M O two zero eight seven
+[00:00:30] Mousy Assist: Sorry, I didn't catch that. Please say the order number again.
+[00:00:39] Customer: M O two zero eight seven
+[00:00:45] Mousy Assist: Thanks. I heard M O two zero eight seven. Is that right?
+[00:00:51] Customer: yeah
+[00:00:54] Mousy Assist: For security, please say the phone number on the account.
+[00:01:01] Customer: five five five, zero one seven three
+[00:01:07] Mousy Assist: Thanks. I have 555-0173. One moment while I find your details.
+[00:01:13] Mousy Assist: And to confirm, what's the first name on the account?
+[00:01:18] Customer: bramble
+[00:01:22] Mousy Assist: Thanks, Bramble. I found your account.
+[00:01:26] Mousy Assist: Order MO-2087 is due on Saturday. What's the new delivery address?
+[00:01:33] Customer: 62 Acorn Way, Nibbleton
+[00:01:36] Mousy Assist: Got it: 62 Acorn Way, Nibbleton. Should I update the order?
+[00:01:44] Customer: yeah
+[00:01:47] Mousy Assist: Done. Order MO-2087 will go to 62 Acorn Way, Nibbleton on Saturday.
+[00:01:53] Mousy Assist: Is there anything else I can help with today?
+[00:01:58] Customer: no thanks
+[00:02:01] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:02:10] Customer: five
+[00:02:13] Mousy Assist: Thank you for the feedback.
+[00:02:18] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000024,voice,2025-03-01T09:48:24Z,2025-03-01T09:49:06Z,42,7,agent,true,customer_request,general_support,escalated,greet;offer_self_service;escalate,"{""auth_result"":""skipped"",""intent_confidence"":0.8,""fallback_count"":0,""sentiment_end"":""neutral"",""csat_offered"":false,""lookup_ms"":590,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: yes hi
+[00:00:15] Mousy Assist: Hi there. What can I help you with today?
+[00:00:21] Customer: agent
+[00:00:24] Mousy Assist: I can help with most order questions. What's it about?
+[00:00:31] Customer: I want a human
+[00:00:35] Mousy Assist: Sure. I'm connecting you to a Mousy support specialist. The wait is about 4 minutes."
+CNV-000025,voice,2025-03-03T14:33:59Z,2025-03-03T14:35:19Z,80,14,customer,false,,,resolved,greet;identify_order;track_parcel;offer_more_help;rate_call;close,"{""auth_result"":""skipped"",""intent_confidence"":0.77,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":1227,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: my parcel hasn't come
+[00:00:17] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:25] Customer: M O six eight seven two
+[00:00:30] Mousy Assist: Thanks. I heard M O six eight seven two. Is that right?
+[00:00:38] Customer: yes please
+[00:00:41] Mousy Assist: Order MO-6872 shipped on February 28 with Pawcel Post. It's in Nibbleton and should arrive on Wednesday by 6 pm.
+[00:00:51] Customer: okay thanks
+[00:00:53] Mousy Assist: Is there anything else I can help with today?
+[00:00:58] Customer: no, that's all
+[00:01:02] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:01:10] Customer: five
+[00:01:12] Mousy Assist: Thank you for the feedback.
+[00:01:16] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000026,voice,2025-03-01T17:00:22Z,2025-03-01T17:02:28Z,126,21,bot,false,,,resolved,greet;identify_order;verify_caller;lookup_order;update_address;offer_more_help;rate_call;close,"{""auth_result"":""passed"",""intent_confidence"":0.74,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":698,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:11] Customer: I need to change the address
+[00:00:16] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:24] Customer: M O four one eight one
+[00:00:29] Mousy Assist: Thanks. I heard M O four one eight one. Is that right?
+[00:00:38] Customer: correct
+[00:00:41] Mousy Assist: For security, please say the phone number on the account.
+[00:00:49] Customer: five five five, zero one zero zero
+[00:00:55] Mousy Assist: Thanks. I have 555-0100. One moment while I find your details.
+[00:01:01] Mousy Assist: Thanks, Poppy. I found your account.
+[00:01:04] Mousy Assist: Order MO-4181 is due on Monday. What's the new delivery address?
+[00:01:11] Customer: 41 Crumb Street, Nibbleton
+[00:01:15] Mousy Assist: Got it: 41 Crumb Street, Nibbleton. Should I update the order?
+[00:01:21] Customer: wait, no, sorry. it's 44 Whisker Lane, Nibbleton
+[00:01:26] Mousy Assist: Done. Order MO-4181 will go to 41 Crumb Street, Nibbleton on Monday.
+[00:01:33] Mousy Assist: Is there anything else I can help with today?
+[00:01:42] Customer: nope, that's it. thanks
+[00:01:46] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:01:55] Customer: five, thanks
+[00:01:58] Mousy Assist: Thank you for the feedback.
+[00:02:02] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000027,chat,2025-03-05T18:36:29Z,2025-03-05T18:41:21Z,292,8,timeout,false,,,abandoned,greet;identify_order;lookup_order;close,"{""auth_result"":""skipped"",""intent_confidence"":0.64,""fallback_count"":0,""sentiment_end"":""negative"",""csat_offered"":false,""lookup_ms"":1091}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:20] Customer: One of my items arrived broken
+[00:00:22] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:42] Customer: it's MO-2118
+[00:00:44] Mousy Assist: Thanks. Looking up order MO-2118 now.
+[00:00:46] Mousy Assist: I'm sorry it arrived damaged. Order MO-2118 has the two-slice toaster and the egg timer. Which one is damaged?
+[00:02:48] Mousy Assist: Are you still there?
+[00:04:49] Mousy Assist: I haven't heard back, so I'll close this chat now. You're welcome to start a new chat any time. Goodbye."
+CNV-000028,voice,2025-03-01T10:51:38Z,2025-03-01T10:52:16Z,38,5,agent,true,customer_request,general_support,escalated,greet;offer_self_service;escalate,"{""auth_result"":""skipped"",""intent_confidence"":0.74,""fallback_count"":0,""sentiment_end"":""neutral"",""csat_offered"":false,""lookup_ms"":398,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: talk to a person
+[00:00:18] Mousy Assist: I can help with most order questions. What's it about?
+[00:00:25] Customer: just get me a person please
+[00:00:31] Mousy Assist: Sure. I'm connecting you to a Mousy support specialist. The wait is about 7 minutes."
+CNV-000029,voice,2025-03-06T14:32:46Z,2025-03-06T14:34:16Z,90,17,customer,false,,,resolved,greet;identify_order;track_parcel;offer_more_help;rate_call;close,"{""auth_result"":""skipped"",""intent_confidence"":0.86,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":995,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: my parcel hasn't come
+[00:00:16] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:22] Customer: M O eight eight zero four
+[00:00:26] Mousy Assist: Thanks. I heard M O eight eight zero four. Is that right?
+[00:00:34] Customer: yeah
+[00:00:36] Mousy Assist: Order MO-8804 shipped on March 5 with Pawcel Post. It's in Hollowmere and should arrive on Sunday by 6 pm.
+[00:00:45] Mousy Assist: Would you like me to text you a summary?
+[00:00:51] Customer: yep
+[00:00:53] Mousy Assist: Done. I've sent it to 555-0163.
+[00:01:00] Customer: okay thanks
+[00:01:03] Mousy Assist: Is there anything else I can help with today?
+[00:01:08] Customer: nope, that's it. thanks
+[00:01:11] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:01:20] Customer: three
+[00:01:22] Mousy Assist: Thank you for the feedback.
+[00:01:26] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000030,voice,2025-03-05T13:29:51Z,2025-03-05T13:31:56Z,125,22,bot,false,,,resolved,greet;identify_order;verify_caller;lookup_order;update_address;offer_more_help;close,"{""auth_result"":""passed"",""intent_confidence"":0.72,""fallback_count"":1,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":650,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: I need to change the address
+[00:00:17] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:25] Customer: M O five six five seven
+[00:00:29] Mousy Assist: Sorry, I didn't catch that. Please say the order number again.
+[00:00:37] Customer: M O five six five seven
+[00:00:41] Mousy Assist: Thanks. I heard M O five six five seven. Is that right?
+[00:00:48] Customer: yes please
+[00:00:50] Mousy Assist: For security, please say the phone number on the account.
+[00:00:59] Customer: five five five, zero one eight two
+[00:01:05] Mousy Assist: Thanks. I have 555-0182. One moment while I find your details.
+[00:01:11] Mousy Assist: Thanks, Bramble. I found your account.
+[00:01:15] Mousy Assist: Order MO-5657 is due on Sunday. What's the new delivery address?
+[00:01:21] Customer: 62 Pantry Court, Nibbleton
+[00:01:24] Mousy Assist: Got it: 62 Pantry Court, Nibbleton. Should I update the order?
+[00:01:31] Customer: yes
+[00:01:33] Mousy Assist: Done. Order MO-5657 will go to 62 Pantry Court, Nibbleton on Sunday.
+[00:01:40] Mousy Assist: Would you like me to text you a summary?
+[00:01:46] Customer: no, that's fine
+[00:01:50] Mousy Assist: Is there anything else I can help with today?
+[00:01:58] Customer: no, that's all
+[00:02:01] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000031,voice,2025-03-08T15:36:23Z,2025-03-08T15:38:44Z,141,24,customer,false,,,resolved,greet;identify_order;verify_caller;lookup_order;start_return;offer_more_help;rate_call;close,"{""auth_result"":""passed"",""intent_confidence"":0.73,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":282,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:11] Customer: my order came broken
+[00:00:13] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:20] Customer: M O one five eight nine
+[00:00:24] Mousy Assist: Thanks. I heard M O one five eight nine. Is that right?
+[00:00:33] Customer: yep
+[00:00:35] Mousy Assist: For security, please say the phone number on the account.
+[00:00:43] Customer: five five five, zero one one four
+[00:00:47] Mousy Assist: Thanks. I have 555-0114. One moment while I find your details.
+[00:00:55] Mousy Assist: Thanks, Tansy. I found your account.
+[00:01:00] Mousy Assist: I'm sorry it arrived damaged. Order MO-1589 has the cheese grater and the night light. Which one is damaged?
+[00:01:09] Customer: the cheese grater
+[00:01:13] Mousy Assist: I've started a return for the cheese grater. A prepaid label is on its way to your email. Would you like a replacement or a refund?
+[00:01:27] Customer: a replacement please
+[00:01:30] Mousy Assist: Okay. A new one ships as soon as the courier scans the return parcel.
+[00:01:37] Mousy Assist: Would you like me to text you a summary?
+[00:01:45] Customer: yeah
+[00:01:47] Mousy Assist: Done. I've sent it to 555-0114.
+[00:01:52] Mousy Assist: Is there anything else I can help with today?
+[00:01:59] Customer: nope, that's it. thanks
+[00:02:04] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:02:11] Customer: five
+[00:02:12] Mousy Assist: Thank you for the feedback.
+[00:02:17] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000032,voice,2025-03-13T08:44:06Z,2025-03-13T08:45:07Z,61,11,customer,false,,,resolved,greet;product_lookup;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.83,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":963,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:11] Customer: hello?
+[00:00:14] Mousy Assist: Hi there. What can I help you with today?
+[00:00:22] Customer: does the milk frother come with a warranty
+[00:00:26] Mousy Assist: The milk frother has a one-year Mousy warranty. It isn't dishwasher safe, so please hand-wash it in warm soapy water.
+[00:00:35] Mousy Assist: Would you like me to text you a summary?
+[00:00:42] Customer: correct
+[00:00:43] Mousy Assist: Done. I've sent it to 555-0111.
+[00:00:47] Mousy Assist: Is there anything else I can help with today?
+[00:00:53] Customer: nope, that's it. thanks
+[00:00:57] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000033,voice,2025-03-11T11:53:11Z,2025-03-11T11:53:42Z,31,5,agent,true,bot_transfer,general_support,escalated,greet;escalate,"{""auth_result"":""skipped"",""intent_confidence"":0.78,""fallback_count"":0,""sentiment_end"":""neutral"",""csat_offered"":false,""lookup_ms"":661,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: yes hi
+[00:00:14] Mousy Assist: Hi there. What can I help you with today?
+[00:00:21] Customer: cancel my order
+[00:00:25] Mousy Assist: Let me transfer you to a specialist who can help with that. Please hold."
+CNV-000034,voice,2025-03-14T15:49:35Z,2025-03-14T15:51:34Z,119,21,customer,false,,,resolved,greet;track_parcel;identify_order;verify_caller;lookup_order;update_address;offer_more_help;close,"{""auth_result"":""passed"",""intent_confidence"":0.69,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":494,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: change my delivery address
+[00:00:16] Mousy Assist: Sure, let me track your parcel. What's the order number?
+[00:00:23] Customer: no, I need to change the address, not track it
+[00:00:30] Mousy Assist: Sorry about that. Let's sort that out instead.
+[00:00:35] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:42] Customer: M O nine seven one nine
+[00:00:47] Mousy Assist: Thanks. I heard M O nine seven one nine. Is that right?
+[00:00:56] Customer: yeah
+[00:00:58] Mousy Assist: For security, please say the phone number on the account.
+[00:01:04] Customer: five five five, zero one two four
+[00:01:08] Mousy Assist: Thanks. I have 555-0124. One moment while I find your details.
+[00:01:14] Mousy Assist: Thanks, Tansy. I found your account.
+[00:01:19] Mousy Assist: Order MO-9719 is due on Tuesday. What's the new delivery address?
+[00:01:25] Customer: 10 Whisker Lane, Burrowford
+[00:01:30] Mousy Assist: Got it: 10 Whisker Lane, Burrowford. Should I update the order?
+[00:01:36] Customer: correct
+[00:01:39] Mousy Assist: Done. Order MO-9719 will go to 10 Whisker Lane, Burrowford on Tuesday.
+[00:01:44] Mousy Assist: Is there anything else I can help with today?
+[00:01:51] Customer: no thanks
+[00:01:55] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000035,voice,2025-03-11T08:55:23Z,2025-03-11T08:56:20Z,57,9,customer,false,,,abandoned,greet;identify_order;track_parcel;offer_more_help,"{""auth_result"":""skipped"",""intent_confidence"":0.62,""fallback_count"":0,""sentiment_end"":""negative"",""csat_offered"":false,""lookup_ms"":1026,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:13] Customer: track my order
+[00:00:15] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:22] Customer: M O two three eight four
+[00:00:27] Mousy Assist: Thanks. I heard M O two three eight four. Is that right?
+[00:00:35] Customer: yes please
+[00:00:38] Mousy Assist: Order MO-2384 shipped on March 9 with Pawcel Post. It's in Nibbleton and should arrive on Saturday by 6 pm.
+[00:00:50] Customer: perfect
+[00:00:53] Mousy Assist: Is there anything else I can help with today?"
+CNV-000036,chat,2025-03-11T19:19:09Z,2025-03-11T19:21:35Z,146,14,customer,false,,,resolved,greet;identify_order;lookup_refund;offer_more_help;close,"{""auth_result"":""skipped"",""intent_confidence"":0.77,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":345}","[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:22] Customer: checking on a refund
+[00:00:24] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:44] Customer: MO-9589
+[00:00:45] Mousy Assist: Thanks. Looking up order MO-9589 now.
+[00:00:48] Mousy Assist: I see a refund of $22.00 for order MO-9589, issued on March 9. It can take up to 5 business days to show on your statement.
+[00:01:19] Customer: okay
+[00:01:21] Mousy Assist: I see a refund of $22.00 for order MO-9589, issued on March 9. It can take up to 5 business days to show on your statement.
+[00:01:53] Customer: yes, you said that
+[00:02:01] Customer: so when will I see it
+[00:02:03] Mousy Assist: Yes, it's on its way. You'll get an email when your bank confirms it.
+[00:02:05] Mousy Assist: Is there anything else I can help with today?
+[00:02:21] Customer: no thanks
+[00:02:23] Mousy Assist: Thanks for chatting with Mousy. Have a lovely day!"
+CNV-000037,voice,2025-03-08T10:24:17Z,2025-03-08T10:25:12Z,55,9,agent,true,repeated_fallback,general_support,escalated,greet;fallback;escalate,"{""auth_result"":""skipped"",""intent_confidence"":0.86,""fallback_count"":3,""sentiment_end"":""neutral"",""csat_offered"":false,""lookup_ms"":1228,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:11] Customer: my parcel hasn't come
+[00:00:14] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:22] Customer: track my order
+[00:00:25] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:33] Customer: my parcel hasn't come
+[00:00:38] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:46] Customer: where's my package
+[00:00:49] Mousy Assist: I'm having trouble understanding. Let me connect you with someone who can help."
+CNV-000038,voice,2025-03-06T20:34:46Z,2025-03-06T20:35:52Z,66,11,agent,true,repeated_fallback,general_support,escalated,greet;fallback;escalate,"{""auth_result"":""skipped"",""intent_confidence"":0.89,""fallback_count"":3,""sentiment_end"":""neutral"",""csat_offered"":false,""lookup_ms"":824,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:14] Customer: hello?
+[00:00:17] Mousy Assist: Hi there. What can I help you with today?
+[00:00:22] Customer: billing problem
+[00:00:24] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:31] Customer: I was charged twice
+[00:00:36] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:45] Customer: there's a wrong charge on my card
+[00:00:50] Mousy Assist: Sorry, I didn't catch that. Could you say it another way?
+[00:00:56] Customer: I was charged twice
+[00:01:00] Mousy Assist: I'm having trouble understanding. Let me connect you with someone who can help."
+CNV-000039,voice,2025-03-06T14:28:37Z,2025-03-06T14:30:19Z,102,18,customer,false,,,resolved,greet;identify_order;verify_caller;lookup_order;cancel_order;offer_more_help;close,"{""auth_result"":""passed"",""intent_confidence"":0.62,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":871,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:12] Customer: cancel order
+[00:00:14] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:20] Customer: M O two one six eight
+[00:00:24] Mousy Assist: Thanks. I heard M O two one six eight. Is that right?
+[00:00:32] Customer: yes please
+[00:00:35] Mousy Assist: For security, please say the phone number on the account.
+[00:00:43] Customer: five five five, zero one four six
+[00:00:48] Mousy Assist: Thanks. I have 555-0146. One moment while I find your details.
+[00:00:54] Mousy Assist: And to confirm, what's the first name on the account?
+[00:01:01] Customer: juniper
+[00:01:03] Mousy Assist: Thanks, Juniper. I found your account.
+[00:01:08] Mousy Assist: Order MO-2168 has the milk frother and hasn't shipped yet. Do you want to cancel the whole order?
+[00:01:16] Customer: yes
+[00:01:19] Mousy Assist: Done. Order MO-2168 is cancelled. $22.00 goes back to your card in 3 to 5 business days.
+[00:01:28] Mousy Assist: Is there anything else I can help with today?
+[00:01:34] Customer: nope, that's it. thanks
+[00:01:38] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."
+CNV-000040,voice,2025-03-03T20:35:56Z,2025-03-03T20:38:27Z,151,25,bot,false,,,resolved,greet;identify_order;verify_caller;lookup_refund;offer_more_help;rate_call;close,"{""auth_result"":""passed"",""intent_confidence"":0.8,""fallback_count"":0,""sentiment_end"":""positive"",""csat_offered"":true,""lookup_ms"":597,""asr_language"":""en""}","[00:00:01] Mousy Assist: Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?
+[00:00:11] Customer: where's my refund
+[00:00:13] Mousy Assist: Sure. What's the order number? It starts with M O.
+[00:00:21] Customer: M O three nine three two
+[00:00:26] Mousy Assist: Thanks. I heard M O three nine three two. Is that right?
+[00:00:35] Customer: yeah
+[00:00:38] Mousy Assist: For security, please say the phone number on the account.
+[00:00:46] Customer: five five five, zero one three nine
+[00:00:51] Mousy Assist: Thanks. I have 555-0139. One moment while I find your details.
+[00:00:57] Mousy Assist: Thanks, Sorrel. I found your account.
+[00:01:02] Mousy Assist: I see a refund of $41.00 for order MO-3932, issued on February 27. It can take up to 5 business days to show on your statement.
+[00:01:15] Customer: okay, thanks
+[00:01:19] Mousy Assist: I see a refund of $41.00 for order MO-3932, issued on February 27. It can take up to 5 business days to show on your statement.
+[00:01:33] Customer: yes, you said that
+[00:01:37] Mousy Assist: Would you like me to text you a summary?
+[00:01:43] Customer: yes please
+[00:01:46] Mousy Assist: Done. I've sent it to 555-0139.
+[00:01:51] Customer: so when will I see it
+[00:01:56] Mousy Assist: Yes, it's on its way. You'll get an email when your bank confirms it.
+[00:02:03] Mousy Assist: Is there anything else I can help with today?
+[00:02:10] Customer: nope, that's it. thanks
+[00:02:13] Mousy Assist: Before you go, could you rate this call from one to five?
+[00:02:21] Customer: four
+[00:02:24] Mousy Assist: Thank you for the feedback.
+[00:02:27] Mousy Assist: Thanks for calling Mousy. Have a lovely day. Goodbye."

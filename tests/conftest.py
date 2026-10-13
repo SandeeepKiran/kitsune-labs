@@ -64,8 +64,17 @@ def browser() -> Browser:
 
 @pytest.fixture(params=["no-preference", "reduce"], ids=["motion", "reduced-motion"])
 def page(browser: Browser, request: pytest.FixtureRequest) -> Page:
-    # Every page is checked twice: normal motion and prefers-reduced-motion.
+    # Smoke tests run twice: normal motion and prefers-reduced-motion.
     context = browser.new_context(reduced_motion=request.param)
+    page = context.new_page()
+    yield page
+    context.close()
+
+
+@pytest.fixture
+def ui(browser: Browser) -> Page:
+    """One fresh desktop page (normal motion) for behaviour tests. Fresh context = empty storage."""
+    context = browser.new_context(viewport={"width": 1440, "height": 900})
     page = context.new_page()
     yield page
     context.close()

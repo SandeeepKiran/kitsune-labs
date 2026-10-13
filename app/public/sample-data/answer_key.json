@@ -1,0 +1,703 @@
+{
+  "about": "Planted bugs in the Mousy sample pack. All data is invented.",
+  "bug_types": {
+    "misroute": {
+      "severity": "high",
+      "meaning": "The bot sent the customer down the wrong intent."
+    },
+    "fallback_loop": {
+      "severity": "high",
+      "meaning": "The bot re-prompted 3 or more times in a row without progress."
+    },
+    "premature_escalation": {
+      "severity": "medium",
+      "meaning": "The bot transferred to a person before trying the self-service flow."
+    },
+    "timeout_no_goodbye": {
+      "severity": "low",
+      "meaning": "The customer went quiet and the conversation closed with no closing message."
+    },
+    "bot_repeats": {
+      "severity": "low",
+      "meaning": "The bot sent the same information twice."
+    },
+    "wrong_order_id": {
+      "severity": "high",
+      "meaning": "The bot read back or used a different order ID than the customer gave."
+    },
+    "ignored_correction": {
+      "severity": "high",
+      "meaning": "The customer corrected the bot and the bot carried on with the old value."
+    }
+  },
+  "conversations": [
+    {
+      "conversation_id": "CNV-000001",
+      "transcript_file": "transcripts/01_cancel_order_chat.txt",
+      "channel": "chat",
+      "expected_intent": "cancel_order",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "can I cancel my order please"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "misroute",
+          "turn": 3,
+          "severity": "high",
+          "evidence": "Customer asked for cancel_order; the bot routed to refund_status."
+        },
+        {
+          "type": "ignored_correction",
+          "turn": 5,
+          "severity": "high",
+          "evidence": "Customer pushed back on the wrong route; the bot fell back instead of switching."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000002",
+      "transcript_file": "transcripts/02_refund_status_voice.txt",
+      "channel": "voice",
+      "expected_intent": "refund_status",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "refund status"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000003",
+      "transcript_file": "transcripts/03_change_address_voice.txt",
+      "channel": "voice",
+      "expected_intent": "change_delivery_address",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "change my delivery address"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "wrong_order_id",
+          "turn": 9,
+          "severity": "high",
+          "evidence": "Customer gave MO-3609; the bot used MO-3690."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000004",
+      "transcript_file": "transcripts/04_billing_dispute_voice.txt",
+      "channel": "voice",
+      "expected_intent": "billing_dispute",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "billing problem"
+      },
+      "outcome": "escalated",
+      "bugs": [
+        {
+          "type": "premature_escalation",
+          "turn": 3,
+          "severity": "medium",
+          "evidence": "Transferred right after the request, without trying the billing_dispute flow."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000005",
+      "transcript_file": "transcripts/05_track_parcel_voice.txt",
+      "channel": "voice",
+      "expected_intent": "track_parcel",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "where's my package"
+      },
+      "outcome": "escalated",
+      "bugs": [
+        {
+          "type": "fallback_loop",
+          "turn": 7,
+          "severity": "high",
+          "evidence": "Three fallback prompts in a row, then a transfer."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000006",
+      "transcript_file": "transcripts/06_gift_card_voice.txt",
+      "channel": "voice",
+      "expected_intent": "gift_card_balance",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "check a gift card"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "bot_repeats",
+          "turn": 7,
+          "severity": "low",
+          "evidence": "The bot sent the same answer twice in a row."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000007",
+      "transcript_file": "transcripts/07_return_damaged_chat.txt",
+      "channel": "chat",
+      "expected_intent": "return_damaged_item",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "the box was crushed and the item is broken"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "ignored_correction",
+          "turn": 10,
+          "severity": "high",
+          "evidence": "Customer corrected the item to the desk lamp; the bot returned the egg timer."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000008",
+      "transcript_file": "transcripts/08_talk_to_human_chat.txt",
+      "channel": "chat",
+      "expected_intent": "talk_to_human",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "can I talk to a real person"
+      },
+      "outcome": "abandoned",
+      "bugs": [
+        {
+          "type": "timeout_no_goodbye",
+          "turn": 4,
+          "severity": "low",
+          "evidence": "Last turn is 'Are you still there?'; the conversation then closed by timeout."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000009",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "cancel_order",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "cancel order"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "misroute",
+          "turn": 3,
+          "severity": "high",
+          "evidence": "Customer asked for cancel_order; the bot routed to refund_status."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000010",
+      "transcript_file": null,
+      "channel": "chat",
+      "expected_intent": "gift_card_balance",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "can I check my gift card"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "bot_repeats",
+          "turn": 7,
+          "severity": "low",
+          "evidence": "The bot sent the same answer twice in a row."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000011",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "change_delivery_address",
+      "first_customer_utterance": {
+        "turn": 4,
+        "text": "change my delivery address"
+      },
+      "outcome": "escalated",
+      "bugs": [
+        {
+          "type": "premature_escalation",
+          "turn": 5,
+          "severity": "medium",
+          "evidence": "Transferred right after the request, without trying the change_delivery_address flow."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000012",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "cancel_order",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "cancel order"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000013",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "change_delivery_address",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "change my delivery address"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "wrong_order_id",
+          "turn": 5,
+          "severity": "high",
+          "evidence": "Customer gave MO-8597; the bot used MO-8579."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000014",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "return_damaged_item",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "something arrived damaged"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "ignored_correction",
+          "turn": 15,
+          "severity": "high",
+          "evidence": "Customer corrected the item to the phone stand; the bot returned the blue kettle."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000015",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "gift_card_balance",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "check a gift card"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000016",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "refund_status",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "I'm calling about a refund"
+      },
+      "outcome": "escalated",
+      "bugs": [
+        {
+          "type": "premature_escalation",
+          "turn": 3,
+          "severity": "medium",
+          "evidence": "Transferred right after the request, without trying the refund_status flow."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000017",
+      "transcript_file": null,
+      "channel": "chat",
+      "expected_intent": "track_parcel",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "my order still hasn't arrived"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "wrong_order_id",
+          "turn": 5,
+          "severity": "high",
+          "evidence": "Customer gave MO-1021; the bot used MO-1012."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000018",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "track_parcel",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "track my order"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "misroute",
+          "turn": 3,
+          "severity": "high",
+          "evidence": "Customer asked for track_parcel; the bot routed to change_delivery_address."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000019",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "talk_to_human",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "talk to a person"
+      },
+      "outcome": "abandoned",
+      "bugs": [
+        {
+          "type": "timeout_no_goodbye",
+          "turn": 4,
+          "severity": "low",
+          "evidence": "Last turn is 'Are you still there?'; the conversation then closed by timeout."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000020",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "change_delivery_address",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "wrong address on my order"
+      },
+      "outcome": "abandoned",
+      "bugs": [
+        {
+          "type": "timeout_no_goodbye",
+          "turn": 12,
+          "severity": "low",
+          "evidence": "Last turn is 'Are you still there?'; the conversation then closed by timeout."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000021",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "return_damaged_item",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "return a damaged item"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "ignored_correction",
+          "turn": 19,
+          "severity": "high",
+          "evidence": "Customer corrected the item to the desk lamp; the bot returned the cheese grater."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000022",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "refund_status",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "refund status"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "misroute",
+          "turn": 3,
+          "severity": "high",
+          "evidence": "Customer asked for refund_status; the bot routed to cancel_order."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000023",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "change_delivery_address",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "wrong address on my order"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000024",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "talk_to_human",
+      "first_customer_utterance": {
+        "turn": 4,
+        "text": "agent"
+      },
+      "outcome": "escalated",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000025",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "track_parcel",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "my parcel hasn't come"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000026",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "change_delivery_address",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "I need to change the address"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "ignored_correction",
+          "turn": 15,
+          "severity": "high",
+          "evidence": "Customer corrected the address to 44 Whisker Lane, Nibbleton; the bot kept 41 Crumb Street, Nibbleton."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000027",
+      "transcript_file": null,
+      "channel": "chat",
+      "expected_intent": "return_damaged_item",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "One of my items arrived broken"
+      },
+      "outcome": "abandoned",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000028",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "talk_to_human",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "talk to a person"
+      },
+      "outcome": "escalated",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000029",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "track_parcel",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "my parcel hasn't come"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000030",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "change_delivery_address",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "I need to change the address"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000031",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "return_damaged_item",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "my order came broken"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000032",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "product_question",
+      "first_customer_utterance": {
+        "turn": 4,
+        "text": "does the milk frother come with a warranty"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000033",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "cancel_order",
+      "first_customer_utterance": {
+        "turn": 4,
+        "text": "cancel my order"
+      },
+      "outcome": "escalated",
+      "bugs": [
+        {
+          "type": "premature_escalation",
+          "turn": 5,
+          "severity": "medium",
+          "evidence": "Transferred right after the request, without trying the cancel_order flow."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000034",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "change_delivery_address",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "change my delivery address"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "misroute",
+          "turn": 3,
+          "severity": "high",
+          "evidence": "Customer asked for change_delivery_address; the bot routed to track_parcel."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000035",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "track_parcel",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "track my order"
+      },
+      "outcome": "abandoned",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000036",
+      "transcript_file": null,
+      "channel": "chat",
+      "expected_intent": "refund_status",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "checking on a refund"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "bot_repeats",
+          "turn": 8,
+          "severity": "low",
+          "evidence": "The bot sent the same answer twice in a row."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000037",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "track_parcel",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "my parcel hasn't come"
+      },
+      "outcome": "escalated",
+      "bugs": [
+        {
+          "type": "fallback_loop",
+          "turn": 7,
+          "severity": "high",
+          "evidence": "Three fallback prompts in a row, then a transfer."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000038",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "billing_dispute",
+      "first_customer_utterance": {
+        "turn": 4,
+        "text": "billing problem"
+      },
+      "outcome": "escalated",
+      "bugs": [
+        {
+          "type": "fallback_loop",
+          "turn": 9,
+          "severity": "high",
+          "evidence": "Three fallback prompts in a row, then a transfer."
+        }
+      ]
+    },
+    {
+      "conversation_id": "CNV-000039",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "cancel_order",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "cancel order"
+      },
+      "outcome": "resolved",
+      "bugs": []
+    },
+    {
+      "conversation_id": "CNV-000040",
+      "transcript_file": null,
+      "channel": "voice",
+      "expected_intent": "refund_status",
+      "first_customer_utterance": {
+        "turn": 2,
+        "text": "where's my refund"
+      },
+      "outcome": "resolved",
+      "bugs": [
+        {
+          "type": "bot_repeats",
+          "turn": 13,
+          "severity": "low",
+          "evidence": "The bot sent the same answer twice in a row."
+        }
+      ]
+    }
+  ]
+}

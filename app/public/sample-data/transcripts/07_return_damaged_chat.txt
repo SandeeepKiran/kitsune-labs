@@ -1,0 +1,15 @@
+[00:00:00] Mousy Assist: Hi, I'm Mousy Assist. How can I help with your order today?
+[00:00:15] Customer: the box was crushed and the item is broken
+[00:00:17] Mousy Assist: Sure. What's your order number? It looks like MO-1234.
+[00:00:30] Customer: MO-4615
+[00:00:31] Mousy Assist: Thanks. Looking up order MO-4615 now.
+[00:00:33] Mousy Assist: I'm sorry it arrived damaged. Order MO-4615 has the desk lamp and the egg timer. Which one is damaged?
+[00:00:56] Customer: the egg timer
+[00:00:58] Mousy Assist: The egg timer, got it.
+[00:01:09] Customer: sorry, no. I mean the desk lamp
+[00:01:11] Mousy Assist: I've started a return for the egg timer. A prepaid label is on its way to your email. Would you like a replacement or a refund?
+[00:01:42] Customer: replacement
+[00:01:44] Mousy Assist: Okay. A new one ships as soon as the courier scans the return parcel.
+[00:01:46] Mousy Assist: Is there anything else I can help with today?
+[00:01:58] Customer: nope, that's it. thanks
+[00:02:00] Mousy Assist: Thanks for chatting with Mousy. Have a lovely day!

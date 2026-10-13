@@ -1,0 +1,60 @@
+{
+  "about": "What this conversation should have been. Invented data.",
+  "conversation_id": "CNV-000006",
+  "channel": "voice",
+  "expected_intent": "gift_card_balance",
+  "expected_outcome": "resolved",
+  "flow_steps": [
+    "greet",
+    "check_gift_card",
+    "offer_more_help",
+    "rate_call",
+    "close"
+  ],
+  "turns": [
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for calling Mousy. You're speaking with Mousy Assist, a virtual assistant. In a few words, how can I help today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "check a gift card"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Sure. Please say the last four digits of the gift card."
+    },
+    {
+      "speaker": "Customer",
+      "text": "one eight four two"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Your gift card ending in 1842 has $126.25 left. It doesn't expire."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Is there anything else I can help with today?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "nope, that's it. thanks"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Before you go, could you rate this call from one to five?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "five"
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thank you for the feedback."
+    },
+    {
+      "speaker": "Mousy Assist",
+      "text": "Thanks for calling Mousy. Have a lovely day. Goodbye."
+    }
+  ]
+}
