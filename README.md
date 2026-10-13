@@ -2,17 +2,36 @@
 
 *QA tools for conversational AI, forged in-house.*
 
+**Try it live: <https://sandeeepkiran.github.io/kitsune-labs/>**
+
 Kitsune Labs is a set of browser tools for testing chatbots and voice bots. You can find bugs in a
 bot conversation, turn transcripts into test cases, generate test utterances for an intent,
 convert transcripts into open test-script formats, and build QA reports. Every tool runs in your
 browser on files and pasted text. Each tool has a **Load Mousy sample** button, so you can see it
 work in seconds, with no upload, no sign-up and no API key.
 
-**Status:** Work in progress: milestone M4 of M5.
+**Status:** Version 1: all nine tools work (milestone M5 of M5).
 
 **All data is invented. Mousy is not a real company.** The sample pack (conversations, Excel
 batches, intent lists) was written from scratch for an imaginary online shop and its support bot,
 Mousy Assist.
+
+## The tools
+
+| Tool | What it does | AI |
+|---|---|---|
+| Bug Finder | Find where a bot conversation went wrong. | AI + rules |
+| Test Case Generator | Turn transcripts into structured test cases. | AI + rules |
+| Utterance Generator | Generate validation utterances for an intent. | AI + rules |
+| Transcript Converter | Clean raw chat text into .txt, .json or .yaml test scripts. | No AI |
+| First Utterance Finder | Pull the first real customer turn from each transcript. | AI optional |
+| Metrics Extractor | Add turn, fallback and escalation columns to a spreadsheet. | No AI |
+| Report Builder | Build a QA summary report from run results. | AI optional |
+| Email Templates | Daily status, critical-issue and meeting emails. | AI optional |
+| QA Handbook | A practical guide to testing conversational AI. | No AI |
+
+"AI + rules" tools give a rule-based answer with no key, and AI adds a second opinion when you
+add a key. AI output is always labelled "AI-assisted".
 
 ## Your AI key
 
@@ -42,7 +61,21 @@ The end-to-end tests use pytest and Playwright (Python). From the project root:
 pytest
 ```
 
-The tests build the site, serve the production build, and check it in Chromium.
+The tests build the site, serve the production build, and check it in Chromium: every tool
+with the sample files, key handling (mocked AI provider, no real key), WCAG AA colour contrast
+on every page after a run, keyboard focus, phone layout and reduced motion.
+
+## Accessibility
+
+- Colour contrast meets WCAG 2.2 AA on every page (checked by the tests, not by eye).
+- Every action works with the keyboard. Focus shows as a gold ring with an ink edge.
+- Status is never colour only: every Pass, Fail and Warn shows an icon and a word.
+- With "reduce motion" on in your system settings, all animation stops.
+
+## Deploy
+
+Every push to `main` builds the site and publishes it to GitHub Pages
+(`.github/workflows/deploy-pages.yml`). The privacy check runs first; any hit stops the deploy.
 
 ## Tech stack
 

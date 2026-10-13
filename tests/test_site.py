@@ -131,7 +131,7 @@ def test_ctrl_k_palette_jumps_to_a_tool(ui: Page, site_url: str) -> None:
 
 def test_palette_closes_with_escape_and_arrows_move(ui: Page, site_url: str) -> None:
     ui.goto(site_url)
-    ui.get_by_role("button", name=re.compile("Search tools")).click()
+    ui.get_by_role("button", name=re.compile("find a tool or action")).click()
     palette = ui.get_by_test_id("palette")
     ui.keyboard.press("ArrowDown")
     expect(palette.get_by_role("option").nth(1)).to_have_attribute("aria-selected", "true")

@@ -95,3 +95,13 @@ def test_fails_when_private_folder_is_not_ignored(tmp_path: Path) -> None:
 
 def test_missing_denylist_means_cannot_run(tmp_path: Path) -> None:
     assert privacy_check.main(["--root", str(tmp_path), "--denylist", str(tmp_path / "nope.txt")]) == 2
+
+
+def test_no_denylist_mode_still_runs_the_pattern_rules(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    # The deploy build has no docs/private/, so it runs this mode. Patterns must still fail it.
+    root = make_repo(tmp_path, {"notes.md": f"write to {FAKE_EMAIL}, made by {SECRET_TERM}"})
+    (root / "docs" / "private" / "denylist.txt").unlink()
+    assert privacy_check.main(["--root", str(root), "--no-denylist"]) == 1
+    output = capsys.readouterr().out
+    assert "email" in output and "denylist line" not in output
+    assert "denylist skipped" in output

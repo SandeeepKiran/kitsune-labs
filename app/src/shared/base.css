@@ -23,8 +23,11 @@ kbd {
   font-family: var(--font-mono);
 }
 
-/* Gold focus ring on every focusable element, for keyboard users. */
+/* Gold focus ring on every focusable element, for keyboard users. Gold alone is under 3:1
+   on the pastel tiles (WCAG 1.4.11), so a thin ink line runs around the outside of it.
+   !important: component shadows (quiet buttons, hover lift) must not hide the gold. */
 :focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--gold) !important;
 }

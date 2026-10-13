@@ -65,9 +65,10 @@ function buildHeader(page: Page): HTMLElement {
   const sampleLink = el('a', {
     class: 'shell-link', href: urls.sampleData, 'aria-current': page === 'sample-data' ? 'page' : undefined,
   }, 'Sample data');
+  // The accessible name starts with the visible words (WCAG 2.5.3), so "click Search" works for voice control.
   const paletteButton = el('button', {
-    type: 'button', class: 'palette-trigger', 'aria-keyshortcuts': 'Control+K Meta+K', 'aria-label': 'Search tools and actions (Ctrl+K)',
-  }, el('span', { 'aria-hidden': 'true' }, 'Search'), el('kbd', { 'aria-hidden': 'true' }, 'Ctrl K'));
+    type: 'button', class: 'palette-trigger', 'aria-keyshortcuts': 'Control+K Meta+K',
+  }, el('span', { class: 'palette-trigger__word' }, 'Search'), ' ', el('kbd', {}, 'Ctrl K'), el('span', { class: 'visually-hidden' }, ' to find a tool or action'));
   paletteButton.addEventListener('click', openPalette);
 
   const keyChip = el('button', { type: 'button', class: 'key-chip', 'aria-haspopup': 'dialog', 'data-testid': 'key-chip' });
@@ -78,8 +79,8 @@ function buildHeader(page: Page): HTMLElement {
     keyChip.classList.toggle('key-chip--sealed', sealed);
     keyChip.textContent = sealed ? 'Key sealed in this browser' : 'Add AI key';
     keyChip.setAttribute('aria-label', sealed
-      ? `${label} key sealed in this browser. Open AI key settings.`
-      : 'No AI key set. Open AI key settings.');
+      ? `Key sealed in this browser (${label}). Open AI key settings.`
+      : 'Add AI key. No key is set yet. Open AI key settings.');
   };
   updateChip();
   window.addEventListener(KEY_CHANGE_EVENT, updateChip);

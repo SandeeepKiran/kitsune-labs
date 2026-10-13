@@ -24,7 +24,7 @@ real components. Copy the fox SVG and the keyframes from them; they are our own 
 
   /* ink */
   --ink: #3a2a5a;                /* body text, dark tiles, active tab */
-  --ink-muted: #6b5a86;
+  --ink-muted: #655380;          /* M5: was #6b5a86 (4.41:1 on butter) */
   --on-ink: #f4f0fb;
 
   /* Yae accents */
@@ -32,14 +32,14 @@ real components. Copy the fox SVG and the keyframes from them; they are our own 
   --sakura: #f7c9d8;
   --gold: #d4a84a;               /* hairlines, key seal, ear charm */
   --gold-glow: #fff6c9;          /* lit nine-tail */
-  --hanko: #b8336a;              /* Fail stamp, critical only */
-  --ai: #7c3aed;                 /* electro violet text/icons for AI output */
+  --hanko: #ad2d62;              /* Fail stamp, critical only. M5: was #b8336a */
+  --ai: #7031e0;                 /* electro violet text/icons for AI output. M5: was #7c3aed */
   --ai-glow: #c084fc;            /* electro spark line, AI running */
 
   /* status: always paired with icon + word */
-  --pass-bg: #d6f0e2;  --pass: #1f7a4d;
+  --pass-bg: #d6f0e2;  --pass: #1b7047;   /* M5: was #1f7a4d (4.41:1 on pass-bg) */
   --warn-bg: #f6e6c2;  --warn: #8a5a00;
-  --fail-bg: #f8d6df;  --fail: #b8336a;
+  --fail-bg: #f8d6df;  --fail: #ad2d62;   /* M5: was #b8336a (4.21:1 on fail-bg) */
 
   --radius-tile: 26px;
   --radius-chip: 12px;
@@ -48,6 +48,9 @@ real components. Copy the fox SVG and the keyframes from them; they are our own 
 ```
 
 - Check WCAG AA contrast for every text colour on its real background (tile, hero gradient ends).
+  `tests\test_polish.py` does this on every page after a run; it fails the build below 4.5:1.
+- Focus ring: 3 px gold with a 2 px ink line outside it. Gold alone is under 3:1 on the pastel
+  tiles (WCAG 1.4.11); the ink line carries the contrast, the gold carries the brand.
 - A dark theme is a later, optional milestone. Do not build it first.
 
 ## Type

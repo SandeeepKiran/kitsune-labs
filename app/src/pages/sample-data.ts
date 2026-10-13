@@ -15,7 +15,8 @@ interface ManifestFile {
 
 const main = mountShell('sample-data');
 
-const zipSize = el('span', { class: 'download-all__size mono' });
+// A no-break space keeps the size line's height until the real size arrives (no layout shift).
+const zipSize = el('span', { class: 'download-all__size mono' }, '\u00a0');
 const hero = el('section', { class: 'tile tile--hero sd-hero rise', 'aria-labelledby': 'sd-title' },
   el('h1', { id: 'sd-title' }, 'Sample data'),
   el('p', { class: 'sd-banner', role: 'note' }, 'All data is invented. Mousy is not a real company.'),
@@ -66,9 +67,9 @@ function fileCard(file: ManifestFile, index: number): HTMLElement {
     el('p', { class: 'sd-file__path mono' }, file.path),
     el('p', { class: 'sd-file__purpose' }, file.purpose),
     el('div', { class: 'sd-file__actions' },
-      el('a', { class: 'btn btn--ink', href: urls.sampleFile(file.path), download: fileName,
-        'aria-label': `Download ${fileName} (${formatBytes(file.bytes)})` },
-        'Download', el('span', { class: 'sd-file__size' }, formatBytes(file.bytes))),
+      el('a', { class: 'btn btn--ink', href: urls.sampleFile(file.path), download: fileName },
+        'Download ', el('span', { class: 'sd-file__size' }, formatBytes(file.bytes)),
+        el('span', { class: 'visually-hidden' }, `, ${fileName}`)),
       ...links,
     ),
   );

@@ -1,8 +1,10 @@
 /* Page shell: skip link, header, footer and page width. */
 
 #app { display: flex; flex-direction: column; min-height: 100vh; }
-.page { flex: 1; width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 28px 40px; }
-.page:focus { outline: none; }
+/* min-height keeps the footer below the fold while a page fills in (tool modules and the
+   sample file list load after first paint), so it never jumps on screen (layout shift). */
+.page { flex: 1; width: 100%; max-width: 1440px; min-height: 100vh; margin: 0 auto; padding: 0 28px 40px; }
+.page:focus { outline: none; box-shadow: none !important; }
 
 .skip-link {
   position: absolute; left: 12px; top: -60px; z-index: 10;
@@ -69,7 +71,7 @@
   .shell-footer { padding: 16px; }
 }
 @media (max-width: 560px) {
-  .palette-trigger span { display: none; }
+  .palette-trigger__word { display: none; }
   .shell-actions { gap: 6px; }
   .brand__name { font-size: 16px; }
 }

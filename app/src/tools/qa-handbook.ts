@@ -6,7 +6,7 @@ import './qa-handbook.css';
 
 import { BUG_TYPES, BUG_TYPE_IDS, findBugs, type BugType } from '../shared/analysis.ts';
 import { urls } from '../shared/config.ts';
-import { el, fromHtml } from '../shared/dom.ts';
+import { el, fromHtml, prefersReducedMotion } from '../shared/dom.ts';
 import { downloadText } from '../shared/export.ts';
 import { sleepingFox } from '../shared/fox.ts';
 import { nineTails, setLit } from '../shared/nine-tails.ts';
@@ -203,7 +203,8 @@ export function mount(main: HTMLElement, tool: ToolInfo): void {
         annotatedTurns(turns, findings),
       );
       markTried(tool.slug);
-      example.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // A JS 'smooth' scroll ignores the CSS reduced-motion override, so ask here.
+      example.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
     } catch {
       exampleBody.replaceChildren(el('p', {}, 'Could not load the sample. Check your connection and try again.'));
     }

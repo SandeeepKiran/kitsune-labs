@@ -69,6 +69,13 @@ no key (e.g. rule-based findings from `answer_key.json` patterns, clearly labell
 Motion pass (all of D10, reduced-motion verified), accessibility pass (contrast, focus, keyboard),
 phone layout, Lighthouse, final privacy check, README. Then hand back to Claude Code for the repo.
 
+**Website deploy (D7):** add `.github\workflows\deploy-pages.yml`: on push to `main`, set up Node,
+run `npm ci` and `npm run build` in `app\`, run `python tools\privacy_check.py` (fail the deploy on
+any hit), then publish `app\dist` with the official `actions/upload-pages-artifact` and
+`actions/deploy-pages` actions (use their current major versions; check with Context7). Keep
+`base: '/kitsune-labs/'`. Live address: `https://sandeeepkiran.github.io/kitsune-labs/`. Put that
+link at the top of the README. Do not push; Claude Code makes the repo public and turns Pages on.
+
 ## Definition of done (every milestone)
 
 - `npm run build` passes, `pytest` passes, `tools\privacy_check.py` passes.

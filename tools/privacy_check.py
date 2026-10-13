@@ -14,6 +14,8 @@ number only, never the term itself, so this output is safe to paste anywhere.
 Exit code: 0 = clean, 1 = hits found, 2 = cannot run (for example, the denylist is missing).
 
 Run:  python tools/privacy_check.py
+      python tools/privacy_check.py --no-denylist   (pattern rules only: for the deploy build,
+                                                      which has no copy of docs/private/)
 """
 
 from __future__ import annotations
@@ -197,8 +199,8 @@ def check_private_folder_ignored(root: Path) -> list[Hit]:
     return [Hit(".gitignore", 0, "config", "docs/private/ is not ignored: private notes would be committed")]
 
 
-def run(root: Path, denylist_path: Path) -> list[Hit]:
-    denylist = load_denylist(denylist_path)
+def run(root: Path, denylist_path: Path | None) -> list[Hit]:
+    denylist = load_denylist(denylist_path) if denylist_path else []
     hits = check_private_folder_ignored(root)
     for path in files_to_scan(root):
         rel = path.relative_to(root).as_posix()
@@ -211,20 +213,25 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Scan files that would be committed for private data.")
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--denylist", type=Path, default=DEFAULT_DENYLIST)
+    parser.add_argument("--no-denylist", action="store_true",
+                        help="skip the private term list; run the pattern rules only")
     args = parser.parse_args(argv)
 
-    if not args.denylist.exists():
-        print(f"Privacy check cannot run: denylist not found at {args.denylist}", file=sys.stderr)
+    # Opt-in only: a missing denylist must never silently weaken the local pre-commit check.
+    denylist = None if args.no_denylist else args.denylist
+    if denylist is not None and not denylist.exists():
+        print(f"Privacy check cannot run: denylist not found at {denylist}", file=sys.stderr)
         return 2
     root = args.root.resolve()
-    hits = run(root, args.denylist)
+    hits = run(root, denylist)
     scanned = len(files_to_scan(root))
+    scope = "pattern rules only, denylist skipped" if denylist is None else "denylist + pattern rules"
     if hits:
         for hit in hits:
             print(hit)
-        print(f"\nFAIL: {len(hits)} privacy hit(s) in {scanned} files.")
+        print(f"\nFAIL: {len(hits)} privacy hit(s) in {scanned} files ({scope}).")
         return 1
-    print(f"PASS: no privacy hits in {scanned} files.")
+    print(f"PASS: no privacy hits in {scanned} files ({scope}).")
     return 0
 
 

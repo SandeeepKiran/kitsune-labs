@@ -2,7 +2,43 @@
 
 > Update this file at the end of every work session. Newest entry on top.
 
-## 2026-10-13 (latest) - M3 + M4 done: all 9 tools work. Batch B complete (Cursor)
+## 2026-10-13 (latest) - M5 polish + launch prep done. Batch C complete (Cursor)
+
+- Motion pass: every D10 animation is present (fox on home, tool heroes and empty states;
+  petals; "z"; tile rise; nine tails; hanko; electro spark). All keyframes use only
+  `transform` / `opacity`. Fixed: the QA Handbook "Load sample" scroll was smooth even under
+  reduced motion (a JS smooth scroll ignores the CSS override).
+- Accessibility pass. Colour tokens darkened slightly to reach WCAG AA (4.5:1) where they
+  are really used: `--ink-muted` #655380, `--ai` #7031e0, `--pass` #1b7047,
+  `--fail` / `--hanko` #ad2d62 (old values noted in `03-design-system.md`). Focus ring is now
+  3 px gold + 2 px ink outside it: gold alone was 1.5-2.2:1 on the pastels (WCAG 1.4.11).
+  Accessible names now start with the visible words (WCAG 2.5.3): Search / Ctrl K button,
+  key chip, sample Download buttons.
+- Layout shift: sample data page was CLS 0.265 on a phone (file list and zip size arrive
+  late), tool pages 0.096. Now 0.02 or less: `main` is at least one screen tall, the zip size
+  line keeps its height.
+- Lighthouse (mobile): home, sample data, Bug Finder after a run: Accessibility, Best
+  practices, SEO all 100. Home page on slow 4G + 4x CPU: LCP 2.06 s, CLS 0.00.
+- Deploy: `.github\workflows\deploy-pages.yml` (checkout v6, setup-node v7 / Node 24,
+  upload-pages-artifact v5, deploy-pages v5; versions checked on the official release pages).
+  Push to `main` -> `npm ci` -> build -> privacy check -> publish `app\dist`.
+  `docs/private/` is never in the repo, so CI uses the `PRIVACY_DENYLIST` secret if set,
+  else the new `privacy_check.py --no-denylist` (pattern rules only, with a warning).
+- README: live link at the top, tool table, accessibility and deploy sections, status v1.
+- Tests: new `tests\test_polish.py` (contrast scanner on all 11 pages after a run + drawer,
+  palette, AI output; every Tab stop has the two-tone ring; a tool runs by keyboard only;
+  no sideways scroll at 360 px after a run on all pages; nothing moves under reduced motion;
+  keyframes only transform/opacity), `tests\test_deploy.py`, one new privacy-check test.
+  Full suite: 147 passed. `tsc --noEmit` clean. Privacy check: PASS (116 files).
+
+### Next steps
+
+1. Owner: look at Batch C (focus ring and the slightly darker status colours).
+2. Owner: decide on the `PRIVACY_DENYLIST` secret (see the chat summary).
+3. Claude Code: create the public repo `kitsune-labs`, push, set Pages source to
+   "GitHub Actions", and check the first deploy run.
+
+## 2026-10-13 - M3 + M4 done: all 9 tools work. Batch B complete (Cursor)
 
 - Dependencies: `jszip` and `xlsx` (SheetJS, from cdn.sheetjs.com), both approved in D4. Both
   load lazily, only when a spreadsheet or zip is used (separate chunks in the build).
