@@ -1,0 +1,50 @@
+/* Design tokens: the single source for colours, type, radius and spacing.
+   Values come from docs/03-design-system.md. Change them there first, then here. */
+
+:root {
+  /* surfaces */
+  --bg: #f4f0fb;                 /* lavender-white page */
+  --tile: #ffffff;
+  --tile-soft: rgba(255, 255, 255, 0.75);
+  --hero: linear-gradient(120deg, #d8cbf6 0%, #ecc6e4 55%, #f7c9d8 100%); /* lilac -> pink -> sakura */
+  --home-bg: linear-gradient(160deg, #fde2e4 0%, #f6d6ec 45%, #e4dcfa 100%);
+
+  /* ink */
+  --ink: #3a2a5a;                /* body text, dark tiles, active tab */
+  --ink-muted: #6b5a86;
+  --on-ink: #f4f0fb;
+
+  /* Yae accents */
+  --lilac: #c9b6f2;              /* fox fur, chips */
+  --sakura: #f7c9d8;
+  --gold: #d4a84a;               /* hairlines, key seal, ear charm */
+  --gold-glow: #fff6c9;          /* lit nine-tail */
+  --hanko: #b8336a;              /* Fail stamp, critical only */
+  --ai: #7c3aed;                 /* electro violet text/icons for AI output */
+  --ai-glow: #c084fc;            /* electro spark line, AI running */
+
+  /* status: always paired with an icon + a word, never colour alone */
+  --pass-bg: #d6f0e2;  --pass: #1f7a4d;
+  --warn-bg: #f6e6c2;  --warn: #8a5a00;
+  --fail-bg: #f8d6df;  --fail: #b8336a;
+
+  --radius-tile: 26px;
+  --radius-chip: 12px;
+  --gap: 16px;
+
+  /* type */
+  --font-ui: 'Lexend', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, Consolas, monospace;
+  --font-display: 'Fraunces', Georgia, serif;   /* home page headline only */
+
+  /* motion: short UI transitions; set to 0 under reduced motion below */
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+  }
+}

@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Lavender Dusk</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap"><style>*{box-sizing:border-box}html,body{margin:0;min-height:900px}body{width:1440px;height:900px;overflow:hidden;position:relative}
+.fox .tail{transform-origin:110px 124px;animation:sway 5s ease-in-out infinite}
+.fox .body{transform-origin:128px 150px;animation:breathe 3.6s ease-in-out infinite}
+.fox .ear-r{transform-origin:206px 66px;animation:twitch 7s ease-in-out infinite}
+.fox .charm{transform-origin:221px 70px;animation:swing 2.6s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(-5deg)}}
+@keyframes breathe{50%{transform:scaleY(1.035)}}
+@keyframes twitch{0%,88%,100%{transform:rotate(0)}91%{transform:rotate(-12deg)}94%{transform:rotate(4deg)}}
+@keyframes swing{50%{transform:rotate(8deg)}}
+.tile{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px) scale(.98)}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+body{background:#f4f0fb;font-family:'Lexend',sans-serif;color:#3a2a5a;padding:20px 28px}
+.mono{font-family:'DM Mono',monospace}
+header{display:flex;align-items:center;gap:10px;height:46px;margin-bottom:14px}
+.tab{font-size:13px;padding:7px 12px;border-radius:10px;opacity:.7}.tab.on{background:#3a2a5a;color:#f4f0fb;opacity:1}
+.seal{margin-left:auto;font-size:12px;padding:7px 12px;border-radius:10px;border:1.5px dashed #d4a84a;color:#3a2a5a}
+.grid{display:grid;grid-template-columns:1.2fr 1.2fr 1fr 1fr;grid-template-rows:230px 1fr 1fr;gap:16px;height:800px}
+.tile{border-radius:26px;padding:22px;position:relative;overflow:hidden}
+.hero{grid-column:1/3;background:linear-gradient(120deg,#d8cbf6,#ecc6e4 55%,#f7c9d8);color:#3a2a5a}
+.hero .fox{position:absolute;right:-10px;bottom:-26px;width:380px;opacity:.7}
+.hero h1{font-family:'Lexend',sans-serif;font-size:44px;margin:0;font-weight:800;letter-spacing:-.01em;position:relative}
+.bar{position:relative;margin-top:22px;width:72%;background:#3a2a5a;color:#fff;border-radius:12px;padding:15px 18px;font-size:14px;display:flex;align-items:center}
+.bar b{margin-left:auto;font-size:12px;padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.14)}
+.turn{display:flex;gap:12px;padding:9px 12px;border-radius:12px;font-size:13.5px;font-family:'DM Mono',monospace}
+.turn .who{width:82px;opacity:.6;flex:none}
+.turn.fail{background:#f8d6df}.turn.warn{background:#f6e6c2}.turn.pass{background:#d6f0e2}
+.big{font-family:'Lexend',sans-serif;font-size:118px;font-weight:800;line-height:.9;letter-spacing:-.04em}
+.chip{display:inline-block;padding:9px 13px;border-radius:12px;background:rgba(255,255,255,.75);font-size:13.5px}
+.tails{display:flex;gap:5px;align-items:flex-end;margin-top:14px}
+.tails i{display:block;width:12px;height:28px;border-radius:50% 50% 50% 50%/70% 70% 30% 30%;background:rgba(255,255,255,.35);transform:rotate(-12deg);animation:lit .4s ease-out both}
+@keyframes lit{to{background:#fff6c9;box-shadow:0 0 10px #fff6c9}}
+.tails i:nth-child(n+5){animation:none}
+.hanko{position:absolute;right:22px;top:20px;width:76px;height:76px;border-radius:50%;border:3px solid #b8336a;color:#b8336a;display:flex;align-items:center;justify-content:center;font-family:'Lexend',sans-serif;font-weight:800;font-size:17px;transform:rotate(-14deg);animation:none}
+@keyframes slam{0%,40%{opacity:0;transform:rotate(-30deg) scale(1.8)}55%{opacity:1;transform:rotate(-12deg) scale(.92)}70%,100%{transform:rotate(-14deg) scale(1)}}
+.petal{position:absolute;top:-20px;width:12px;height:9px;background:#fff;border-radius:12px 0 12px 0;opacity:.85;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(-120px,280px) rotate(540deg);opacity:0}}
+
+</style></head><body><header><svg width="28" height="28" viewBox="0 0 32 32"><path d="M3 3 L12 11 L20 11 L29 3 L27 17 L16 29 L5 17 Z" fill="#c9b6f2"/><circle cx="11.5" cy="16" r="1.5" fill="#3a2a5a"/><circle cx="20.5" cy="16" r="1.5" fill="#3a2a5a"/><path d="M16 29 L13 22 L19 22 Z" fill="#3a2a5a"/></svg><b style="font-family:'Lexend',sans-serif;font-size:18px;margin-right:22px">Kitsune Labs</b><span class="tab on">Bug Finder</span><span class="tab ">Test cases</span><span class="tab ">Utterances</span><span class="tab ">Converter</span><span class="tab ">First utterance</span><span class="tab ">Metrics</span><span class="tab ">Reports</span><span class="seal">Key sealed in this browser</span></header>
+<div class="grid">
+<section class="tile hero" style="animation-delay:0s"><span class="petal" style="left:20%;animation-duration:7s;animation-delay:-1s"></span><span class="petal" style="left:35%;animation-duration:9s;animation-delay:-4s"></span><span class="petal" style="left:52%;animation-duration:8s;animation-delay:-2s"></span><span class="petal" style="left:64%;animation-duration:10s;animation-delay:-6s"></span><span class="petal" style="left:78%;animation-duration:7.5s;animation-delay:-3s"></span><span class="petal" style="left:88%;animation-duration:9.5s;animation-delay:-5s"></span><span class="petal" style="left:45%;animation-duration:11s;animation-delay:-8s"></span><svg class="fox" viewBox="0 0 240 170" xmlns="http://www.w3.org/2000/svg">
+<g class="tail"><path d="M70 128 C18 120 4 70 40 44 C70 22 112 34 112 62 C92 52 62 58 60 82 C58 104 80 118 110 124 C100 132 86 132 70 128 Z" fill="#f6c4d8"/>
+<path d="M40 44 C70 22 112 34 112 62 C100 50 80 46 64 52 C54 46 46 44 40 44 Z" fill="#fff6f8"/></g>
+<g class="body"><ellipse cx="128" cy="118" rx="78" ry="40" fill="#f6c4d8"/><ellipse cx="132" cy="132" rx="58" ry="20" fill="#fde3ea"/>
+<g transform="translate(96 104)"><g fill="#fff" opacity=".9"><ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(0)"/><ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(72)"/><ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(144)"/><ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(216)"/><ellipse cx="0" cy="-6" rx="3.6" ry="6" transform="rotate(288)"/></g><circle r="2.4" fill="#e2b24c"/></g></g>
+<g class="head"><g class="ear-l"><path d="M164 70 L170 26 L192 62 Z" fill="#f6c4d8"/><path d="M169 62 L172 38 L184 60 Z" fill="#e59bbd"/></g>
+<g class="ear-r"><path d="M196 62 L218 30 L222 76 Z" fill="#f6c4d8"/><path d="M202 62 L216 42 L216 68 Z" fill="#e59bbd"/>
+</g>
+<ellipse cx="192" cy="96" rx="38" ry="32" fill="#f6c4d8"/><path d="M168 108 C176 124 206 126 222 108 C214 116 182 118 168 108 Z" fill="#fff6f8"/>
+<path d="M174 94 q8 6 16 0" stroke="#5a3a6a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+<path d="M200 94 q8 6 16 0" stroke="#5a3a6a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+<ellipse cx="196" cy="108" rx="3.4" ry="2.4" fill="#5a3a6a"/><ellipse cx="170" cy="104" rx="6" ry="3" fill="#e59bbd" opacity=".45"/><ellipse cx="222" cy="104" rx="6" ry="3" fill="#e59bbd" opacity=".45"/><g class="charm"><path d="M221 70 L228 86" stroke="#e2b24c" stroke-width="2.2"/><circle cx="229" cy="90" r="5.5" fill="#e2b24c"/><path d="M226 95 L223 108 M229 96 L229 110 M232 95 L235 108" stroke="#d9466f" stroke-width="1.8"/></g></g></svg><h1>Bug Finder</h1><div style="position:relative;opacity:.8;margin-top:4px">Find where a bot conversation went wrong.</div>
+<div class="bar">Paste a conversation, or drop a .txt or .xlsx file<b>Load Mousy sample</b></div></section>
+<section class="tile" style="background:#e6dcfa;animation-delay:.12s"><div style="font-weight:700">Findings</div><div class="big" style="margin-top:14px">3</div><div style="opacity:.7;margin-top:6px">in 7 turns</div></section>
+<section class="tile" style="background:#f3d98f;color:#3a2a5a;animation-delay:.18s;display:flex;flex-direction:column;justify-content:space-between"><div style="font-weight:700">Run analysis</div>
+<div><div class="tails"><i style="animation-delay:1.00s"></i><i style="animation-delay:1.18s"></i><i style="animation-delay:1.36s"></i><i style="animation-delay:1.54s"></i><i style="animation-delay:1.72s"></i><i style="animation-delay:1.90s"></i><i style="animation-delay:2.08s"></i><i style="animation-delay:2.26s"></i><i style="animation-delay:2.44s"></i></div><div class="mono" style="font-size:12px;margin-top:10px;opacity:.85">4 of 9 checks done</div></div></section>
+<section class="tile" style="grid-column:1/3;grid-row:2/4;background:#fff;animation-delay:.24s"><div style="display:flex;margin-bottom:12px"><b>Conversation</b><span class="mono" style="margin-left:auto;opacity:.6;font-size:12px">mousy/refund_chat.txt</span></div><div class="turn "><span class="who">Bot</span><span>Hi, I'm Mousy Assist. How can I help today?</span></div><div class="turn "><span class="who">Customer</span><span>I want to cancel my order MO-4417</span></div><div class="turn fail"><span class="who">Bot</span><span>I can help with refunds! Which order should I refund?</span></div><div class="turn "><span class="who">Customer</span><span>no, CANCEL. not refund</span></div><div class="turn warn"><span class="who">Bot</span><span>Sorry, I didn't get that. Could you rephrase?</span></div><div class="turn "><span class="who">Customer</span><span>cancel order 4417</span></div><div class="turn pass"><span class="who">Bot</span><span>Done. Order MO-4417 is cancelled. Anything else?</span></div></section>
+<section class="tile" style="grid-column:3/5;background:#f6d0de;animation-delay:.3s"><span class="hanko">Fail</span><div style="font-size:13px;font-weight:700">High severity</div>
+<div style="font-family:'Lexend',sans-serif;font-size:23px;font-weight:800;margin:6px 0 18px">Cancel request routed to refunds</div>
+<div style="display:flex;align-items:center;gap:10px"><span class="chip mono">cancel_order</span><svg width="110" height="20"><path d="M2 10 H100" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/><path d="M92 4 L104 10 L92 16" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="chip mono" style="background:#3a2a5a;color:#f4f0fb">refund_request</span></div>
+<div style="margin-top:14px;font-size:13px;opacity:.8">Turn 3. The customer asked to cancel; the bot offered a refund.</div></section>
+<section class="tile" style="background:#ece6fb;animation-delay:.36s"><b>Also found</b><div class="chip" style="display:block;margin-top:12px"><b>Warning</b><br>Fallback after a correction</div><div class="chip" style="display:block;margin-top:8px"><b>Pass</b><br>Order cancelled and confirmed</div></section>
+<section class="tile" style="background:#fbe9f1;animation-delay:.42s"><b>AI provider</b><div style="font-family:'Lexend',sans-serif;font-size:21px;font-weight:800;margin:8px 0">Gemini 2.5 Flash</div><div style="font-size:13px;opacity:.8">Your key stays in this browser and goes only to Google.</div><div class="mono" style="position:absolute;bottom:20px;font-size:12px;opacity:.65">1 call, 1.4 s</div></section>
+</div></body></html>

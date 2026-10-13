@@ -1,0 +1,27 @@
+# Secrets: never commit keys of any kind
+.env
+.env.*
+*.key
+*.local.*
+secrets/
+
+# Private notes: the link to the owner's work tools. Local only.
+docs/private/
+
+# Dependencies and builds
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Test output
+test-results/
+playwright-report/
+
+# OS / editor noise
+desktop.ini
+Thumbs.db
+.DS_Store
+.vscode/
