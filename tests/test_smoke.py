@@ -9,7 +9,7 @@ TOOL_SLUGS = [
     "bug-finder", "test-case-generator", "utterance-generator", "transcript-converter",
     "first-utterance-finder", "metrics-extractor", "report-builder", "email-templates", "qa-handbook",
 ]
-PAGES = ["", "sample-data/", *[f"tools/{slug}/" for slug in TOOL_SLUGS]]
+PAGES = ["", "sample-data/", "settings/", *[f"tools/{slug}/" for slug in TOOL_SLUGS]]
 
 
 def collect_errors(page: Page) -> list[str]:

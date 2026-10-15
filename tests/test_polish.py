@@ -116,6 +116,9 @@ def open_fullest(page: Page, site_url: str, path: str) -> None:
     elif path == "sample-data/":
         page.goto(site_url + path)
         expect(page.locator(".sd-file").first).to_be_visible()
+    elif path == "settings/":
+        page.goto(site_url + path)
+        expect(page.get_by_test_id("theme-radio-dark-electro")).to_be_visible()
     else:
         page.goto(site_url + path)
         page.get_by_test_id("load-sample").click()
@@ -163,6 +166,26 @@ def test_contrast_in_the_key_drawer_palette_and_ai_output(browser: Browser, site
     failures += page.evaluate(CONTRAST_SCAN)                      # palette with a selected option
     page.context.close()
     assert failures == [], "Low contrast:\n" + "\n".join(failures)
+
+
+@pytest.mark.parametrize("theme", ["dark-electro", "shrine-tech", "eclipse"])
+def test_theme_and_visual_modes_pass_contrast_and_persist(browser: Browser, site_url: str, theme: str) -> None:
+    page = still_page(browser)
+    page.goto(f"{site_url}settings/")
+    page.get_by_test_id(f"theme-radio-{theme}").check()
+    page.get_by_test_id("visual-radio-sigil").check()
+    assert page.evaluate("document.documentElement.dataset.theme") == theme
+    assert page.evaluate("document.documentElement.dataset.visual") == "sigil"
+    failures = page.evaluate(CONTRAST_SCAN)
+
+    # Navigate via the persistent left sidebar to Bug Finder and run sample
+    page.locator(".shell-sidebar").get_by_role("link", name=re.compile("Bug Finder")).click()
+    page.get_by_test_id("load-sample").click()
+    expect(page.get_by_test_id("run-status")).to_have_text("Done")
+    assert page.evaluate("document.documentElement.dataset.theme") == theme
+    failures += page.evaluate(CONTRAST_SCAN)
+    page.context.close()
+    assert failures == [], f"Low contrast in {theme}:\n" + "\n".join(failures)
 
 
 # -- keyboard ----------------------------------------------------------------------

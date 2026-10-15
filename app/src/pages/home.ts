@@ -21,8 +21,8 @@ const art = el('div', { class: 'hero-art', 'aria-hidden': 'true' },
 );
 art.append(fromHtml(sleepingFox('hero-art__fox')));
 art.append(
-  el('span', { class: 'zz', style: 'left:74%;top:8%;font-size:28px' }, 'z'),
-  el('span', { class: 'zz', style: 'left:80%;top:0;font-size:20px;animation-delay:1.3s' }, 'z'),
+  el('span', { class: 'zz', style: 'left:74%;top:8%;font-size:20px' }, '⚡'),
+  el('span', { class: 'zz', style: 'left:81%;top:0;font-size:15px;animation-delay:1.3s' }, '◈'),
 );
 
 const petals = el('div', { class: 'petals', 'aria-hidden': 'true' });
@@ -30,9 +30,13 @@ for (const p of PETALS) {
   petals.append(el('span', { class: 'petal', style: `left:${p.left}%;animation-duration:${p.duration}s;animation-delay:${p.delay}s` }));
 }
 
-const hero = el('section', { class: 'home-hero', 'aria-labelledby': 'home-title' },
+const hero = el('section', { class: 'tile tile--hero home-hero', 'aria-labelledby': 'home-title' },
   petals,
   el('div', { class: 'home-hero__text rise' },
+    el('p', { class: 'bento__eyebrow' },
+      el('span', { class: 'chip chip--ai' }, 'CONVERSATIONAL AI QA SUITE'),
+      el('span', { class: 'chip' }, '9 BROWSER TOOLS · ZERO BACKEND'),
+    ),
     el('h1', { id: 'home-title' }, 'QA tools for conversational AI, forged in-house.'),
     el('p', { class: 'home-hero__lead' },
       'Nine browser tools for testing chatbots and voice bots. Try each one with the Mousy sample files. ',
@@ -40,6 +44,7 @@ const hero = el('section', { class: 'home-hero', 'aria-labelledby': 'home-title'
     el('div', { class: 'home-hero__ctas' },
       el('a', { class: 'btn btn--ink btn--big', href: '#tools' }, 'Open the tools'),
       el('a', { class: 'btn btn--big', href: urls.sampleData }, 'Download Mousy samples'),
+      el('a', { class: 'btn btn--quiet btn--big', href: urls.settings }, 'Themes & Settings'),
     ),
   ),
   art,

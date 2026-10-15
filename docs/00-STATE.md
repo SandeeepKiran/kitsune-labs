@@ -2,7 +2,27 @@
 
 > Update this file at the end of every work session. Newest entry on top.
 
-## 2026-10-13 (latest) - M5 polish + launch prep done. Batch C complete (Cursor)
+## 2026-10-15 (latest) - Yae Miko Electro AI-Futuristic UI Revamp complete (Cursor)
+
+- **Navigation & Workspace (`app/src/shared/shell.ts`, `shell.css`, `tool-page.css`)**:
+  - Replaced the horizontal top tab strip with a **persistent left sidebar** (`Overview`, all 9 tools with `AI` / `RULES` badges, `Mousy pack`, and `Settings`) so switching between any tool takes a single click from anywhere, including the home page.
+  - Added 1-click quick dropdowns in the sticky top telemetry bar for **Surface Theme** and **Visual Artwork Mode**, alongside `Sample data`, `Settings`, `Search (Ctrl K)`, and the `Key sealed` chip.
+  - Re-engineered tool pages into a **2-Column Split IDE Workspace**: compact top command deck (Hero + Answer KPI + Run telemetry) with Input & Options on the left and full-height Live Results, Export, and Run Log on the right.
+- **3 Yae Miko Surface Themes (`app/src/shared/theme.ts`, `tokens.css`)**:
+  1. **Dark Electro Obsidian** (`dark-electro`, default): deep Inazuma midnight obsidian (`#080510` / `#120b22`), neon electro-violet telemetry, sakura accents, and shrine gold hairlines.
+  2. **Luminous Shrine Tech** (`shrine-tech`): crisp silver-white and deep shrine plum high-contrast surfaces with geometric gold frames.
+  3. **Eclipse Hybrid** (`eclipse`): obsidian command shell paired with luminous high-contrast data inspection decks.
+- **2 Kitsune Artwork & Electro Motion Modes (`app/src/shared/fox.ts`, `motion.css`)**:
+  1. **Cyber-Kitsune & Sesshou Sakura Totem** (`totem`, default): angular holographic Kitsune spirit visor, crackling electro lightning arcs (`electro-pulse`), rotating sacred telemetry ring (`sigil-spin`), and diamond electro motes.
+  2. **Minimalist Electro Sigils & Sacred Geometry** (`sigil`): rotating geometric Inazuma Electro crest and hexagram telemetry frames.
+  - Nine-tail progress re-styled as skewed glowing Electro nodes (`components.css`).
+- **Dedicated `/settings/` Page (`app/settings/index.html`, `app/src/pages/settings.ts`, `settings.css`)**:
+  - Interactive cards with color swatches for all 3 Surface Themes, 2 Visual Artwork Modes, and full inline AI Provider / Key / Model configuration.
+- **Verification**:
+  - `npm --prefix app run build` clean; `python tools/privacy_check.py` PASS (120 files).
+  - Full Playwright suite + new multi-theme WCAG AA contrast & sidebar navigation tests in `tests/test_polish.py` and `tests/test_smoke.py`: all passing.
+
+## 2026-10-13 - M5 polish + launch prep done. Batch C complete (Cursor)
 
 - Motion pass: every D10 animation is present (fox on home, tool heroes and empty states;
   petals; "z"; tile rise; nine tails; hanko; electro spark). All keyframes use only

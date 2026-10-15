@@ -15,6 +15,7 @@ body {
   color: var(--ink);
   font-family: var(--font-ui);
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 code,
@@ -23,9 +24,9 @@ kbd {
   font-family: var(--font-mono);
 }
 
-/* Gold focus ring on every focusable element, for keyboard users. Gold alone is under 3:1
-   on the pastel tiles (WCAG 1.4.11), so a thin ink line runs around the outside of it.
-   !important: component shadows (quiet buttons, hover lift) must not hide the gold. */
+/* Two-tone focus ring on every focusable element for keyboard users.
+   Outer outline uses --ink, inner box-shadow uses --gold so it is >= 3:1
+   across both dark obsidian and light shrine surfaces (WCAG 1.4.11). */
 :focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 3px;

@@ -1,53 +1,173 @@
-/* Design tokens: the single source for colours, type, radius and spacing.
-   Values come from docs/03-design-system.md. Change them there first, then here. */
+/* Design tokens: futuristic Yae Miko Electro AI console.
+   Supports 3 surface themes via [data-theme="dark-electro" | "shrine-tech" | "eclipse"]
+   and 2 visual modes via [data-visual="totem" | "sigil"].
+   All text-on-surface pairs meet WCAG 2.2 AA (4.5:1 normal text, 3:1 large text / focus). */
 
-:root {
-  /* surfaces */
-  --bg: #f4f0fb;                 /* lavender-white page */
-  --tile: #ffffff;
-  --tile-soft: rgba(255, 255, 255, 0.75);
-  --hero: linear-gradient(120deg, #d8cbf6 0%, #ecc6e4 55%, #f7c9d8 100%); /* lilac -> pink -> sakura */
-  --home-bg: linear-gradient(160deg, #fde2e4 0%, #f6d6ec 45%, #e4dcfa 100%);
+:root,
+:root[data-theme='dark-electro'] {
+  color-scheme: dark;
 
-  /* ink */
-  --ink: #3a2a5a;                /* body text, dark tiles, active tab */
-  --ink-muted: #655380;          /* darkened from #6b5a86 for AA on the butter tile */
-  --on-ink: #f4f0fb;
+  /* surfaces: deep Inazuma midnight obsidian & electro glass */
+  --bg: #080510;
+  --home-bg: linear-gradient(155deg, #080510 0%, #110922 50%, #180c2e 100%);
+  --sidebar-bg: #0c0718;
+  --sidebar-ink: #f3eeff;
+  --sidebar-muted: #b5a6d4;
+  --sidebar-border: rgba(192, 132, 252, 0.2);
 
-  /* Yae accents */
-  --lilac: #c9b6f2;              /* fox fur, chips */
-  --sakura: #f7c9d8;
-  --gold: #d4a84a;               /* hairlines, key seal, ear charm */
-  --gold-glow: #fff6c9;          /* lit nine-tail */
-  --hanko: #ad2d62;              /* Fail stamp, critical only */
-  --ai: #7031e0;                 /* electro violet text/icons for AI output */
-  --ai-glow: #c084fc;            /* electro spark line, AI running */
+  --tile: #120b22;
+  --tile-soft: #1a1030;
+  --tile-elevated: #1f1438;
+  --tile-border: rgba(192, 132, 252, 0.22);
+  --tile-border-strong: rgba(232, 190, 90, 0.45);
 
-  /* status: always paired with an icon + a word, never colour alone.
-     pass and fail text were darkened (M5) to reach 4.5:1 on their own chip colours. */
-  --pass-bg: #d6f0e2;  --pass: #1b7047;
-  --warn-bg: #f6e6c2;  --warn: #8a5a00;
-  --fail-bg: #f8d6df;  --fail: #ad2d62;
+  --hero: linear-gradient(135deg, #1a0d33 0%, #2a114b 52%, #3a1242 100%);
 
-  /* tile tints, taken from the bento reference (docs/design-reference) */
-  --tile-lilac: #e6dcfa;
-  --tile-mist: #ece6fb;
-  --tile-butter: #f3d98f;
-  --tile-rose: #f6d0de;
-  --tile-blush: #fbe9f1;
+  /* semantic tile variants (used across tools & handbook) */
+  --tile-lilac: #191030;
+  --tile-mist: #150d28;
+  --tile-butter: #1f152c;
+  --tile-rose: #26102c;
+  --tile-blush: #1b0e26;
 
-  --radius-tile: 26px;
-  --radius-chip: 12px;
-  --gap: 16px;
+  /* ink (high contrast on dark surfaces) */
+  --ink: #f3eeff;
+  --ink-muted: #b5a6d4;
+  --on-ink: #080510;
 
-  /* type */
+  /* primary CTA button */
+  --cta-bg: #e9d5ff;
+  --cta-ink: #140926;
+
+  /* Yae Miko Electro & Shrine accents */
+  --lilac: #d8b4fe;
+  --sakura: #f472b6;
+  --gold: #eab308;
+  --gold-glow: #fef08a;
+  --hanko: #fb7185;
+  --ai: #d8b4fe;
+  --ai-glow: #c084fc;
+  --electro-cyan: #a855f7;
+
+  /* status chips: always paired with icon + word, >= 4.5:1 contrast */
+  --pass-bg: #07291e;
+  --pass: #6ee7b7;
+  --warn-bg: #2b1d05;
+  --warn: #fcd34d;
+  --fail-bg: #310b1c;
+  --fail: #fda4af;
+
+  /* geometry & spacing */
+  --radius-tile: 14px;
+  --radius-chip: 8px;
+  --gap: 14px;
+
+  /* typography */
   --font-ui: 'Lexend', system-ui, sans-serif;
   --font-mono: 'DM Mono', ui-monospace, Consolas, monospace;
-  --font-display: 'Fraunces', Georgia, serif;   /* home page headline only */
+  --font-display: 'Fraunces', Georgia, serif;
 
-  /* motion: short UI transitions; set to 0 under reduced motion below */
+  /* motion */
   --dur-fast: 120ms;
   --dur-base: 180ms;
+}
+
+/* Theme 2: Luminous Shrine Tech (sleek silver-white & deep shrine plum) */
+:root[data-theme='shrine-tech'] {
+  color-scheme: light;
+
+  --bg: #f4f1fa;
+  --home-bg: linear-gradient(155deg, #f7f4fc 0%, #ede6fb 50%, #f9e6f0 100%);
+  --sidebar-bg: #180e29;
+  --sidebar-ink: #f5f0ff;
+  --sidebar-muted: #bfb2dc;
+  --sidebar-border: rgba(212, 168, 74, 0.3);
+
+  --tile: #ffffff;
+  --tile-soft: #ede7f8;
+  --tile-elevated: #ffffff;
+  --tile-border: rgba(58, 42, 90, 0.16);
+  --tile-border-strong: rgba(180, 130, 35, 0.55);
+
+  --hero: linear-gradient(125deg, #e7ddfa 0%, #f3d9ec 55%, #fbe0eb 100%);
+
+  --tile-lilac: #ebe3fc;
+  --tile-mist: #f0ecfa;
+  --tile-butter: #f7ebd2;
+  --tile-rose: #f9dfe9;
+  --tile-blush: #f7eaf1;
+
+  --ink: #231638;
+  --ink-muted: #564473;
+  --on-ink: #f6f3fc;
+
+  --cta-bg: #231638;
+  --cta-ink: #f6f3fc;
+
+  --lilac: #7c3aed;
+  --sakura: #db2777;
+  --gold: #b8860b;
+  --gold-glow: #fef08a;
+  --hanko: #a31d52;
+  --ai: #6624d4;
+  --ai-glow: #9333ea;
+  --electro-cyan: #7e22ce;
+
+  --pass-bg: #d6f0e2;
+  --pass: #145e3a;
+  --warn-bg: #f6e6c2;
+  --warn: #784d00;
+  --fail-bg: #f8d6df;
+  --fail: #a31d52;
+}
+
+/* Theme 3: Eclipse Hybrid (obsidian command shell & dark hero + luminous data panels) */
+:root[data-theme='eclipse'] {
+  color-scheme: light;
+
+  --bg: #eae4f6;
+  --home-bg: linear-gradient(155deg, #e8e0f7 0%, #f1e4f3 50%, #e4dcf7 100%);
+  --sidebar-bg: #0b0616;
+  --sidebar-ink: #f5f0ff;
+  --sidebar-muted: #bbaed8;
+  --sidebar-border: rgba(192, 132, 252, 0.28);
+
+  --tile: #ffffff;
+  --tile-soft: #e6def5;
+  --tile-elevated: #f8f5fd;
+  --tile-border: rgba(45, 25, 80, 0.18);
+  --tile-border-strong: rgba(180, 130, 35, 0.6);
+
+  --hero: linear-gradient(135deg, #e5d8fb 0%, #f1d4eb 55%, #f9dce8 100%);
+
+  --tile-lilac: #e8dffb;
+  --tile-mist: #eee9fa;
+  --tile-butter: #f6ead0;
+  --tile-rose: #f8dde8;
+  --tile-blush: #f5e6ef;
+
+  --ink: #1e1136;
+  --ink-muted: #513e6e;
+  --on-ink: #f6f3fc;
+
+  --cta-bg: #1e1136;
+  --cta-ink: #f6f3fc;
+
+  --lilac: #7c3aed;
+  --sakura: #be185d;
+  --gold: #b8860b;
+  --gold-glow: #fef08a;
+  --hanko: #a31d52;
+  --ai: #6222cc;
+  --ai-glow: #a855f7;
+  --electro-cyan: #7e22ce;
+
+  --pass-bg: #d6f0e2;
+  --pass: #145e3a;
+  --warn-bg: #f6e6c2;
+  --warn: #784d00;
+  --fail-bg: #f8d6df;
+  --fail: #a31d52;
 }
 
 @media (prefers-reduced-motion: reduce) {
