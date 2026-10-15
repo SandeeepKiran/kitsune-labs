@@ -1,139 +1,179 @@
-/* 2-Column Split IDE Workspace for tool pages.
-   Top row: Compact Command Deck (Hero header + Answer KPI + Run telemetry).
-   Main split: Left pane (Input / File Drop / Tool Options) | Right pane (Live Results + Export + Run Log).
-   Under 960px: collapses cleanly into a single column with zero horizontal overflow. */
+/* Apple Segmented Focus Canvas for tool pages.
+   Calm, centered single-column flow with generous breathing room,
+   iOS/macOS segmented pill bar, and zero bento box clutter. */
 
-.bento {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-areas:
-    'hero hero hero hero hero hero answer answer answer run run run'
-    'input input input input input results results results results results results results'
-    'input input input input input export export export log log log log';
-  gap: var(--gap);
-  align-items: start;
+.focus-canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 820px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.bento__hero {
-  grid-area: hero;
-  min-height: 168px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.bento__answer {
-  grid-area: answer;
-  min-height: 168px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.bento__run {
-  grid-area: run;
-  min-height: 168px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-}
-.bento__input {
-  grid-area: input;
-  display: flex;
-  flex-direction: column;
-}
-.bento__results {
-  grid-area: results;
-}
-.bento__log {
-  grid-area: log;
-}
-.bento__export {
-  grid-area: export;
-}
-
-.bento__hero-text {
-  position: relative;
-  z-index: 1;
-  max-width: 560px;
-}
-.bento__eyebrow {
+/* -- 1. Minimalist Apple Header Row ------------------------------------- */
+.focus-header {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 0 0 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 2px;
 }
-.bento__hero h1 {
+.focus-header__titles {
+  min-width: 0;
+  flex: 1;
+}
+.focus-header__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.focus-header h1 {
   margin: 0;
-  font-size: clamp(24px, 2.4vw, 32px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--ink);
 }
 .bento__desc {
   margin: 4px 0 0;
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--ink-muted);
 }
-.bento__fox {
-  position: absolute;
-  right: -12px;
-  bottom: -18px;
-  width: 210px;
-  opacity: 0.45;
-  pointer-events: none;
+.focus-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 
-.hero-bar {
+/* -- 2. Apple Segmented Pill Bar ---------------------------------------- */
+.seg-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border-radius: 11px;
+  background: var(--seg-track);
+  border: 1px solid var(--tile-border);
+}
+.seg-bar__btn {
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+.seg-bar__btn:hover {
+  color: var(--ink);
+}
+.seg-bar__btn.is-active {
+  background: var(--seg-thumb);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* -- 3. Compact Telemetry & AI Bar -------------------------------------- */
+.telemetry-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  width: 100%;
-  margin-top: 14px;
-  padding: 8px 10px 8px 14px;
-  border-radius: 10px;
-  background: var(--tile);
-  border: 1px solid var(--tile-border);
+  gap: 12px 20px;
+  padding: 14px 18px;
+}
+.telemetry-bar__metric {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.telemetry-bar__value {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
   color: var(--ink);
-  font-size: 12.5px;
 }
-.hero-bar .btn {
-  margin-left: auto;
+.telemetry-bar__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-
-.bento__sub {
-  margin: 6px 0 0;
+.telemetry-bar__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.telemetry-bar__sub {
+  font-size: 12px;
   color: var(--ink-muted);
-  font-size: 12.5px;
+}
+.telemetry-bar__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.telemetry-bar__progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .bento__run-status {
-  margin: 6px 0 0;
-  font-size: 11.5px;
+  margin: 0;
+  font-size: 12px;
   color: var(--ink-muted);
+}
+
+/* -- 4. Input Sheet ----------------------------------------------------- */
+.sheet-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.sheet-head .tile__title {
+  margin: 0;
+}
+.bento__hint {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 12.5px;
 }
 
 .drop-zone {
   position: relative;
-  flex: 1;
   display: flex;
 }
 .bento__textarea {
   flex: 1;
-  min-height: 320px;
+  min-height: 200px;
   resize: vertical;
   font-size: 12.5px;
   line-height: 1.6;
+  background: var(--tile-soft);
 }
 .drop-zone__overlay {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  border: 2px dashed var(--gold);
-  border-radius: var(--radius-chip);
-  background: var(--tile-elevated);
+  border: 2px dashed var(--sakura);
+  border-radius: var(--radius-box);
+  background: var(--tile);
   color: var(--ink);
-  font-weight: 700;
+  font-weight: 600;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-base) ease;
@@ -155,14 +195,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.bento__hint {
-  margin: 8px 0 0;
-  color: var(--ink-muted);
-  font-size: 12.5px;
-}
 
+/* -- 5. Results Sheet --------------------------------------------------- */
 .bento__results-body {
-  max-height: 580px;
+  max-height: 540px;
   overflow-y: auto;
 }
 .turns {
@@ -191,7 +227,7 @@
   font-size: 11.5px;
 }
 .turn__who {
-  font-weight: 700;
+  font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -201,8 +237,19 @@
   overflow-wrap: anywhere;
 }
 
+/* -- 6. Export & Run Log Bottom Split ----------------------------------- */
+.focus-bottom-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 16px;
+}
+.bento__exports {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .run-log {
-  max-height: 150px;
+  max-height: 130px;
   overflow-y: auto;
   margin: 0;
   padding: 0;
@@ -225,24 +272,18 @@
 .run-log__line--fail { color: var(--fail); }
 .run-log__empty { color: var(--ink-muted); }
 
-.bento__exports {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
 /* -- loaded spreadsheet / zip ------------------------------------------- */
 .loaded {
   flex: 1;
-  min-height: 280px;
+  min-height: 200px;
   padding: 16px;
-  border-radius: var(--radius-chip);
+  border-radius: var(--radius-box);
   border: 1px dashed var(--tile-border-strong);
   background: var(--tile-soft);
 }
 .loaded__name {
   margin: 0;
-  font-weight: 700;
+  font-weight: 600;
   overflow-wrap: anywhere;
 }
 .loaded__summary {
@@ -280,13 +321,13 @@
   grid-column: 1 / -1;
   margin: 0;
   font-size: 12.5px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .mapping__field {
   display: grid;
   gap: 4px;
   font-size: 12.5px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .field--compact {
   min-height: 34px;
@@ -324,7 +365,7 @@
   margin: 0 0 8px;
   padding: 0;
   font-size: 12.5px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .option-fieldset {
   min-width: 0;
@@ -336,28 +377,24 @@
   margin-top: 10px;
 }
 
-/* -- AI switch in the run tile ------------------------------------------- */
+/* -- AI switch in telemetry bar ----------------------------------------- */
 .ai-toggle {
-  display: grid;
-  gap: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 .ai-toggle .check {
   margin: 0;
   color: var(--ai);
+  font-size: 12.5px;
 }
 .ai-toggle input:disabled + span {
   color: var(--ink-muted);
 }
-.ai-toggle__note {
-  margin: 0;
-  font-size: 11.5px;
-  color: var(--ink-muted);
-}
 .btn--small {
-  min-height: 30px;
-  padding: 4px 10px;
+  min-height: 28px;
+  padding: 3px 10px;
   font-size: 12px;
-  justify-self: start;
 }
 
 /* -- result pieces ------------------------------------------------------- */
@@ -371,7 +408,7 @@
   gap: 8px;
   margin: 0 0 8px;
   font-size: 13.5px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .stats {
   display: grid;
@@ -391,9 +428,8 @@
 }
 .stats__item dd {
   margin: 2px 0 0;
-  font-family: var(--font-mono);
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 .stats__item--fail dd { color: var(--fail); }
@@ -434,7 +470,7 @@
   border: 0;
   background: none;
   font: inherit;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ink);
   cursor: pointer;
   white-space: nowrap;
@@ -456,18 +492,18 @@
 }
 .finding--fail {
   background: var(--fail-bg);
-  border-color: rgba(251, 113, 133, 0.35);
+  border-color: rgba(190, 18, 60, 0.2);
 }
 .finding--warn {
   background: var(--warn-bg);
-  border-color: rgba(252, 211, 77, 0.35);
+  border-color: rgba(133, 77, 14, 0.2);
 }
 .finding--pass {
   display: flex;
   align-items: center;
   gap: 10px;
   background: var(--pass-bg);
-  border-color: rgba(110, 231, 183, 0.35);
+  border-color: rgba(21, 104, 52, 0.2);
 }
 .finding__head {
   display: flex;
@@ -482,7 +518,7 @@
 .finding__title {
   margin: 8px 0 4px;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .finding__evidence,
 .finding__fix {
@@ -500,7 +536,7 @@
   margin: 6px 0;
 }
 .route__arrow {
-  font-weight: 800;
+  font-weight: 700;
 }
 .chip--ink {
   background: var(--cta-bg);
@@ -508,29 +544,27 @@
   border-color: transparent;
 }
 
-/* Hanko stamp: a round shrine seal on Fail findings (motion: slam, once). */
+/* Hanko stamp: a subtle round seal on Fail findings (motion: slam, once). */
 .hanko {
   position: absolute;
   right: 14px;
   top: 12px;
   display: grid;
   place-items: center;
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  border: 2.5px solid var(--hanko);
+  border: 2px solid var(--hanko);
   color: var(--hanko);
-  font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-size: 12px;
   transform: rotate(-12deg);
   pointer-events: none;
   animation: slam 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.turn--fail { box-shadow: inset 4px 0 0 var(--fail); }
-.turn--warn { box-shadow: inset 4px 0 0 var(--warn); }
+.turn--fail { box-shadow: inset 3px 0 0 var(--fail); }
+.turn--warn { box-shadow: inset 3px 0 0 var(--warn); }
 .turn__marks {
   grid-column: 3;
   display: flex;
@@ -589,7 +623,7 @@
   font-size: 13.5px;
   line-height: 1.6;
 }
-.report__title { margin: 0; font-size: 18px; font-weight: 800; }
+.report__title { margin: 0; font-size: 18px; font-weight: 700; }
 .report__sub { margin: 2px 0 0; color: var(--ink-muted); font-size: 12.5px; }
 .report__section { margin-top: 14px; }
 .report__section p, .report__section ul { margin: 4px 0; }
@@ -608,26 +642,9 @@
   overflow: auto;
 }
 
-@media (max-width: 1120px) {
-  .bento {
+@media (max-width: 760px) {
+  .focus-bottom-split {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      'hero'
-      'answer'
-      'run'
-      'input'
-      'results'
-      'export'
-      'log';
-  }
-  .bento__hero,
-  .bento__answer,
-  .bento__run {
-    min-height: 0;
-  }
-  .bento__fox {
-    width: 170px;
-    opacity: 0.35;
   }
   .turn {
     grid-template-columns: 64px minmax(0, 1fr);
@@ -635,14 +652,5 @@
   .turn__text,
   .turn__marks {
     grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 560px) {
-  .bento__fox {
-    display: none;
-  }
-  .hero-bar .btn {
-    margin-left: 0;
   }
 }

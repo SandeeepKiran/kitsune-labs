@@ -1,6 +1,7 @@
-// The bento tool-page template. Tiles: hero (with Load Mousy sample), answer, run,
-// input (paste / drop / pick, plus tool settings), results, run log, export.
-// Each tool supplies a ToolDefinition; the template handles files, progress, AI and export.
+// Apple Segmented Focus Canvas tool-page template.
+// Clean header row (Title + subtitle on left; Neutral "Load Mousy sample" pill + Sakura-Rose "Run" pill on right),
+// iOS/macOS Segmented Pill Bar (1. Input · 2. Results · 3. Export & Log),
+// and a calm, centered single-column workspace with zero bento clutter.
 import './tool-page.css';
 
 import { AiError, askAi, type AiReply, type AiRequest } from './ai.ts';
@@ -74,45 +75,58 @@ export function mountToolPage(main: HTMLElement, tool: ToolInfo, def: ToolDefini
   const log = createRunLog();
   const usesAi = tool.ai !== 'none';
 
-  // -- hero ---------------------------------------------------------------------
-  const loadButton = el('button', { type: 'button', class: 'btn btn--ink', 'data-testid': 'load-sample' }, 'Load Mousy sample');
-  const hero = el('section', { class: 'tile tile--hero bento__hero rise', style: '--i:0', 'aria-labelledby': 'tool-title' },
-    el('div', { class: 'bento__hero-text' },
-      el('p', { class: 'bento__eyebrow' },
+  // -- 1. Minimalist Apple Header Row -------------------------------------------
+  // Option C: Neutral secondary pill for "Load Mousy sample", solid Sakura-Rose pill for "Run"
+  const loadButton = el('button', { type: 'button', class: 'btn', 'data-testid': 'load-sample' }, 'Load Mousy sample');
+  const runButton = el('button', { type: 'button', class: 'btn btn--ink', 'data-testid': 'run' }, 'Run');
+
+  const header = el('section', { class: 'focus-header rise', style: '--i:0', 'aria-labelledby': 'tool-title' },
+    el('div', { class: 'focus-header__titles' },
+      el('div', { class: 'focus-header__title-row' },
+        el('h1', { id: 'tool-title' }, tool.name),
         el('span', { class: `chip${usesAi ? ' chip--ai' : ''}` }, AI_LABELS[tool.ai]),
-        el('span', { class: 'chip' }, usesAi ? 'Works without a key' : 'Runs in your browser'),
       ),
-      el('h1', { id: 'tool-title' }, tool.name),
       el('p', { class: 'bento__desc' }, tool.description),
-      el('div', { class: 'hero-bar' },
-        el('span', {}, def.heroHint ?? 'Paste a conversation, or drop a .txt, .json or .csv file'),
-        loadButton,
-      ),
+    ),
+    el('div', { class: 'focus-header__actions' },
+      loadButton,
+      runButton,
     ),
   );
-  hero.append(fromHtml(sleepingFox('bento__fox')));
 
-  // -- answer + run ---------------------------------------------------------------
-  const answerLabel = el('h2', { class: 'tile__title' }, def.answerLabel);
-  const answerValue = el('div', { class: 'big-number', 'data-testid': 'answer' }, '–');
-  const answerSub = el('p', { class: 'bento__sub', 'data-testid': 'answer-sub' }, 'Load the sample or add your own input.');
-  const answer = el('section', { class: 'tile tile--lilac bento__answer rise', style: '--i:1', 'aria-live': 'polite' },
-    answerLabel, answerValue, answerSub);
-
-  const runButton = el('button', { type: 'button', class: 'btn btn--ink btn--big', 'data-testid': 'run' }, 'Run');
-  const tails = nineTails(0);
-  const runStatus = el('p', { class: 'bento__run-status mono', 'data-testid': 'run-status' }, 'Ready');
-  const aiBox = usesAi ? buildAiToggle() : null;
-  const run = el('section', { class: 'tile tile--butter bento__run rise', style: '--i:2' },
-    el('h2', { class: 'tile__title' }, 'Run'),
-    runButton,
-    aiBox?.element ?? null,
-    el('div', {}, tails, runStatus),
+  // -- 2. Apple Segmented Pill Bar (1. Input · 2. Results · 3. Export & Log) ----
+  const segInputBtn = el('button', { type: 'button', class: 'seg-bar__btn is-active', 'data-stage': 'input' }, '1. Input');
+  const segResultsBtn = el('button', { type: 'button', class: 'seg-bar__btn', 'data-stage': 'results' }, '2. Results');
+  const segExportBtn = el('button', { type: 'button', class: 'seg-bar__btn', 'data-stage': 'export' }, '3. Export & Log');
+  const segBar = el('nav', { class: 'seg-bar rise', style: '--i:1', 'aria-label': 'Tool stages' },
+    segInputBtn,
+    segResultsBtn,
+    segExportBtn,
   );
 
-  // -- input ----------------------------------------------------------------------
+  // -- 3. Compact Telemetry & AI Bar --------------------------------------------
+  const answerLabel = el('span', { class: 'telemetry-bar__label' }, def.answerLabel);
+  const answerValue = el('strong', { class: 'telemetry-bar__value', 'data-testid': 'answer' }, '–');
+  const answerSub = el('span', { class: 'telemetry-bar__sub', 'data-testid': 'answer-sub' },
+    def.heroHint ?? 'Load the sample or add your own input.');
+  const tails = nineTails(0, 'tails--small');
+  const runStatus = el('span', { class: 'bento__run-status mono', 'data-testid': 'run-status' }, 'Ready');
+  const aiBox = usesAi ? buildAiToggle() : null;
+
+  const telemetryBar = el('section', { class: 'tile telemetry-bar rise', style: '--i:2', 'aria-live': 'polite' },
+    el('div', { class: 'telemetry-bar__metric' },
+      answerValue,
+      el('div', { class: 'telemetry-bar__meta' }, answerLabel, answerSub),
+    ),
+    el('div', { class: 'telemetry-bar__controls' },
+      aiBox?.element ?? null,
+      el('div', { class: 'telemetry-bar__progress' }, tails, runStatus),
+    ),
+  );
+
+  // -- 4. Input Sheet -----------------------------------------------------------
   const textarea = el('textarea', {
-    id: 'tool-input', class: 'field mono bento__textarea', rows: '14', spellcheck: 'false',
+    id: 'tool-input', class: 'field mono bento__textarea', rows: '10', spellcheck: 'false',
     placeholder: def.placeholder ?? DEFAULT_PLACEHOLDER, 'aria-describedby': 'input-hint',
   });
   const loadedPanel = el('div', { class: 'loaded', hidden: true, 'data-testid': 'loaded-file' });
@@ -127,28 +141,58 @@ export function mountToolPage(main: HTMLElement, tool: ToolInfo, def: ToolDefini
     onError: (message) => log.add(message, 'warn'),
   });
   const optionsBox = def.options ? el('div', { class: 'tool-options' }, def.options()) : null;
-  const input = el('section', { class: 'tile bento__input rise', style: '--i:3' },
-    el('h2', { class: 'tile__title' }, el('label', { for: 'tool-input' }, def.inputLabel ?? 'Conversation')),
+  const inputSection = el('section', { id: 'stage-input', class: 'tile bento__input rise', style: '--i:3' },
+    el('div', { class: 'sheet-head' },
+      el('h2', { class: 'tile__title' }, el('label', { for: 'tool-input' }, def.inputLabel ?? 'Conversation')),
+      el('p', { id: 'input-hint', class: 'bento__hint' }, def.inputHint ?? 'Drop a file on the box, or paste text. Ctrl+Enter runs.'),
+    ),
     dropZone,
     el('div', { class: 'bento__input-row' }, picker, clearButton, sourceChip),
-    el('p', { id: 'input-hint', class: 'bento__hint' }, def.inputHint ?? 'Drop a file on the box, or paste text. Ctrl+Enter runs.'),
     optionsBox,
   );
 
-  // -- results, log, export -------------------------------------------------------
+  // -- 5. Results Sheet ---------------------------------------------------------
   const resultsBody = el('div', { class: 'bento__results-body', 'data-testid': 'results' }, emptyState());
-  const results = el('section', { class: 'tile tile--mist bento__results rise', style: '--i:4', 'aria-labelledby': 'results-title' },
+  const resultsSection = el('section', { id: 'stage-results', class: 'tile bento__results rise', style: '--i:4', 'aria-labelledby': 'results-title' },
     el('h2', { id: 'results-title', class: 'tile__title' }, 'Results'),
     resultsBody,
   );
-  const logTile = el('section', { class: 'tile tile--blush bento__log rise', style: '--i:5' },
-    el('h2', { class: 'tile__title' }, 'Run log'), log.element);
+
+  // -- 6. Export & Run Log Sheet ------------------------------------------------
   const exportList = el('div', { class: 'bento__exports' });
-  const exportTile = el('section', { class: 'tile tile--mist bento__export rise', style: '--i:6' },
-    el('h2', { class: 'tile__title' }, 'Export'), exportList);
+  const exportTile = el('section', { id: 'stage-export', class: 'tile bento__export rise', style: '--i:5' },
+    el('h2', { class: 'tile__title' }, 'Export'),
+    exportList,
+  );
+  const logTile = el('section', { class: 'tile bento__log rise', style: '--i:6' },
+    el('h2', { class: 'tile__title' }, 'Run log'),
+    log.element,
+  );
   renderExports([]);
 
-  main.append(el('div', { class: 'bento' }, hero, answer, run, input, results, logTile, exportTile));
+  const setActiveSegment = (stage: 'input' | 'results' | 'export', scroll = false) => {
+    for (const btn of [segInputBtn, segResultsBtn, segExportBtn]) {
+      btn.classList.toggle('is-active', btn.dataset.stage === stage);
+    }
+    if (scroll) {
+      const target = stage === 'input' ? inputSection : stage === 'results' ? resultsSection : exportTile;
+      target.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' });
+    }
+  };
+  segInputBtn.addEventListener('click', () => setActiveSegment('input', true));
+  segResultsBtn.addEventListener('click', () => setActiveSegment('results', true));
+  segExportBtn.addEventListener('click', () => setActiveSegment('export', true));
+
+  main.append(
+    el('div', { class: 'focus-canvas bento' },
+      header,
+      segBar,
+      telemetryBar,
+      resultsSection,
+      inputSection,
+      el('div', { class: 'focus-bottom-split' }, exportTile, logTile),
+    ),
+  );
 
   // -- state ----------------------------------------------------------------------
   let sourceName = 'pasted text';
@@ -172,6 +216,8 @@ export function mountToolPage(main: HTMLElement, tool: ToolInfo, def: ToolDefini
     answerValue.textContent = '–';
     answerLabel.textContent = def.answerLabel;
     answerSub.textContent = 'Load the sample or add your own input.';
+    segResultsBtn.textContent = '2. Results';
+    setActiveSegment('input');
     setLit(tails, 0);
     runStatus.textContent = 'Ready';
     renderExports([]);
@@ -313,16 +359,15 @@ export function mountToolPage(main: HTMLElement, tool: ToolInfo, def: ToolDefini
       async ask(request) {
         if (!aiBox?.enabled()) throw new AiError('AI is off for this run.');
         calls += 1;
-        // Electro spark: a violet line runs around the tiles while the AI works.
-        results.classList.add('is-ai-running');
-        run.classList.add('is-ai-running');
+        resultsSection.classList.add('is-ai-running');
+        telemetryBar.classList.add('is-ai-running');
         try {
           const reply = await askAi(request);
           log.add(`AI call ${calls} to ${PROVIDERS[reply.provider].label} (${reply.model}) · ${(reply.ms / 1000).toFixed(1)} s`);
           return reply;
         } finally {
-          results.classList.remove('is-ai-running');
-          run.classList.remove('is-ai-running');
+          resultsSection.classList.remove('is-ai-running');
+          telemetryBar.classList.remove('is-ai-running');
         }
       },
     };
@@ -340,7 +385,6 @@ export function mountToolPage(main: HTMLElement, tool: ToolInfo, def: ToolDefini
     };
 
     try {
-      // Time only the work, not the tail animation, so the log shows honest numbers.
       const started = performance.now();
       const work = Promise.resolve().then(() => def.run(ctx));
       const animation = idleTails(() => reported);
@@ -351,6 +395,8 @@ export function mountToolPage(main: HTMLElement, tool: ToolInfo, def: ToolDefini
       answerLabel.textContent = result.answer.label;
       answerValue.textContent = result.answer.value;
       answerSub.textContent = result.answer.sub ?? '';
+      segResultsBtn.textContent = `2. Results (${result.answer.value})`;
+      setActiveSegment('results');
       resultsBody.replaceChildren(result.results);
       renderExports(result.exports);
       runStatus.textContent = 'Done';
@@ -398,7 +444,7 @@ export function mountToolPage(main: HTMLElement, tool: ToolInfo, def: ToolDefini
     const label = el('span', {});
     const keyButton = el('button', { type: 'button', class: 'btn btn--quiet btn--small', 'data-testid': 'ai-add-key' }, 'Add AI key');
     keyButton.addEventListener('click', openKeyDrawer);
-    const note = el('p', { class: 'ai-toggle__note' }, def.aiNote ?? 'AI adds a second opinion. Rules still run.');
+    const note = el('span', { class: 'ai-toggle__note visually-hidden' }, def.aiNote ?? 'AI adds a second opinion. Rules still run.');
     const element = el('div', { class: 'ai-toggle' }, el('label', { class: 'check' }, box, label), keyButton, note);
     let wanted = true;    // the visitor's choice, kept while the key comes and goes
     box.addEventListener('change', () => { wanted = box.checked; });
@@ -420,9 +466,9 @@ function emptyState(): HTMLElement {
   const box = el('div', { class: 'empty' });
   box.append(fromHtml(sleepingFox()));
   box.append(
-    el('p', { class: 'empty__title' }, 'Nothing sniffed out yet.'),
-    el('p', {}, 'Drop a file to start, or press Load Mousy sample.'),
-    el('p', {}, el('a', { href: urls.sampleData }, 'See all sample files')),
+    el('p', { class: 'empty__title' }, 'Ready when you are.'),
+    el('p', {}, 'Press Load Mousy sample above, or drop a file below.'),
+    el('p', {}, el('a', { href: urls.sampleData }, 'Browse all sample files')),
   );
   return box;
 }

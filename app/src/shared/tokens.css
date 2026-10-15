@@ -1,173 +1,212 @@
-/* Design tokens: futuristic Yae Miko Electro AI console.
-   Supports 3 surface themes via [data-theme="dark-electro" | "shrine-tech" | "eclipse"]
-   and 2 visual modes via [data-visual="totem" | "sigil"].
+/* Design tokens: Apple Minimalist Focus Canvas + Sakura-Rose accents.
+   Supports 3 finishes via [data-theme="shrine-tech" (Daylight Silver default) | "dark-electro" (Space Black) | "eclipse" (Sakura Glass)].
    All text-on-surface pairs meet WCAG 2.2 AA (4.5:1 normal text, 3:1 large text / focus). */
 
 :root,
+:root[data-theme='shrine-tech'] {
+  color-scheme: light;
+
+  /* Apple Daylight Silver surfaces */
+  --bg: #f5f5f7;
+  --home-bg: #f5f5f7;
+  --sidebar-bg: #fbfbfd;
+  --sidebar-ink: #1d1d1f;
+  --sidebar-muted: #56565c;
+  --sidebar-border: rgba(0, 0, 0, 0.08);
+  --sidebar-hover: rgba(0, 0, 0, 0.05);
+  --sidebar-active-bg: #e8e8ed;
+
+  --tile: #ffffff;
+  --tile-soft: #f5f5f7;
+  --tile-elevated: #ffffff;
+  --tile-border: rgba(0, 0, 0, 0.08);
+  --tile-border-strong: rgba(190, 24, 93, 0.28);
+
+  --hero: #ffffff;
+
+  /* unified clean surfaces instead of candy bento colors */
+  --tile-lilac: #ffffff;
+  --tile-mist: #ffffff;
+  --tile-butter: #ffffff;
+  --tile-rose: #ffffff;
+  --tile-blush: #ffffff;
+
+  /* Apple SF ink */
+  --ink: #1d1d1f;
+  --ink-muted: #56565c;
+  --on-ink: #ffffff;
+
+  /* Option C buttons: Neutral Secondary Pill + Solid Sakura-Rose Primary CTA */
+  --cta-bg: #be185d;
+  --cta-hover: #9d174d;
+  --cta-ink: #ffffff;
+  --btn-secondary-bg: #e8e8ed;
+  --btn-secondary-hover: #dcdce2;
+  --btn-secondary-ink: #1d1d1f;
+
+  /* segmented pill bar */
+  --seg-track: #e8e8ed;
+  --seg-thumb: #ffffff;
+
+  /* Sleek Kitsune badge colors */
+  --logo-bg: #fce7f3;
+  --logo-border: #f472b6;
+  --logo-stroke: #9d174d;
+
+  /* Sakura-Rose & Amethyst accents */
+  --lilac: #9d174d;
+  --sakura: #be185d;
+  --gold: #be185d;
+  --gold-glow: #fce7f3;
+  --hanko: #be123c;
+  --ai: #7e22ce;
+  --ai-glow: #db2777;
+
+  /* status chips: always paired with icon + word, >= 4.5:1 contrast */
+  --pass-bg: #dcfce7;
+  --pass: #156834;
+  --warn-bg: #fef3c7;
+  --warn: #854d0e;
+  --fail-bg: #ffe4e6;
+  --fail: #be123c;
+
+  /* Apple geometry & spacing */
+  --radius-tile: 16px;
+  --radius-chip: 980px;
+  --radius-box: 10px;
+  --gap: 16px;
+
+  /* typography */
+  --font-ui: 'Lexend', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  --font-display: 'Fraunces', Georgia, serif;
+
+  /* motion */
+  --dur-fast: 140ms;
+  --dur-base: 200ms;
+}
+
+/* Finish 2: Space Black (Apple Pro Dark Mode) */
 :root[data-theme='dark-electro'] {
   color-scheme: dark;
 
-  /* surfaces: deep Inazuma midnight obsidian & electro glass */
-  --bg: #080510;
-  --home-bg: linear-gradient(155deg, #080510 0%, #110922 50%, #180c2e 100%);
-  --sidebar-bg: #0c0718;
-  --sidebar-ink: #f3eeff;
-  --sidebar-muted: #b5a6d4;
-  --sidebar-border: rgba(192, 132, 252, 0.2);
+  --bg: #000000;
+  --home-bg: #000000;
+  --sidebar-bg: #141416;
+  --sidebar-ink: #f5f5f7;
+  --sidebar-muted: #a1a1a6;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-hover: rgba(255, 255, 255, 0.06);
+  --sidebar-active-bg: #2c2c2e;
 
-  --tile: #120b22;
-  --tile-soft: #1a1030;
-  --tile-elevated: #1f1438;
-  --tile-border: rgba(192, 132, 252, 0.22);
-  --tile-border-strong: rgba(232, 190, 90, 0.45);
+  --tile: #1c1c1e;
+  --tile-soft: #262629;
+  --tile-elevated: #2c2c2e;
+  --tile-border: rgba(255, 255, 255, 0.1);
+  --tile-border-strong: rgba(244, 114, 182, 0.35);
 
-  --hero: linear-gradient(135deg, #1a0d33 0%, #2a114b 52%, #3a1242 100%);
+  --hero: #1c1c1e;
 
-  /* semantic tile variants (used across tools & handbook) */
-  --tile-lilac: #191030;
-  --tile-mist: #150d28;
-  --tile-butter: #1f152c;
-  --tile-rose: #26102c;
-  --tile-blush: #1b0e26;
+  --tile-lilac: #1c1c1e;
+  --tile-mist: #1c1c1e;
+  --tile-butter: #1c1c1e;
+  --tile-rose: #1c1c1e;
+  --tile-blush: #1c1c1e;
 
-  /* ink (high contrast on dark surfaces) */
-  --ink: #f3eeff;
-  --ink-muted: #b5a6d4;
-  --on-ink: #080510;
+  --ink: #f5f5f7;
+  --ink-muted: #a1a1a6;
+  --on-ink: #000000;
 
-  /* primary CTA button */
-  --cta-bg: #e9d5ff;
-  --cta-ink: #140926;
+  /* Option C in Space Black: Crisp #3a3a3c neutral pill + Solid Sakura-Rose CTA (#be185d with #fff text = 6.04:1) */
+  --cta-bg: #be185d;
+  --cta-hover: #db2777;
+  --cta-ink: #ffffff;
+  --btn-secondary-bg: #3a3a3c;
+  --btn-secondary-hover: #48484a;
+  --btn-secondary-ink: #f5f5f7;
 
-  /* Yae Miko Electro & Shrine accents */
-  --lilac: #d8b4fe;
+  --seg-track: #141416;
+  --seg-thumb: #2c2c2e;
+
+  --logo-bg: #501836;
+  --logo-border: #f472b6;
+  --logo-stroke: #fce7f3;
+
+  --lilac: #f472b6;
   --sakura: #f472b6;
-  --gold: #eab308;
-  --gold-glow: #fef08a;
-  --hanko: #fb7185;
-  --ai: #d8b4fe;
-  --ai-glow: #c084fc;
-  --electro-cyan: #a855f7;
+  --gold: #f472b6;
+  --gold-glow: #501836;
+  --hanko: #fda4af;
+  --ai: #e9d5ff;
+  --ai-glow: #f472b6;
 
-  /* status chips: always paired with icon + word, >= 4.5:1 contrast */
   --pass-bg: #07291e;
   --pass: #6ee7b7;
   --warn-bg: #2b1d05;
   --warn: #fcd34d;
   --fail-bg: #310b1c;
   --fail: #fda4af;
-
-  /* geometry & spacing */
-  --radius-tile: 14px;
-  --radius-chip: 8px;
-  --gap: 14px;
-
-  /* typography */
-  --font-ui: 'Lexend', system-ui, sans-serif;
-  --font-mono: 'DM Mono', ui-monospace, Consolas, monospace;
-  --font-display: 'Fraunces', Georgia, serif;
-
-  /* motion */
-  --dur-fast: 120ms;
-  --dur-base: 180ms;
 }
 
-/* Theme 2: Luminous Shrine Tech (sleek silver-white & deep shrine plum) */
-:root[data-theme='shrine-tech'] {
-  color-scheme: light;
-
-  --bg: #f4f1fa;
-  --home-bg: linear-gradient(155deg, #f7f4fc 0%, #ede6fb 50%, #f9e6f0 100%);
-  --sidebar-bg: #180e29;
-  --sidebar-ink: #f5f0ff;
-  --sidebar-muted: #bfb2dc;
-  --sidebar-border: rgba(212, 168, 74, 0.3);
-
-  --tile: #ffffff;
-  --tile-soft: #ede7f8;
-  --tile-elevated: #ffffff;
-  --tile-border: rgba(58, 42, 90, 0.16);
-  --tile-border-strong: rgba(180, 130, 35, 0.55);
-
-  --hero: linear-gradient(125deg, #e7ddfa 0%, #f3d9ec 55%, #fbe0eb 100%);
-
-  --tile-lilac: #ebe3fc;
-  --tile-mist: #f0ecfa;
-  --tile-butter: #f7ebd2;
-  --tile-rose: #f9dfe9;
-  --tile-blush: #f7eaf1;
-
-  --ink: #231638;
-  --ink-muted: #564473;
-  --on-ink: #f6f3fc;
-
-  --cta-bg: #231638;
-  --cta-ink: #f6f3fc;
-
-  --lilac: #7c3aed;
-  --sakura: #db2777;
-  --gold: #b8860b;
-  --gold-glow: #fef08a;
-  --hanko: #a31d52;
-  --ai: #6624d4;
-  --ai-glow: #9333ea;
-  --electro-cyan: #7e22ce;
-
-  --pass-bg: #d6f0e2;
-  --pass: #145e3a;
-  --warn-bg: #f6e6c2;
-  --warn: #784d00;
-  --fail-bg: #f8d6df;
-  --fail: #a31d52;
-}
-
-/* Theme 3: Eclipse Hybrid (obsidian command shell & dark hero + luminous data panels) */
+/* Finish 3: Sakura Glass (Soft Sakura-Quartz Ambient Canvas) */
 :root[data-theme='eclipse'] {
   color-scheme: light;
 
-  --bg: #eae4f6;
-  --home-bg: linear-gradient(155deg, #e8e0f7 0%, #f1e4f3 50%, #e4dcf7 100%);
-  --sidebar-bg: #0b0616;
-  --sidebar-ink: #f5f0ff;
-  --sidebar-muted: #bbaed8;
-  --sidebar-border: rgba(192, 132, 252, 0.28);
+  --bg: #faf5f8;
+  --home-bg: linear-gradient(160deg, #fdf8fb 0%, #f9eef5 55%, #f5eefb 100%);
+  --sidebar-bg: #fdfafc;
+  --sidebar-ink: #1d1d1f;
+  --sidebar-muted: #5e4b56;
+  --sidebar-border: rgba(190, 24, 93, 0.12);
+  --sidebar-hover: rgba(190, 24, 93, 0.06);
+  --sidebar-active-bg: #fce7f3;
 
   --tile: #ffffff;
-  --tile-soft: #e6def5;
-  --tile-elevated: #f8f5fd;
-  --tile-border: rgba(45, 25, 80, 0.18);
-  --tile-border-strong: rgba(180, 130, 35, 0.6);
+  --tile-soft: #faf2f7;
+  --tile-elevated: #ffffff;
+  --tile-border: rgba(190, 24, 93, 0.12);
+  --tile-border-strong: rgba(190, 24, 93, 0.32);
 
-  --hero: linear-gradient(135deg, #e5d8fb 0%, #f1d4eb 55%, #f9dce8 100%);
+  --hero: #ffffff;
 
-  --tile-lilac: #e8dffb;
-  --tile-mist: #eee9fa;
-  --tile-butter: #f6ead0;
-  --tile-rose: #f8dde8;
-  --tile-blush: #f5e6ef;
+  --tile-lilac: #ffffff;
+  --tile-mist: #ffffff;
+  --tile-butter: #ffffff;
+  --tile-rose: #ffffff;
+  --tile-blush: #ffffff;
 
-  --ink: #1e1136;
-  --ink-muted: #513e6e;
-  --on-ink: #f6f3fc;
+  --ink: #1d1d1f;
+  --ink-muted: #5e4b56;
+  --on-ink: #ffffff;
 
-  --cta-bg: #1e1136;
-  --cta-ink: #f6f3fc;
+  --cta-bg: #be185d;
+  --cta-hover: #9d174d;
+  --cta-ink: #ffffff;
+  --btn-secondary-bg: #e8e8ed;
+  --btn-secondary-hover: #dcdce2;
+  --btn-secondary-ink: #1d1d1f;
 
-  --lilac: #7c3aed;
+  --seg-track: #f3e4ed;
+  --seg-thumb: #ffffff;
+
+  --logo-bg: #fce7f3;
+  --logo-border: #f472b6;
+  --logo-stroke: #9d174d;
+
+  --lilac: #9d174d;
   --sakura: #be185d;
-  --gold: #b8860b;
-  --gold-glow: #fef08a;
-  --hanko: #a31d52;
-  --ai: #6222cc;
-  --ai-glow: #a855f7;
-  --electro-cyan: #7e22ce;
+  --gold: #be185d;
+  --gold-glow: #fce7f3;
+  --hanko: #be123c;
+  --ai: #7e22ce;
+  --ai-glow: #db2777;
 
-  --pass-bg: #d6f0e2;
-  --pass: #145e3a;
-  --warn-bg: #f6e6c2;
-  --warn: #784d00;
-  --fail-bg: #f8d6df;
-  --fail: #a31d52;
+  --pass-bg: #dcfce7;
+  --pass: #156834;
+  --warn-bg: #fef3c7;
+  --warn: #854d0e;
+  --fail-bg: #ffe4e6;
+  --fail: #be123c;
 }
 
 @media (prefers-reduced-motion: reduce) {

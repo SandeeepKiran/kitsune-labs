@@ -1,44 +1,42 @@
-/* Motion (design system D10 + Electro animations). Only transform and opacity are animated.
+/* Motion (design system D10). Only transform and opacity are animated.
    Everything here switches off under prefers-reduced-motion at the bottom. */
 
-/* Kitsune Totem & Sleeping Fox compatibility keyframes:
-   breathes, tail sways, right ear twitches, gold charm swings. */
-.fox .fox__tail { transform-origin: 110px 124px; animation: sway 5s ease-in-out infinite; }
-.fox .fox__body { transform-origin: 128px 150px; animation: breathe 3.6s ease-in-out infinite; }
-.fox .fox__ear-r { transform-origin: 206px 66px; animation: twitch 7s ease-in-out infinite; }
-.fox .fox__charm { transform-origin: 221px 70px; animation: swing 2.6s ease-in-out infinite; }
-.fox .fox__arc { transform-origin: 120px 85px; animation: electro-pulse 2.2s ease-in-out infinite; }
-.fox .fox__ring { transform-origin: 120px 85px; animation: sigil-spin 18s linear infinite; }
+/* Sleek Kitsune emblem motion: all transform-origins match the 240x160 viewBox center (120px 80px)
+   so Chrome and Firefox animate identically. */
+.fox .fox__tail { transform-origin: 120px 80px; animation: sway 5s ease-in-out infinite; }
+.fox .fox__body { transform-origin: 120px 80px; animation: breathe 3.6s ease-in-out infinite; }
+.fox .fox__ear-r { transform-origin: 135px 62px; animation: twitch 7s ease-in-out infinite; }
+.fox .fox__charm { transform-origin: 120px 64px; animation: swing 2.6s ease-in-out infinite; }
+.fox .fox__ring { transform-origin: 120px 80px; animation: sigil-spin 24s linear infinite; }
 .fox * { transform-box: view-box; }
 
-@keyframes sway { 50% { transform: rotate(-5deg); } }
-@keyframes breathe { 50% { transform: scaleY(1.035); } }
-@keyframes twitch { 0%, 88%, 100% { transform: rotate(0); } 91% { transform: rotate(-12deg); } 94% { transform: rotate(4deg); } }
-@keyframes swing { 50% { transform: rotate(8deg); } }
-@keyframes electro-pulse { 0%, 100% { opacity: 0.35; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1.03); } }
+@keyframes sway { 50% { transform: rotate(-6deg); } }
+@keyframes breathe { 50% { transform: scale(1.035); } }
+@keyframes twitch { 0%, 88%, 100% { transform: rotate(0); } 91% { transform: rotate(-8deg); } 94% { transform: rotate(3deg); } }
+@keyframes swing { 50% { transform: translateY(-2px); } }
 @keyframes sigil-spin { to { transform: rotate(360deg); } }
 
 /* Tiles rise in once on page load. --i is set per tile for a ~50 ms stagger. */
 .rise { animation: rise 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 50ms); }
 @keyframes rise { from { opacity: 0; transform: translateY(10px) scale(0.99); } }
 
-/* Electro sakura motes / lightning sparks drift across the hero. */
+/* Subtle sakura motes drift across the hero. */
 .petal {
-  position: absolute; top: -20px; width: 10px; height: 10px;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  background: var(--ai-glow); opacity: 0.75;
+  position: absolute; top: -20px; width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--logo-border); opacity: 0.45;
   animation: fall linear infinite; pointer-events: none;
 }
-@keyframes fall { to { transform: translate(-110px, 300px) rotate(360deg); opacity: 0; } }
+@keyframes fall { to { transform: translate(-90px, 260px) rotate(180deg); opacity: 0; } }
 
-/* Electro glyph pulse floating above the totem (kept class .zz for smoke/motion test compatibility). */
+/* Subtle ambient dot pulse (kept class .zz for smoke/motion test compatibility). */
 .zz {
   position: absolute; font-family: var(--font-mono); font-weight: 700;
-  color: var(--ai-glow); animation: float 3.6s ease-in infinite; pointer-events: none;
+  color: var(--sakura); animation: float 3.6s ease-in infinite; pointer-events: none;
 }
-@keyframes float { from { opacity: 0; transform: translateY(0); } 30% { opacity: 0.85; } to { opacity: 0; transform: translate(16px, -52px); } }
+@keyframes float { from { opacity: 0; transform: translateY(0); } 30% { opacity: 0.55; } to { opacity: 0; transform: translate(12px, -40px); } }
 
-/* Nine-tail Electro nodes: each node ignites when it gets .is-lit. */
+/* Nine-tail progress pills: each pill lights up when it gets .is-lit. */
 @keyframes lit { from { opacity: 0.4; transform: scale(0.82); } to { opacity: 1; transform: scale(1); } }
 
 /* Drawer slides in from the right; palette drops in. */
@@ -46,14 +44,14 @@
 @keyframes drop-in { from { opacity: 0; transform: translateY(-8px) scale(0.98); } }
 @keyframes fade-in { from { opacity: 0; } }
 
-/* Shrine Hanko seal slams onto a Fail finding, once. */
+/* Hanko seal slams onto a Fail finding, once. */
 @keyframes slam {
   0% { opacity: 0; transform: rotate(-28deg) scale(1.7); }
   55% { opacity: 1; transform: rotate(-10deg) scale(0.94); }
   100% { opacity: 1; transform: rotate(-12deg) scale(1); }
 }
 
-/* Electro spark: while an AI call runs, a high-voltage violet/gold arc spins around the tile border. */
+/* AI running border glow */
 .is-ai-running::before {
   content: ''; position: absolute; inset: -60%; z-index: 0; pointer-events: none;
   background: conic-gradient(from 0deg, transparent 0 74%, var(--gold) 84%, var(--ai-glow) 92%, var(--ai) 97%, transparent 100%);
@@ -66,9 +64,8 @@
 .is-ai-running > * { position: relative; z-index: 1; }
 @keyframes spark { to { transform: rotate(360deg); } }
 
-/* Visual mode toggle: Totem vs Sigil inside .fox SVG */
+/* Visual mode toggle: Minimal Ring mode hides only the outer dashed ring */
 :root[data-visual='sigil'] .fox__totem-only { display: none; }
-:root:not([data-visual='sigil']) .fox__sigil-only { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .is-ai-running { box-shadow: inset 0 0 0 2px var(--ai-glow); }

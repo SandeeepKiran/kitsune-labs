@@ -2,7 +2,47 @@
 
 > Update this file at the end of every work session. Newest entry on top.
 
-## 2026-10-15 (latest) - Yae Miko Electro AI-Futuristic UI Revamp complete (Cursor)
+## 2026-10-15 (latest) - v2.1.3 Fix Kitsune emblem SVG & Firefox animation coordinates (Cursor)
+
+- **Hero & Empty-State Kitsune Emblem (`app/src/shared/fox.ts`, `motion.css`)**:
+  - Fixed the bug where Firefox had `kitsune.ui.visual = 'sigil'` saved in `localStorage`, which hid `.fox__totem-only` (the Kitsune silhouette) and left an empty circle with detached tail loops and a floating stick.
+  - Replaced `sleepingFox()` with the sleek rounded Kitsune app-icon badge centered at `(120, 80)` surrounded by balanced concentric aura arcs, and aligned all `transform-origin` coordinates to `120px 80px` so Firefox and Chrome animate identically.
+
+## 2026-10-15 - v2.1.2 Sleek Kitsune favicon, aligned Spotlight search bar & Apple Intelligence Sample data pill (Cursor)
+
+- **Favicon (`app/public/favicon.svg`)**:
+  - Updated the browser tab icon to match the sleek curved Kitsune line-art app badge (`#fce7f3` background, `#f472b6` border, `#9d174d` curved stroke).
+- **Top Bar & Spotlight Search Alignment (`app/src/shared/shell.ts`, `shell.css`)**:
+  - Removed the redundant `Sample data` link from the top header.
+  - Split `.shell-header` into a `216px` brand column + main column so the enlarged `Search (Ctrl K)` Spotlight pill sits on the top-left right at the vertical divider line between the sidebar and the right pane.
+- **Left Sidebar `Sample data` Neon Gradient Pill (`app/src/shared/shell.css`)**:
+  - Styled `.tab--sample-pill` as a pill-shaped button with an Apple Intelligence sakura-to-amethyst gradient (`#be185d` → `#9333ea`), crisp white text/icon, and a soft neon glow shadow.
+
+## 2026-10-15 - v2.1.1 Sticky viewport-fitted left sidebar & sleek segmented theme picker (Cursor)
+
+- **Viewport-Fitted Left Sidebar (`app/src/shared/shell.css`)**:
+  - Set `.shell-body` to `align-items: start` and `.shell-sidebar` to `position: sticky; top: 53px; height: calc(100dvh - 53px)` so the left sidebar always fits the viewport with `Sample data` and `Settings` anchored at the bottom-left while only the right workspace scrolls.
+- **Sleek Segmented Theme Picker & macOS Appearance Cards (`app/src/shared/shell.ts`, `app/src/pages/settings.ts`, `settings.css`)**:
+  - Replaced the native `<select>` dropdown in the header with an Apple segmented pill control (`Silver` · `Space Black` · `Sakura` with color dots).
+  - Rebuilt the `/settings/` Appearance section into 3-up macOS System Settings mini-window preview cards.
+
+## 2026-10-15 - v2.1.0 Apple Minimalist Focus Canvas & Sakura-Rose UI (Cursor)
+
+- **Apple Segmented Focus Canvas (`app/src/shared/tool-page.ts`, `tool-page.css`)**:
+  - Replaced the multi-column bento grid on tool pages with a calm, centered **Apple Segmented Focus Canvas** (`1. Input` → `2. Results` → `3. Export & Log`) and generous whitespace.
+- **Option C Buttons & Sakura-Rose Palette (`app/src/shared/tokens.css`, `components.css`)**:
+  - Secondary `Load Mousy sample` is a crisp Apple neutral pill (`#e8e8ed` with `#1d1d1f` ink in light; `#3a3a3c` with `#f5f5f7` text in dark).
+  - Primary `Run` is solid Yae Sakura-Rose (`#be185d` with `#ffffff` text in both modes). Zero button gradients.
+- **Sleek Curved Kitsune Logo & SF Sidebar Icons (`app/src/shared/fox.ts`, `shell.ts`, `shell.css`)**:
+  - Replaced the polygon/cartoon fox logo with a smooth-curved monoline Kitsune silhouette inside a pink-plum badge (`#fce7f3` / `#501836`).
+  - Added clean `1.8px` monoline vector icons to every left sidebar item, including the gear icon on `Settings`.
+- **3 Apple Finishes (`app/src/shared/theme.ts`)**:
+  - Opens in **Daylight Silver** (`#f5f5f7` / `#ffffff`) by default, with 1-click switching to **Space Black** (`#000000` / `#1c1c1e`) and **Sakura Glass** (`#faf5f8`).
+- **Verification**:
+  - Version bumped to `2.1.0` in `app/package.json`, `app/package-lock.json`, and `CHANGELOG.md`.
+  - `npm --prefix app run build` clean; `python tools/privacy_check.py` PASS (121 files); all Playwright smoke, site, tool, and WCAG AA contrast tests pass across all 3 finishes.
+
+## 2026-10-15 - Yae Miko Electro AI-Futuristic UI Revamp complete (Cursor)
 
 - **Navigation & Workspace (`app/src/shared/shell.ts`, `shell.css`, `tool-page.css`)**:
   - Replaced the horizontal top tab strip with a **persistent left sidebar** (`Overview`, all 9 tools with `AI` / `RULES` badges, `Mousy pack`, and `Settings`) so switching between any tool takes a single click from anywhere, including the home page.

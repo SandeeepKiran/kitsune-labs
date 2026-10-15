@@ -1,7 +1,8 @@
-// Theme & Visual Style store: lets the visitor switch between 3 Yae Miko Electro
-// surface themes and 2 visual/motion modes. Saved in localStorage (not a secret).
+// Theme & Visual Style store: lets the visitor switch between 3 Apple-inspired
+// minimalist finishes (Daylight Silver default, Space Black, and Sakura Glass)
+// and 2 Kitsune emblem styles. Saved in localStorage (not a secret).
 
-export type SurfaceTheme = 'dark-electro' | 'shrine-tech' | 'eclipse';
+export type SurfaceTheme = 'shrine-tech' | 'dark-electro' | 'eclipse';
 export type VisualStyle = 'totem' | 'sigil';
 
 export interface SurfaceThemeInfo {
@@ -20,41 +21,41 @@ export interface VisualStyleInfo {
 }
 
 export const SURFACE_THEMES: Record<SurfaceTheme, SurfaceThemeInfo> = {
-  'dark-electro': {
-    id: 'dark-electro',
-    label: 'Dark Electro Obsidian',
-    shortLabel: 'Dark Electro',
-    description: 'Deep Inazuma midnight obsidian with neon electro-violet telemetry, sakura accents, and shrine gold borders.',
-    preview: ['#090612', '#a855f7', '#e5b84b'],
-  },
   'shrine-tech': {
     id: 'shrine-tech',
-    label: 'Luminous Shrine Tech',
-    shortLabel: 'Shrine Tech',
-    description: 'Crisp silver-white and shrine plum high-contrast surfaces with geometric gold frames and electro-magenta energy.',
-    preview: ['#f7f5fc', '#6d28d9', '#b8860b'],
+    label: 'Daylight Silver (Default)',
+    shortLabel: 'Daylight Silver',
+    description: 'Clean Apple #f5f5f7 silver canvas, crisp white focus sheet, neutral secondary pills, and solid Sakura-Rose primary actions.',
+    preview: ['#f5f5f7', '#ffffff', '#be185d'],
+  },
+  'dark-electro': {
+    id: 'dark-electro',
+    label: 'Space Black (Dark)',
+    shortLabel: 'Space Black',
+    description: 'True MacBook Pro #000000 & #1c1c1e dark graphite surfaces, #3a3a3c neutral pills, and solid Sakura-Rose primary actions.',
+    preview: ['#000000', '#1c1c1e', '#be185d'],
   },
   eclipse: {
     id: 'eclipse',
-    label: 'Eclipse Hybrid',
-    shortLabel: 'Eclipse',
-    description: 'Obsidian command shell and dark electro hero paired with luminous high-contrast data inspection decks.',
-    preview: ['#120b24', '#f4f0fb', '#c026d3'],
+    label: 'Sakura Glass',
+    shortLabel: 'Sakura Glass',
+    description: 'Whisper-soft sakura-quartz ambient canvas with frosted white sheets and deep berry-rose accents.',
+    preview: ['#faf5f8', '#fce7f3', '#be185d'],
   },
 };
 
 export const VISUAL_STYLES: Record<VisualStyle, VisualStyleInfo> = {
   totem: {
     id: 'totem',
-    label: 'Cyber-Kitsune & Sesshou Sakura Totem',
-    shortLabel: 'Cyber-Kitsune',
-    description: 'Angular holographic Kitsune spirit with crackling electro lightning arcs, pulsing energy rings, and floating electro motes.',
+    label: 'Sleek Curved Kitsune Line-Art',
+    shortLabel: 'Kitsune Line',
+    description: 'Smooth, organic monoline Kitsune silhouette with inner ear curves and gentle sakura drift.',
   },
   sigil: {
     id: 'sigil',
-    label: 'Minimalist Electro Sigils & Sacred Geometry',
-    shortLabel: 'Electro Sigil',
-    description: 'Clean rotating Inazuma Electro crest, geometric ofuda telemetry frames, and subtle circuit pulse traces.',
+    label: 'Minimalist Crest Ring',
+    shortLabel: 'Minimal Ring',
+    description: 'Ultra-minimal concentric ring and subtle geometric accent lines.',
   },
 };
 
@@ -85,7 +86,7 @@ export function getSurfaceTheme(): SurfaceTheme {
   const saved = readLocal(THEME_KEY);
   return saved === 'dark-electro' || saved === 'shrine-tech' || saved === 'eclipse'
     ? saved
-    : 'dark-electro';
+    : 'shrine-tech';
 }
 
 export function getVisualStyle(): VisualStyle {

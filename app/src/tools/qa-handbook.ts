@@ -6,9 +6,8 @@ import './qa-handbook.css';
 
 import { BUG_TYPES, BUG_TYPE_IDS, findBugs, type BugType } from '../shared/analysis.ts';
 import { urls } from '../shared/config.ts';
-import { el, fromHtml, prefersReducedMotion } from '../shared/dom.ts';
+import { el, prefersReducedMotion } from '../shared/dom.ts';
 import { downloadText } from '../shared/export.ts';
-import { sleepingFox } from '../shared/fox.ts';
 import { nineTails, setLit } from '../shared/nine-tails.ts';
 import { registerCommands } from '../shared/palette.ts';
 import { annotatedTurns, findingList, rulesChip } from '../shared/results.ts';
@@ -96,7 +95,7 @@ const tile = (cls: string, i: number, id: string, title: string, ...children: (N
 export function mount(main: HTMLElement, tool: ToolInfo): void {
   document.title = `${tool.name} · Kitsune Labs`;
 
-  const loadButton = el('button', { type: 'button', class: 'btn btn--ink', 'data-testid': 'load-sample' }, 'Load Mousy sample');
+  const loadButton = el('button', { type: 'button', class: 'btn', 'data-testid': 'load-sample' }, 'Load Mousy sample');
   const hero = el('section', { class: 'tile tile--hero hb__hero rise', style: '--i:0', 'aria-labelledby': 'tool-title' },
     el('div', { class: 'bento__hero-text' },
       el('p', { class: 'bento__eyebrow' }, el('span', { class: 'chip' }, 'No AI'), el('span', { class: 'chip' }, '6 sections · 9-step checklist')),
@@ -105,7 +104,6 @@ export function mount(main: HTMLElement, tool: ToolInfo): void {
       el('div', { class: 'hero-bar' }, el('span', {}, 'See the handbook applied to a real-looking call'), loadButton),
     ),
   );
-  hero.append(fromHtml(sleepingFox('bento__fox')));
 
   const sections = [
     ['hb-mandate', 'Mandate'], ['hb-lifecycle', 'Lifecycle'], ['hb-toolkit', 'Toolkit'],

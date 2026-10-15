@@ -36,20 +36,24 @@ const main = mountShell('settings');
 
 const hero = el('section', { class: 'tile tile--hero cfg-hero rise', 'aria-labelledby': 'cfg-title' },
   el('div', { class: 'cfg-hero__text' },
-    el('p', { class: 'bento__eyebrow' },
-      el('span', { class: 'chip chip--ai' }, 'Yae Miko Electro Console'),
-      el('span', { class: 'chip' }, 'Browser-local preferences'),
-    ),
-    el('h1', { id: 'cfg-title' }, 'Settings & Theme Studio'),
+    el('h1', { id: 'cfg-title' }, 'Settings'),
     el('p', {},
-      'Switch between all three Yae Miko Electro surface themes, pick your Kitsune artwork and animation style, and manage your browser-sealed AI provider keys in one place.'),
+      'Choose your appearance finish, emblem style, and browser-sealed AI provider key.'),
   ),
   el('div', { class: 'cfg-hero__art', 'aria-hidden': 'true' }, fromHtml(sleepingFox())),
 );
 
-// -- 1. Surface Theme Picker (Options A, B, C) ----------------------------------
+// Mini macOS-style window preview colors for each finish
+const PREVIEW_STYLES: Record<SurfaceTheme, { bg: string; side: string; sheet: string; ink: string; cta: string }> = {
+  'shrine-tech': { bg: '#f5f5f7', side: '#fbfbfd', sheet: '#ffffff', ink: '#1d1d1f', cta: '#be185d' },
+  'dark-electro': { bg: '#000000', side: '#141416', sheet: '#1c1c1e', ink: '#f5f5f7', cta: '#be185d' },
+  eclipse: { bg: '#faf5f8', side: '#fdfafc', sheet: '#ffffff', ink: '#831843', cta: '#be185d' },
+};
+
+// -- 1. Appearance Finish Picker (macOS System Settings 3-up cards) -------------
 const themeCards = SURFACE_THEME_IDS.map((id) => {
   const info = SURFACE_THEMES[id];
+  const p = PREVIEW_STYLES[id];
   const radio = el('input', {
     type: 'radio',
     name: 'surface-theme',
@@ -60,14 +64,26 @@ const themeCards = SURFACE_THEME_IDS.map((id) => {
   radio.addEventListener('change', () => {
     if (radio.checked) setSurfaceTheme(id as SurfaceTheme);
   });
+  const miniWindow = el('div', { class: 'theme-preview', style: `background:${p.bg}`, 'aria-hidden': 'true' },
+    el('div', { class: 'theme-preview__side', style: `background:${p.side}` },
+      el('span', { class: 'theme-preview__bar', style: `background:${p.ink};width:80%` }),
+      el('span', { class: 'theme-preview__bar', style: `background:${p.cta};width:95%;opacity:0.9` }),
+      el('span', { class: 'theme-preview__bar', style: `background:${p.ink};width:70%` }),
+    ),
+    el('div', { class: 'theme-preview__main' },
+      el('div', { class: 'theme-preview__top' },
+        el('span', { class: 'theme-preview__title', style: `background:${p.ink}` }),
+        el('span', { class: 'theme-preview__cta', style: `background:${p.cta}` }),
+      ),
+      el('div', { class: 'theme-preview__sheet', style: `background:${p.sheet}` }),
+    ),
+  );
   return el('label', { class: 'theme-card' },
     radio,
+    miniWindow,
     el('div', { class: 'theme-card__body' },
       el('div', { class: 'theme-card__top' },
-        el('span', { class: 'theme-card__title' }, info.label),
-        el('span', { class: 'swatches', 'aria-hidden': 'true' },
-          ...info.preview.map((hex) => el('span', { class: 'swatch', style: `background:${hex}` })),
-        ),
+        el('span', { class: 'theme-card__title' }, info.shortLabel),
       ),
       el('p', { class: 'theme-card__desc' }, info.description),
     ),
@@ -75,12 +91,12 @@ const themeCards = SURFACE_THEME_IDS.map((id) => {
 });
 
 const surfaceSection = el('section', { class: 'tile cfg-section rise', style: '--i:1', 'aria-labelledby': 'surface-title' },
-  el('h2', { id: 'surface-title', class: 'cfg-heading' }, 'Surface Theme (Color & Contrast)'),
-  el('p', { class: 'cfg-sub' }, 'Switch instantly between Dark Electro Obsidian, Luminous Shrine Tech, and Eclipse Hybrid.'),
+  el('h2', { id: 'surface-title', class: 'cfg-heading' }, 'Appearance'),
+  el('p', { class: 'cfg-sub' }, 'Switch between Daylight Silver, Space Black, and Sakura Glass.'),
   el('div', { class: 'theme-cards' }, ...themeCards),
 );
 
-// -- 2. Visual Artwork & Electro Motion Mode (Options A & B) --------------------
+// -- 2. Kitsune Emblem Style ----------------------------------------------------
 const visualCards = VISUAL_STYLE_IDS.map((id) => {
   const info = VISUAL_STYLES[id];
   const radio = el('input', {
@@ -98,7 +114,6 @@ const visualCards = VISUAL_STYLE_IDS.map((id) => {
     el('div', { class: 'theme-card__body' },
       el('div', { class: 'theme-card__top' },
         el('span', { class: 'theme-card__title' }, info.label),
-        el('span', { class: 'chip mono' }, info.shortLabel),
       ),
       el('p', { class: 'theme-card__desc' }, info.description),
     ),
@@ -106,9 +121,9 @@ const visualCards = VISUAL_STYLE_IDS.map((id) => {
 });
 
 const visualSection = el('section', { class: 'tile cfg-section rise', style: '--i:2', 'aria-labelledby': 'visual-title' },
-  el('h2', { id: 'visual-title', class: 'cfg-heading' }, 'Kitsune Artwork & Electro Motion'),
-  el('p', { class: 'cfg-sub' }, 'Choose how the Kitsune emblem and Electro energy render across the home hero and tool headers.'),
-  el('div', { class: 'theme-cards' }, ...visualCards),
+  el('h2', { id: 'visual-title', class: 'cfg-heading' }, 'Emblem Style'),
+  el('p', { class: 'cfg-sub' }, 'Choose how the decorative emblem renders on the home hero and empty states.'),
+  el('div', { class: 'theme-cards theme-cards--two' }, ...visualCards),
 );
 
 // -- 3. Inline AI Provider & Key Configuration ----------------------------------
@@ -211,7 +226,7 @@ function refreshKeySection(): void {
 }
 refreshKeySection();
 
-const aiSection = el('section', { class: 'tile cfg-section cfg-section--full rise', style: '--i:3', 'aria-labelledby': 'ai-cfg-title' },
+const aiSection = el('section', { class: 'tile cfg-section rise', style: '--i:3', 'aria-labelledby': 'ai-cfg-title' },
   el('h2', { id: 'ai-cfg-title', class: 'cfg-heading' }, 'AI Provider & Sealed Key'),
   el('p', { class: 'cfg-sub' }, 'Your key stays in this browser (sessionStorage by default; localStorage only if you tick Remember). Never logged or sent anywhere except your chosen provider.'),
   aiForm,

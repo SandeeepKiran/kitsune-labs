@@ -12,8 +12,8 @@ const main = mountShell('home');
 const tried = new Set(triedTools());
 
 const PETALS = [
-  { left: 8, duration: 9, delay: -1 }, { left: 22, duration: 11, delay: -6 }, { left: 41, duration: 10, delay: -3 },
-  { left: 63, duration: 12, delay: -8 }, { left: 78, duration: 9.5, delay: -4 }, { left: 92, duration: 11.5, delay: -2 },
+  { left: 12, duration: 11, delay: -1 }, { left: 32, duration: 13, delay: -6 },
+  { left: 58, duration: 12, delay: -3 }, { left: 82, duration: 14, delay: -8 },
 ];
 
 const art = el('div', { class: 'hero-art', 'aria-hidden': 'true' },
@@ -21,8 +21,8 @@ const art = el('div', { class: 'hero-art', 'aria-hidden': 'true' },
 );
 art.append(fromHtml(sleepingFox('hero-art__fox')));
 art.append(
-  el('span', { class: 'zz', style: 'left:74%;top:8%;font-size:20px' }, '⚡'),
-  el('span', { class: 'zz', style: 'left:81%;top:0;font-size:15px;animation-delay:1.3s' }, '◈'),
+  el('span', { class: 'zz', style: 'left:74%;top:8%;font-size:14px' }, '·'),
+  el('span', { class: 'zz', style: 'left:80%;top:0;font-size:11px;animation-delay:1.3s' }, '·'),
 );
 
 const petals = el('div', { class: 'petals', 'aria-hidden': 'true' });
@@ -33,10 +33,6 @@ for (const p of PETALS) {
 const hero = el('section', { class: 'tile tile--hero home-hero', 'aria-labelledby': 'home-title' },
   petals,
   el('div', { class: 'home-hero__text rise' },
-    el('p', { class: 'bento__eyebrow' },
-      el('span', { class: 'chip chip--ai' }, 'CONVERSATIONAL AI QA SUITE'),
-      el('span', { class: 'chip' }, '9 BROWSER TOOLS · ZERO BACKEND'),
-    ),
     el('h1', { id: 'home-title' }, 'QA tools for conversational AI, forged in-house.'),
     el('p', { class: 'home-hero__lead' },
       'Nine browser tools for testing chatbots and voice bots. Try each one with the Mousy sample files. ',
@@ -44,7 +40,6 @@ const hero = el('section', { class: 'tile tile--hero home-hero', 'aria-labelledb
     el('div', { class: 'home-hero__ctas' },
       el('a', { class: 'btn btn--ink btn--big', href: '#tools' }, 'Open the tools'),
       el('a', { class: 'btn btn--big', href: urls.sampleData }, 'Download Mousy samples'),
-      el('a', { class: 'btn btn--quiet btn--big', href: urls.settings }, 'Themes & Settings'),
     ),
   ),
   art,

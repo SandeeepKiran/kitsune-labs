@@ -1,4 +1,6 @@
-/* Page shell: top telemetry bar, persistent left sidebar, main workspace, and footer. */
+/* Page shell: calm Apple header aligned with the 216px left sidebar line,
+   bigger Spotlight search pill on the left of the main column,
+   and Apple Intelligence neon-gradient Sample data pill in the left sidebar. */
 
 #app {
   display: flex;
@@ -9,24 +11,40 @@
 .skip-link {
   position: absolute; left: 12px; top: -60px; z-index: 50;
   padding: 10px 14px; border-radius: 8px; background: var(--cta-bg); color: var(--cta-ink);
-  font-weight: 700;
+  font-weight: 600;
 }
 .skip-link:focus { top: 12px; }
 
-/* -- Top telemetry bar -------------------------------------------------- */
+/* -- Top bar (aligned to the exact 216px sidebar divider line) ---------- */
 .shell-header {
   position: sticky;
   top: 0;
   z-index: 20;
+  display: grid;
+  grid-template-columns: 216px minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  height: 54px;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-ink);
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.shell-header__brand-col {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 14px;
+  border-right: 1px solid var(--sidebar-border);
+}
+
+.shell-header__main-col {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  width: 100%;
-  padding: 10px 20px;
-  background: var(--sidebar-bg);
-  color: var(--sidebar-ink);
-  border-bottom: 1px solid var(--sidebar-border);
+  padding: 0 24px 0 20px;
+  min-width: 0;
 }
 
 .brand {
@@ -37,21 +55,47 @@
   color: var(--sidebar-ink);
   text-decoration: none;
 }
-.brand__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
 .brand__name {
-  font-size: 16px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
-.brand__tag {
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--sidebar-muted);
+
+/* Bigger Spotlight-style Search Pill aligned with the right pane start */
+.palette-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: clamp(190px, 26vw, 310px);
+  height: 36px;
+  padding: 0 12px 0 14px;
+  border: 1px solid var(--sidebar-border);
+  border-radius: 980px;
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease;
+}
+.palette-trigger:hover {
+  background: var(--btn-secondary-hover);
+  border-color: var(--sakura);
+}
+.search-icon {
+  opacity: 0.7;
+  flex: none;
+}
+.palette-trigger kbd {
+  margin-left: auto;
+  padding: 2px 7px;
+  border-radius: 980px;
+  background: var(--tile);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .shell-actions {
@@ -62,68 +106,56 @@
   margin-left: auto;
 }
 
-.shell-select {
-  height: 32px;
-  padding: 4px 10px;
-  border-radius: 7px;
-  border: 1px solid var(--sidebar-border);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--sidebar-ink);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.shell-select option {
-  background: var(--sidebar-bg);
-  color: var(--sidebar-ink);
-}
-
-.shell-link {
-  color: var(--sidebar-ink);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 6px 8px;
-  border-radius: 6px;
-}
-.shell-link:hover,
-.shell-link[aria-current='page'] {
-  background: rgba(255, 255, 255, 0.08);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.palette-trigger {
+/* Sleek Apple Segmented Theme Switcher in Header */
+.theme-seg {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 32px;
-  padding: 4px 8px 4px 10px;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 980px;
+  background: var(--seg-track);
   border: 1px solid var(--sidebar-border);
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--sidebar-ink);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
 }
-.palette-trigger kbd {
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.14);
+.theme-seg__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 980px;
+  background: transparent;
+  color: var(--sidebar-muted);
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+.theme-seg__btn:hover {
   color: var(--sidebar-ink);
-  font-size: 11px;
+}
+.theme-seg__btn[aria-checked='true'] {
+  background: var(--seg-thumb);
+  color: var(--sidebar-ink);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.theme-seg__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  flex: none;
 }
 
 .key-chip {
-  height: 32px;
-  padding: 4px 11px;
-  border-radius: 7px;
+  height: 34px;
+  padding: 4px 14px;
+  border-radius: 980px;
   border: 1px solid var(--sidebar-border);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--sidebar-ink);
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-ink);
   font: inherit;
   font-size: 12px;
   font-weight: 600;
@@ -131,117 +163,129 @@
   transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease;
 }
 .key-chip:hover {
-  border-color: var(--gold);
+  background: var(--btn-secondary-hover);
 }
 .key-chip--sealed {
-  border: 1.5px dashed #eab308;
-  background: rgba(234, 179, 8, 0.12);
-  color: #fef08a;
+  border: 1.5px dashed var(--sakura);
+  background: var(--logo-bg);
+  color: var(--logo-stroke);
 }
 
-/* -- Body: persistent left sidebar + main workspace --------------------- */
+/* -- Body: pinned viewport-fitted left sidebar + scrolling right pane --- */
 .shell-body {
   display: grid;
-  grid-template-columns: 232px minmax(0, 1fr);
+  grid-template-columns: 216px minmax(0, 1fr);
+  align-items: start;
   flex: 1;
   width: 100%;
 }
 
 .shell-sidebar {
+  position: sticky;
+  top: 54px;
+  height: calc(100dvh - 54px);
+  overflow-y: auto;
+  scrollbar-width: thin;
   background: var(--sidebar-bg);
   color: var(--sidebar-ink);
   border-right: 1px solid var(--sidebar-border);
-  padding: 16px 12px 24px;
+  padding: 12px 10px 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.sidebar-heading {
-  margin: 0 8px 4px;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--sidebar-muted);
 }
 
 .tool-tabs {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   min-width: 0;
+  flex: 1;
 }
 
 .tab {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 8px 10px;
+  gap: 9px;
+  padding: 6.5px 10px;
   border-radius: 8px;
-  color: var(--sidebar-ink);
+  color: var(--sidebar-muted);
   text-decoration: none;
   font-size: 13px;
-  font-weight: 600;
-  border: 1px solid transparent;
-  transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease;
+  font-weight: 500;
+  transition: background-color var(--dur-base) ease, color var(--dur-base) ease, transform var(--dur-fast) ease, box-shadow var(--dur-base) ease;
 }
 .tab:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--sidebar-hover);
+  color: var(--sidebar-ink);
 }
 .tab[aria-current='page'] {
-  background: rgba(192, 132, 252, 0.2);
-  color: #ffffff;
-  border-color: #eab308;
+  background: var(--sidebar-active-bg);
+  color: var(--sidebar-ink);
+  font-weight: 600;
 }
 .tab--overview {
   margin-bottom: 4px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.tab--meta {
-  opacity: 0.92;
+
+/* Apple Intelligence / Neon Sakura-Amethyst Pill for Sample data in the left pane */
+.tab.tab--sample-pill {
+  margin-top: auto;
+  margin-bottom: 6px;
+  padding: 8px 13px;
+  border-radius: 980px;
+  background: linear-gradient(135deg, #be185d 0%, #9333ea 100%);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(190, 24, 93, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
+.tab.tab--sample-pill .nav-icon {
+  color: #ffffff;
+  opacity: 1;
+}
+.tab.tab--sample-pill:hover {
+  background: linear-gradient(135deg, #9d174d 0%, #7e22ce 100%);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(190, 24, 93, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+.tab.tab--sample-pill[aria-current='page'] {
+  background: linear-gradient(135deg, #9d174d 0%, #6b21a8 100%);
+  color: #ffffff;
+  box-shadow: 0 0 0 2px var(--sidebar-bg), 0 0 0 4px #db2777, 0 6px 18px rgba(190, 24, 93, 0.38);
+}
+
+.tab--settings {
+  padding-top: 7px;
+}
+
 .tab__label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.tab__badge {
-  font-size: 9.5px;
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--sidebar-muted);
+.nav-icon {
   flex: none;
+  opacity: 0.85;
 }
-.tab[aria-current='page'] .tab__badge {
-  background: #eab308;
-  color: #140926;
-  font-weight: 700;
-}
-
-/* Focus ring inside the always-dark sidebar and header must be visible (>=3:1 against #0c0718) */
-.shell-header :focus-visible,
-.shell-sidebar :focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 2px;
-  box-shadow: 0 0 0 3px #eab308 !important;
+.tab[aria-current='page']:not(.tab--sample-pill) .nav-icon {
+  color: var(--sakura);
+  opacity: 1;
 }
 
 .shell-main {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  min-height: calc(100vh - 54px);
+  min-height: calc(100dvh - 54px);
 }
 
 .page {
   flex: 1;
   width: 100%;
-  max-width: 1480px;
-  min-height: 85vh;
+  max-width: 1080px;
+  min-height: 80vh;
   margin: 0 auto;
-  padding: 20px 24px 36px;
+  padding: 28px 28px 40px;
 }
 .page:focus { outline: none; box-shadow: none !important; }
 
@@ -251,9 +295,9 @@
   justify-content: space-between;
   gap: 8px 24px;
   width: 100%;
-  max-width: 1480px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 14px 24px 24px;
+  padding: 16px 28px 28px;
   border-top: 1px solid var(--tile-border);
   color: var(--ink-muted);
   font-size: 12.5px;
@@ -261,18 +305,34 @@
 .shell-footer p { margin: 0; }
 .shell-footer a { color: var(--ink); }
 
-/* Under 960px: sidebar docks into a sleek horizontal strip at the top so mobile has zero horizontal page overflow */
-@media (max-width: 960px) {
+/* Under 900px: sidebar docks into a sleek horizontal strip at the top so mobile has zero horizontal page overflow */
+@media (max-width: 900px) {
+  .shell-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 14px;
+  }
+  .shell-header__brand-col {
+    padding: 0;
+    border-right: 0;
+  }
+  .shell-header__main-col {
+    flex: 1;
+    padding: 0 0 0 12px;
+  }
+  .palette-trigger {
+    width: auto;
+    padding: 0 12px;
+  }
   .shell-body {
     grid-template-columns: minmax(0, 1fr);
   }
   .shell-sidebar {
+    position: static;
+    height: auto;
     border-right: 0;
     border-bottom: 1px solid var(--sidebar-border);
     padding: 8px 12px;
-  }
-  .sidebar-heading {
-    display: none;
   }
   .tool-tabs {
     flex-direction: row;
@@ -281,42 +341,35 @@
     padding: 2px;
     gap: 6px;
   }
-  .tab {
+  .tab,
+  .tab.tab--sample-pill {
     flex: none;
-    padding: 6px 10px;
+    margin: 0;
+    padding: 6px 12px;
   }
   .tab--overview {
-    margin-bottom: 0;
-    border-bottom: 1px solid transparent;
-  }
-  .tab__badge {
-    display: none;
+    margin: 0;
   }
   .page {
-    padding: 16px 14px 28px;
+    padding: 18px 16px 32px;
   }
   .shell-footer {
-    padding: 14px;
+    padding: 14px 16px;
   }
 }
 
-@media (max-width: 640px) {
-  .shell-header {
-    padding: 8px 12px;
-  }
-  .brand__tag,
+@media (max-width: 720px) {
   .palette-trigger__word,
-  .shell-select {
+  .theme-seg {
     display: none;
   }
-  .shell-actions {
-    gap: 4px;
+  .palette-trigger {
+    padding: 0 10px;
   }
-  .shell-link {
-    font-size: 12px;
-    padding: 4px 6px;
+  .shell-actions {
+    gap: 6px;
   }
   .brand__name {
-    font-size: 15px;
+    font-size: 14.5px;
   }
 }
