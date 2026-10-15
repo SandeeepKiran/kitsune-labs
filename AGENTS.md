@@ -51,6 +51,10 @@ Tagline: *QA tools for conversational AI, forged in-house.*
    by a script in `docs\private\scripts\`. Never commit it, copy it, quote it, or paste its rows into
    chat. All sample text is newly written for Mousy. `tools\privacy_check.py` must pass before
    every commit. Details: `docs\05-mock-data-plan.md`.
+9. **Bump the version on every change to the app.** Change `"version"` in `app\package.json`
+   (and `app\package-lock.json`, e.g. `npm --prefix app version X.Y.Z --no-git-tag-version`) and
+   add an entry to the top of `CHANGELOG.md`. Semver: fix = patch, new feature or UI change =
+   minor, big rewrite = major. Docs-only changes need no bump. The owner tracks releases by version.
 
 ## Folder layout
 
