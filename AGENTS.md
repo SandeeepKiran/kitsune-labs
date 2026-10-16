@@ -23,7 +23,7 @@ Tagline: *QA tools for conversational AI, forged in-house.*
   with motion, Vite + vanilla TypeScript, static site.
 - **Start here:** `docs\06-build-plan.md`, milestone M0, then M1 (the Mousy sample pack,
   `docs\05-mock-data-plan.md`). Stop at the end of each milestone so the owner can look.
-- Visual reference: `docs\design-reference\` (open the .html files in a browser for the motion).
+- Visual reference: the live app itself (the early mockups were retired on 2026-10-17).
 
 ## Hard rules: do not change without asking the owner
 
@@ -64,7 +64,6 @@ Project - Kitsune Labs\
   .gitignore
   docs\                <- 00 state, 01 brief, 02 tools, 03 design, 04 decisions,
                           05 mock data plan, 06 build plan
-  docs\design-reference\ <- the chosen look: bento tool page + fox landing (HTML + PNG)
   docs\private\        <- GITIGNORED: originals map, real-data notes, denylist, private scripts
   app\                 <- (M0) the Vite site; app\public\sample-data\ = files visitors download
   sample-data\         <- (M1) SCENARIOS.md: the invented Mousy scenarios

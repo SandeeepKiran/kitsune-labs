@@ -4,7 +4,7 @@
 |---|---|---|---|
 | D1 | Name: **Kitsune Labs** (two words; subtle Genshin/Inazuma nod, reads as an engineering team) | Decided | 2026-10-11 |
 | D2 | Palette: **pastel Yae Miko** (lilac + sakura + butter gold on soft lavender-white, ink plum text). Exact tokens in `03-design-system.md`. The old deep sakura->navy gradient is retired. | Decided | 2026-10-13 |
-| D9 | Visual style: **Bento tiles**. Reference: `docs\design-reference\bento-app-lavender-dusk.html` (tool pages) + `home-fox-landing.html` (home page). | Decided | 2026-10-13 |
+| D9 | Visual style: **Bento tiles**. Reference: the early bento + fox-landing mockups (retired 2026-10-17; the live app is the reference now). | Decided | 2026-10-13 |
 | D3 | Layout: **Fox landing home** (hero + 9 tool tiles, Ctrl+K) -> **bento tool page** per tool (hero answer tile, input tile, findings tile, run log tile). AI key settings in a **slide-in drawer** from the right. Bulk jobs use a **stepper** with nine-tail progress. | Decided | 2026-10-13 |
 | D10 | Motion: yes, and part of the brand. List in `03-design-system.md` "Motion". Every animation is off under `prefers-reduced-motion`. | Decided | 2026-10-13 |
 | D4 | Stack: **Vite + vanilla TypeScript**, static site, no backend, no framework. Shared UI in `app\src\shared\`. | Decided | 2026-10-13 |

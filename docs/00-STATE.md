@@ -2,6 +2,12 @@
 
 > Update this file at the end of every work session. Newest entry on top.
 
+## 2026-10-17 - Retired the early design mockups (Claude)
+
+- Deleted `docs/design-reference/` (bento + fox-landing HTML/PNG mockups). The app moved to a new UI,
+  so the old look should not appear anywhere. Docs that pointed at them now point at the live app.
+  Docs-only change: no version bump.
+
 ## 2026-10-15 (latest) - v2.1.3 Fix Kitsune emblem SVG & Firefox animation coordinates (Cursor)
 
 - **Hero & Empty-State Kitsune Emblem (`app/src/shared/fox.ts`, `motion.css`)**:

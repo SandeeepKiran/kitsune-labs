@@ -3,13 +3,8 @@
 Rule of thumb: **90% serious QA engineering software, 10% fox.** Tool names stay plain; the theme
 lives in colour, the fox, and motion.
 
-**Look at these first** (open the .html in a browser to see the motion; the .png is a still):
-
-- `docs\design-reference\bento-app-lavender-dusk.html`: a tool page (Bug Finder) in bento tiles.
-- `docs\design-reference\home-fox-landing.html`: the home page with the sleeping fox.
-
-They are 1440x900 mockups, not production code. Rebuild them properly: responsive, accessible,
-real components. Copy the fox SVG and the keyframes from them; they are our own drawing.
+The first 1440x900 mockups (bento tool page, sleeping-fox landing) were retired on 2026-10-17;
+the live app is now the visual reference.
 
 ## Colours (light, pastel; light mode is the default)
 
