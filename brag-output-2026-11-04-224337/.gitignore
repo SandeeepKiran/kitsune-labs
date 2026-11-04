@@ -1,0 +1,7 @@
+# Only build leftovers. The composition, scripts and assets stay tracked so the video can be re-rendered.
+node_modules/
+work/stills/
+work/shots/
+work/frames/
+__pycache__/
+.cache/

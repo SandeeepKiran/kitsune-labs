@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kitsune Labs launch video</title>
+<!-- Launch-video composition. Every frame is a pure function of time: window.render(t).
+     work/render.py calls render(t) for each frame and takes a screenshot. -->
+<style>
+  @font-face { font-family: 'Fraunces'; font-weight: 700; src: url('assets/fonts/fraunces-latin-700-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Lexend'; font-weight: 400; src: url('assets/fonts/lexend-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Lexend'; font-weight: 600; src: url('assets/fonts/lexend-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'DM Mono'; font-weight: 500; src: url('assets/fonts/dm-mono-latin-500-normal.woff2') format('woff2'); }
+
+  :root {
+    --bg: #f5f5f7; --tile: #ffffff; --ink: #1d1d1f; --muted: #56565c;
+    --sakura: #be185d; --plum: #9d174d; --ai: #7e22ce; --fail: #be123c; --fail-bg: #ffe4e6;
+    --pass: #156834; --pass-bg: #dcfce7; --logo-bg: #fce7f3; --logo-border: #f472b6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+  body { font-family: 'Lexend', sans-serif; color: var(--ink); position: relative; }
+  .layer { position: absolute; inset: 0; }
+  .glow { position: absolute; border-radius: 50%; filter: blur(80px); }
+  .petal { position: absolute; width: 10px; height: 10px; border-radius: 60% 0 60% 0; background: #f9a8d4; }
+  .scene { position: absolute; inset: 0; opacity: 0; }
+
+  /* Scene 1: the conversation that went wrong */
+  .label { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 26px; letter-spacing: 0.06em; color: var(--muted); }
+  .bubble { position: absolute; max-width: 980px; padding: 30px 40px; border-radius: 34px; font-size: 46px; line-height: 1.3; box-shadow: 0 18px 50px rgba(29,29,31,0.10); }
+  .bubble .who { display: block; font-size: 24px; font-weight: 600; margin-bottom: 10px; letter-spacing: 0.02em; }
+  .bubble--customer { right: 260px; top: 250px; background: var(--sakura); color: #fff; border-bottom-right-radius: 10px; }
+  .bubble--customer .who { color: #fce7f3; }
+  .bubble--bot { left: 260px; top: 520px; background: var(--tile); color: var(--ink); border-bottom-left-radius: 10px; }
+  .bubble--bot .who { color: var(--plum); }
+  .stamp { position: absolute; width: 230px; height: 230px; border-radius: 50%; border: 9px solid var(--fail); color: var(--fail);
+           font-family: 'Fraunces', serif; font-size: 72px; display: flex; align-items: center; justify-content: center; background: rgba(255,228,230,0.92); }
+  .chip { display: inline-flex; align-items: center; gap: 12px; padding: 12px 26px; border-radius: 980px; font-weight: 600; font-size: 30px; }
+  .chip--fail { background: var(--fail-bg); color: var(--fail); }
+  .mono { font-family: 'DM Mono', monospace; font-weight: 500; }
+  .caption { position: absolute; left: 0; right: 0; text-align: center; font-family: 'Fraunces', serif; font-size: 76px; letter-spacing: -0.01em; }
+  .caption em { font-style: normal; color: var(--sakura); }
+  .cap-pill { display: inline-block; background: #ffffff; padding: 18px 44px; border-radius: 980px; box-shadow: 0 16px 50px rgba(29,29,31,0.16); font-size: 56px; }
+
+  /* Brand */
+  .badge { width: 240px; height: 240px; }
+  .brand { font-family: 'Fraunces', serif; font-size: 150px; letter-spacing: -0.02em; }
+  .tagline { font-size: 46px; color: var(--muted); }
+
+  /* Product window: a real screenshot of the live site, 2400x1500 shown at 1600x1000 */
+  .window { position: absolute; left: 0; top: 0; width: 1600px; height: 1000px; transform-origin: 0 0; border-radius: 22px; overflow: hidden;
+            box-shadow: 0 40px 120px rgba(29,29,31,0.22), 0 0 0 1px rgba(0,0,0,0.06); background: #fff; }
+  .window img { position: absolute; left: 0; top: 0; width: 1600px; height: 1000px; }
+  .cursor { position: absolute; left: 0; top: 0; width: 44px; height: 44px; }
+  .ripple { position: absolute; width: 90px; height: 90px; margin: -45px 0 0 -45px; border-radius: 50%; border: 5px solid var(--sakura); }
+  .cover { position: absolute; background: #f5f5f7; }
+  .card { position: absolute; background-image: url('assets/home.png'); background-size: 1600px 1000px; border-radius: 14px; }
+
+  /* Key scene */
+  .pill { display: inline-flex; align-items: center; gap: 16px; padding: 22px 44px; border-radius: 980px; background: #fff; font-size: 44px; font-weight: 600;
+          box-shadow: 0 14px 40px rgba(29,29,31,0.10); border: 2px solid rgba(0,0,0,0.06); }
+  .dot { width: 18px; height: 18px; border-radius: 50%; }
+  .keybox { display: inline-flex; align-items: center; gap: 22px; padding: 26px 40px; border-radius: 24px; background: #fff; border: 3px solid var(--sakura);
+            font-family: 'DM Mono', monospace; font-size: 44px; box-shadow: 0 18px 50px rgba(190,24,93,0.16); }
+  .sub { font-size: 44px; color: var(--muted); text-align: center; }
+  .url { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 50px; color: var(--plum); }
+  .center { position: absolute; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; }
+</style>
+</head>
+<body>
+  <div class="layer" id="bgfx"></div>
+
+  <!-- Scene 1: hook -->
+  <div class="scene" id="s1">
+    <div class="label" style="position:absolute;left:260px;top:150px">MOUSY ASSIST · CNV-000001 · TURN 3</div>
+    <div class="bubble bubble--customer" id="b1"><span class="who">Customer</span><span id="b1t"></span></div>
+    <div class="bubble bubble--bot" id="b2"><span class="who">Mousy Assist</span><span id="b2t"></span></div>
+    <div class="stamp" id="stamp" style="left:1400px;top:560px">Fail</div>
+    <div class="caption" id="cap1" style="top:880px">Your bot heard <em>“refund.”</em></div>
+  </div>
+
+  <!-- Scene 2: reveal -->
+  <div class="scene" id="s2">
+    <div class="center" style="top:200px">
+      <svg class="badge" id="badge2" viewBox="0 0 32 32"></svg>
+      <div class="brand" id="brand2" style="margin-top:30px">Kitsune Labs</div>
+      <div class="tagline" id="tag2" style="margin-top:10px">QA tools for conversational AI, forged in-house.</div>
+    </div>
+  </div>
+
+  <!-- Scene 3: Bug Finder in use -->
+  <div class="scene" id="s3">
+    <div class="window" id="win3">
+      <img src="assets/bug-finder_empty.png" alt="">
+      <img src="assets/bug-finder_result.png" id="res3" alt="">
+      <div class="ripple" id="rip3"></div>
+      <svg class="cursor" id="cur3" viewBox="0 0 24 24"><path d="M3 2l7.5 19 2.6-7.9L21 10.5z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="caption" id="cap3" style="top:940px"><span class="cap-pill">One click. Two planted bugs. <em>Zero AI calls.</em></span></div>
+  </div>
+
+  <!-- Scene 4: nine tools -->
+  <div class="scene" id="s4">
+    <div class="window" id="win4">
+      <img src="assets/home.png" alt="">
+      <div class="cover" style="left:390px;top:458px;width:1040px;height:470px"></div>
+      <div id="cards"></div>
+    </div>
+    <div class="caption" id="cap4" style="top:940px"><span class="cap-pill">Nine tools. <em>Rules first,</em> AI optional.</span></div>
+  </div>
+
+  <!-- Scene 5: your key -->
+  <div class="scene" id="s5">
+    <div class="center" style="top:170px">
+      <div class="caption" id="h5" style="position:static;font-size:110px">Your key, <em>your choice.</em></div>
+      <div id="pills5" style="display:flex;gap:30px;margin-top:70px">
+        <div class="pill"><span class="dot" style="background:#4285f4"></span>Gemini</div>
+        <div class="pill"><span class="dot" style="background:#10a37f"></span>ChatGPT</div>
+        <div class="pill"><span class="dot" style="background:#d97757"></span>Claude</div>
+      </div>
+      <div class="keybox" id="key5" style="margin-top:60px">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#be185d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span id="key5t"></span>
+      </div>
+      <div class="sub" id="sub5" style="margin-top:50px">Stays in your browser. No server, no proxy.</div>
+    </div>
+  </div>
+
+  <!-- Scene 6: outro -->
+  <div class="scene" id="s6">
+    <div class="center" style="top:150px">
+      <svg class="badge" id="badge6" viewBox="0 0 32 32"></svg>
+      <div class="brand" style="margin-top:26px;font-size:130px">Kitsune Labs</div>
+      <div class="tagline" style="margin-top:8px">Nine free QA tools for chatbots and voice bots.</div>
+      <div class="url" id="url6" style="margin-top:56px">sandeeepkiran.github.io/kitsune-labs</div>
+      <div class="sub" id="lic6" style="margin-top:26px;font-size:34px">Open source · AGPL-3.0 · All sample data is invented</div>
+    </div>
+  </div>
+
+<script>
+  // The Kitsune badge from app/public/favicon.svg, reused as-is.
+  const BADGE = `<rect x="1" y="1" width="30" height="30" rx="8" fill="#fce7f3" stroke="#f472b6" stroke-width="1.4"/>
+    <g transform="translate(5 5) scale(0.9167)" fill="none" stroke="#9d174d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path class="draw" pathLength="1" d="M5 4.5C5 4.5 8.5 9 10 9.5C11.3 9.9 12.7 9.9 14 9.5C15.5 9 19 4.5 19 4.5C20.2 9.5 19.5 14.5 12 20C4.5 14.5 3.8 9.5 5 4.5Z"/>
+    <path class="draw" pathLength="1" d="M8.5 13.5L12 17L15.5 13.5"/></g>`;
+  document.getElementById('badge2').innerHTML = BADGE;
+  document.getElementById('badge6').innerHTML = BADGE;
+
+  // The nine tool cards, cut from the real home screenshot (window px).
+  const COLS = [[397, 330], [744, 330], [1090, 330]];
+  const ROWS = [[466, 128], [611, 147], [774, 148]];
+  const cardsEl = document.getElementById('cards');
+  const cards = [];
+  ROWS.forEach(([y, h]) => COLS.forEach(([x, w]) => {
+    const c = document.createElement('div');
+    c.className = 'card';
+    Object.assign(c.style, { left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px', backgroundPosition: `-${x}px -${y}px` });
+    cardsEl.appendChild(c); cards.push(c);
+  }));
+
+  // Soft background: two sakura glows and drifting petals (texture only).
+  const bg = document.getElementById('bgfx');
+  bg.innerHTML = `<div class="glow" id="g1" style="width:900px;height:900px;background:rgba(244,114,182,0.16)"></div>
+                  <div class="glow" id="g2" style="width:800px;height:800px;background:rgba(147,51,234,0.10)"></div>`;
+  const petals = [];
+  for (let i = 0; i < 14; i++) { const p = document.createElement('div'); p.className = 'petal'; bg.appendChild(p); petals.push(p); }
+
+  const $ = (id) => document.getElementById(id);
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const prog = (t, a, b) => clamp((t - a) / (b - a));
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+  const easeInOut = (x) => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const backOut = (x) => { const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+  const lerp = (a, b, x) => a + (b - a) * x;
+  // Scene envelope: fade in, hold, fade out. Scenes never overlap, so cuts dip through the background.
+  const env = (t, a, b, fi = 0.28, fo = 0.28) => Math.min(prog(t, a, a + fi), 1 - prog(t, b - fo, b));
+  const type = (s, x) => s.slice(0, Math.round(s.length * clamp(x)));
+  const appear = (el, x, dy = 40) => { el.style.opacity = easeOut(x); el.style.transform = `translateY(${(1 - easeOut(x)) * dy}px)`; };
+
+  const T1 = 'can I cancel my order please';
+  const T2 = 'I can help with refunds! Which order should I refund?';
+
+  window.render = function (t) {
+    // background motion
+    $('g1').style.transform = `translate(${-200 + 120 * Math.sin(t * 0.25)}px, ${-250 + 80 * Math.cos(t * 0.2)}px)`;
+    $('g2').style.transform = `translate(${1300 + 100 * Math.cos(t * 0.22)}px, ${450 + 90 * Math.sin(t * 0.3)}px)`;
+    petals.forEach((p, i) => {
+      const sp = 40 + (i * 37) % 60, x0 = (i * 263) % 1920;
+      const y = ((t * sp + i * 177) % 1240) - 80;
+      p.style.transform = `translate(${x0 + 40 * Math.sin(t * 0.8 + i)}px, ${y}px) rotate(${t * 40 + i * 30}deg)`;
+      p.style.opacity = 0.35;
+    });
+
+    // Scene 1: 0.0 - 3.4
+    $('s1').style.opacity = env(t, 0, 3.4, 0.01);
+    appear($('b1'), prog(t, 0.15, 0.45));
+    $('b1t').textContent = type(T1, prog(t, 0.3, 0.95));
+    appear($('b2'), prog(t, 1.0, 1.3));
+    $('b2t').textContent = type(T2, prog(t, 1.1, 1.85));
+    const st = prog(t, 2.0, 2.22);
+    $('stamp').style.opacity = st > 0 ? 1 : 0;
+    $('stamp').style.transform = `scale(${lerp(2.2, 1, easeOut(st))}) rotate(-14deg)`;
+    appear($('cap1'), prog(t, 2.05, 2.35), 24);
+
+    // Scene 2: 3.4 - 6.6
+    $('s2').style.opacity = env(t, 3.4, 6.6);
+    const bd = prog(t, 3.5, 4.3);
+    $('badge2').style.transform = `scale(${lerp(0.6, 1, backOut(prog(t, 3.45, 3.95)))})`;
+    $('badge2').querySelectorAll('.draw').forEach((p) => { p.style.strokeDasharray = 1; p.style.strokeDashoffset = 1 - easeInOut(bd); });
+    appear($('brand2'), prog(t, 3.75, 4.15));
+    appear($('tag2'), prog(t, 4.05, 4.45), 24);
+
+    // Scene 3: 6.6 - 12.4. Window base: scale 0.9 at (240, 30). Push-in on the findings after the click.
+    $('s3').style.opacity = env(t, 6.6, 12.4);
+    const push = easeInOut(prog(t, 8.45, 9.45));
+    const s = lerp(0.9, 1.62, push);
+    const fx = lerp(800, 908, push), fy = lerp(500, 560, push);
+    const cx = lerp(240 + 800 * 0.9, 960, push), cy = lerp(30 + 500 * 0.9, 470, push);
+    const rise = (1 - easeOut(prog(t, 6.6, 7.1))) * 60;
+    $('win3').style.transform = `translate(${cx - fx * s}px, ${cy - fy * s + rise}px) scale(${s})`;
+    // results load in as a top-down wipe (no double exposure)
+    $('res3').style.clipPath = `inset(0 0 ${(1 - easeOut(prog(t, 8.08, 8.4))) * 100}% 0)`;
+    // cursor glides to "Load Mousy sample" (window px 1166, 103) and clicks at 8.0 s
+    const mv = easeInOut(prog(t, 7.0, 7.85));
+    const kx = lerp(1250, 1160, mv), ky = lerp(640, 98, mv);
+    const press = t > 7.95 && t < 8.1 ? 0.85 : 1;
+    $('cur3').style.transform = `translate(${kx}px, ${ky}px) scale(${press})`;
+    $('cur3').style.opacity = 1 - prog(t, 8.5, 8.8);
+    const rp = prog(t, 8.0, 8.5);
+    $('rip3').style.opacity = rp > 0 && rp < 1 ? 1 - rp : 0;
+    $('rip3').style.transform = `translate(1166px, 103px) scale(${0.4 + rp})`;
+    appear($('cap3'), prog(t, 8.6, 8.95), 30);
+
+    // Scene 4: 12.4 - 15.4. Window at scale 1.0, tool grid centred.
+    $('s4').style.opacity = env(t, 12.4, 15.4);
+    const s4 = lerp(0.98, 1.04, prog(t, 12.4, 15.4));
+    $('win4').style.transform = `translate(${960 - 908 * s4}px, ${505 - 690 * s4 + (1 - easeOut(prog(t, 12.4, 12.9))) * 50}px) scale(${s4})`;
+    cards.forEach((c, i) => {
+      const x = prog(t, 12.6 + i * 0.09, 12.95 + i * 0.09);
+      c.style.opacity = easeOut(x);
+      c.style.transform = `translateY(${(1 - backOut(x)) * 40}px)`;
+    });
+    appear($('cap4'), prog(t, 13.0, 13.35), 30);
+
+    // Scene 5: 15.4 - 18.4
+    $('s5').style.opacity = env(t, 15.4, 18.4);
+    appear($('h5'), prog(t, 15.45, 15.85));
+    [...$('pills5').children].forEach((p, i) => appear(p, prog(t, 15.75 + i * 0.12, 16.1 + i * 0.12), 30));
+    appear($('key5'), prog(t, 16.2, 16.5), 30);
+    $('key5t').textContent = '•'.repeat(Math.round(16 * prog(t, 16.3, 16.75)));
+    appear($('sub5'), prog(t, 16.45, 16.8), 24);
+
+    // Scene 6: 18.4 - 21.0 (holds to the end)
+    $('s6').style.opacity = env(t, 18.4, 21.5);
+    $('badge6').style.transform = `scale(${lerp(0.6, 1, backOut(prog(t, 18.45, 18.95)))})`;
+    $('badge6').querySelectorAll('.draw').forEach((p) => { p.style.strokeDasharray = 1; p.style.strokeDashoffset = 1 - easeInOut(prog(t, 18.5, 19.2)); });
+    appear($('url6'), prog(t, 18.9, 19.25), 24);
+    appear($('lic6'), prog(t, 19.1, 19.45), 20);
+  };
+
+  // Ready when fonts and images are decoded.
+  window.ready = Promise.all([document.fonts.ready, ...[...document.images].map((i) => i.decode().catch(() => {}))])
+    .then(() => Promise.all(['Fraunces', 'Lexend', 'DM Mono'].map((f) => document.fonts.load(`600 40px "${f}"`))))
+    .then(() => true);
+  window.render(0);
+</script>
+</body>
+</html>

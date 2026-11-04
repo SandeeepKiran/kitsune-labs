@@ -4,6 +4,10 @@
 
 **Try it live: <https://sandeeepkiran.github.io/kitsune-labs/>**
 
+[![Kitsune Labs launch video: the customer said cancel, the bot heard refund](brag-output-2026-11-04-224337/brag.gif)](brag-output-2026-11-04-224337/brag.mp4)
+
+*21-second launch video: [MP4 with sound](brag-output-2026-11-04-224337/brag.mp4) · [poster](brag-output-2026-11-04-224337/brag.jpg)*
+
 Kitsune Labs is a set of browser tools for testing chatbots and voice bots. You can find bugs in a
 bot conversation, turn transcripts into test cases, generate test utterances for an intent,
 convert transcripts into open test-script formats, and build QA reports. Every tool runs in your
