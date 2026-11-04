@@ -13,7 +13,8 @@
 | D7 | Hosting: GitHub Pages on the owner's personal account (`https://sandeeepkiran.github.io/kitsune-labs/`), deployed by a GitHub Actions workflow (M5), linked from the portfolio site. Free Pages needs a **public** repo, so the site goes live when the repo goes public after Batch C. | Decided | 2026-10-13 |
 | D8 | Mock company: **Mousy**, bot "Mousy Assist" (online-shop support) | Decided | 2026-10-11 |
 | D11 | Sample data: **Mousy sample pack**, built by a local script from the *shape* of a private real export, never its content. Plan: `05-mock-data-plan.md`. Visitors get it from a **Sample data** page + a "Load Mousy sample" button on every tool. | Decided | 2026-10-13 |
-| D12 | Licence: **GPL-3.0** (same as the owner's other recent public repos). README + LICENSE in milestone M0.5. | Decided | 2026-10-13 |
+| D12 | Licence: **GPL-3.0** (same as the owner's other recent public repos). README + LICENSE in milestone M0.5. | Replaced by D12b | 2026-10-13 |
+| D12b | Licence: **AGPL-3.0-or-later** (owner's choice for all his apps). | Decided | 2026-11-04 |
 
 ## D4 notes (stack)
 

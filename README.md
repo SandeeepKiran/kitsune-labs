@@ -86,7 +86,7 @@ Every push to `main` builds the site and publishes it to GitHub Pages
 
 ## Licence
 
-GPL-3.0, see [LICENSE](LICENSE).
+AGPL-3.0-or-later, see [LICENSE](LICENSE).
 
 ## Credits
 
