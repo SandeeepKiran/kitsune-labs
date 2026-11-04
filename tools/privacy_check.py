@@ -34,7 +34,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DENYLIST = ROOT / "docs" / "private" / "denylist.txt"
 
 ARCHIVE_SUFFIXES = {".xlsx", ".zip", ".docx"}
-BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff", ".woff2", ".ttf", ".otf", ".pdf"}
+BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff", ".woff2", ".ttf", ".otf", ".pdf",
+                   ".mp4", ".webm", ".wav", ".mp3"}  # Media bytes give false hits (random digits look like phone numbers).
 MAX_BYTES = 20 * 1024 * 1024
 ALWAYS_SKIP_DIRS = {".git"}
 

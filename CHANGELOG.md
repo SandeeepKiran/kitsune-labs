@@ -2,6 +2,12 @@
 
 All changes to Kitsune Labs, newest first. Versions follow [semver](https://semver.org/).
 
+## 2.1.4 - 2026-11-04 - Licence is now AGPL-3.0-or-later
+
+- Changed the licence from GPL-3.0 to AGPL-3.0-or-later (`LICENSE`, `app/package.json`, README).
+- Fixed the footer: it now says `AGPL-3.0` (`app/src/shared/shell.ts`).
+- Added the launch video (`brag-output-2026-11-04-224337/`) to the README.
+
 ## 2.1.3 - 2026-10-15 - Fix Kitsune emblem SVG & Firefox animation coordinates
 
 - Fixed the hero/empty-state Kitsune emblem (`app/src/shared/fox.ts`, `motion.css`) so it always renders the sleek rounded Kitsune app badge in both emblem modes (previously `sigil` mode in Firefox `localStorage` hid the fox head and left a plain circle with detached tail/charm strokes).

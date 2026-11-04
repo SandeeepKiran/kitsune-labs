@@ -225,7 +225,7 @@ function buildFooter(): HTMLElement {
   return el('footer', { class: 'shell-footer' },
     el('p', {}, 'All data is invented. Mousy is not a real company.'),
     el('p', {},
-      'Kitsune Labs · GPL-3.0 · ',
+      'Kitsune Labs · AGPL-3.0 · ',
       el('a', { href: urls.github, rel: 'noopener noreferrer' }, 'Sandeep Kiran on GitHub'),
     ),
   );
